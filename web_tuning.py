@@ -1,8 +1,6 @@
 from fastapi import APIRouter, Form
 from fastapi.responses import HTMLResponse
-from zen import responder  # sua função que envia o payload para o modelo
-from fastapi.responses import HTMLResponse
-from zen import responder  # função que envia o payload para o modelo
+from zen import responder
 import os
 
 router = APIRouter()
@@ -112,26 +110,22 @@ async def tuning_submit(
     try:
         # Lê o arquivo correspondente ao style
         style_content = ""
-        style_path = os.path.join("src/styles", style)  # ajuste a pasta se necessário
+        style_path = os.path.join("src/styles", style)
         if os.path.exists(style_path):
             with open(style_path, "r", encoding="utf-8") as f:
                 style_content = f.read()
         else:
-            style_content = f"Estilo selecionado: {style}"  # fallback
+            style_content = f"Estilo selecionado: {style}"
 
-        payload = {
-            "model": "gpt-5-mini",
-            "messages": get_last_messages(context_count) + [
-                {"role": "user", "content": f"{style_content}\nPergunta: {question}"}
-            ],
-            "temperature": temperature,
-            "max_tokens": max_tokens,
-            "top_p": top_p,
-            "frequency_penalty": frequency_penalty,
-            "presence_penalty": presence_penalty
-        }
+        # Cria a pergunta final como string para o responder
+        pergunta_final = f"{style_content}\nPergunta: {question}"
 
-        resposta = responder(payload)
+        # Pega histórico das últimas n mensagens como string concatenada
+        historico_texto = "\n".join([m["content"] for m in get_last_messages(context_count)])
+
+        # Chama o responder passando a string
+        resposta = responder(pergunta_final, historico_texto)
+
         add_to_history(question, resposta)
     except Exception as e:
         resposta = f"O mestre medita. (Erro interno: {str(e)})"
