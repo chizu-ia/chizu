@@ -5,13 +5,36 @@ import requests
 import os
 from pathlib import Path
 
+# =============================
+# Configurações gerais
+# =============================
+
 EMBED_URL = os.getenv("EMBED_URL", "http://localhost:11434/api/embeddings")
 MODEL = os.getenv("EMBED_MODEL", "nomic-embed-text")
 
-# Limiar de similaridade (ajuste conforme necessário)
 THRESHOLD = 0.30
 
-# Respostas contemplativas quando não há boa correspondência
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# =============================
+# Prompts por estilo cognitivo
+# =============================
+
+STYLE_MAP = {
+    "aforismo": BASE_DIR / "styles" / "aforismo.txt",
+    "koan": BASE_DIR / "styles" / "koan.txt",
+    "meditacao": BASE_DIR / "styles" / "meditacao_guiada.txt",
+    "padrao": BASE_DIR / "styles" / "system_prompt.txt"
+}
+
+def load_style_prompt(style: str) -> str:
+    path = STYLE_MAP.get(style, STYLE_MAP["padrao"])
+    return path.read_text(encoding="utf-8")
+
+# =============================
+# Fallback contemplativo
+# =============================
+
 RESPOSTAS_ZEN = [
     "A resposta não está nas palavras, mas no silêncio entre elas.",
     "A mente que pergunta já contém a resposta.",
@@ -27,29 +50,35 @@ RESPOSTAS_ZEN = [
     "Não há palavras para isso, apenas prática."
 ]
 
+# =============================
+# Funções matemáticas
+# =============================
+
 def cosine_similarity(a, b):
     dot = sum(x * y for x, y in zip(a, b))
     na = math.sqrt(sum(x * x for x in a))
     nb = math.sqrt(sum(y * y for y in b))
     return dot / (na * nb + 1e-9)
 
+# =============================
+# Embeddings
+# =============================
+
 def gerar_embedding(texto):
     payload = {
         "model": MODEL,
         "input": texto
     }
-    try:
-        r = requests.post(EMBED_URL, json=payload, timeout=30)
-        r.raise_for_status()
-        data = r.json()
-        return data["data"][0]["embedding"]
-    except Exception as e:
-        # Log crítico (opcional, pode ser removido)
-        # print(f"[ERRO] gerar_embedding: {e}")
-        raise
+    r = requests.post(EMBED_URL, json=payload, timeout=30)
+    r.raise_for_status()
+    data = r.json()
+    return data["data"][0]["embedding"]
+
+# =============================
+# Busca semântica (RAG)
+# =============================
 
 def buscar_blocos(pergunta, top_k=3):
-    # Carrega os embeddings do arquivo (certifique-se de que o caminho está correto)
     with open("data/embeddings_bge.json", "r", encoding="utf-8") as f:
         base = json.load(f)
 
@@ -67,8 +96,39 @@ def buscar_blocos(pergunta, top_k=3):
 
     top_score = scores[0][0]
 
-    # Score muito baixo → silêncio zen
     if top_score < THRESHOLD:
         return [random.choice(RESPOSTAS_ZEN)]
 
     return [texto for _, texto in scores[:top_k]]
+
+# =============================
+# Motor cognitivo principal
+# =============================
+
+def montar_prompt(pergunta: str, estilo: str = "padrao") -> list:
+    """
+    Constrói o payload final para o LLM,
+    combinando estilo cognitivo + RAG + pergunta.
+    """
+
+    style_prompt = load_style_prompt(estilo)
+    blocos = buscar_blocos(pergunta)
+
+    contexto = "\n\n".join(blocos)
+
+    messages = [
+        {
+            "role": "system",
+            "content": style_prompt
+        },
+        {
+            "role": "system",
+            "content": f"Contexto relevante:\n{contexto}"
+        },
+        {
+            "role": "user",
+            "content": pergunta
+        }
+    ]
+
+    return messages

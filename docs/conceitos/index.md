@@ -16,6 +16,7 @@ Ela foi pensada como um **guia progressivo de aprendizado**, partindo das bases 
 - 🧬 [Embeddings](06-embeddings.html)
 - 🔍 [Busca semântica](07-busca-semantica.html)
 - 🧩 [Pipeline do ZenBot](08-pipeline-do-zenbot.html)
+- 🛡️ [Validação de Perguntas e Controle de Estilo](10-validacao-perguntas.html)
 - ☯️ [Metáfora Zen — A Arquitetura Mental do ZenBot](09-metafora-zen.html)
 
 ---
