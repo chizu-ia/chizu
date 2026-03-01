@@ -53,24 +53,20 @@ def limpar_comando(pergunta: str) -> str:
         return ""
     return pergunta
 
-
 def responder(pergunta, historico=None, tentativas=3, temperature=0.55, max_tokens=800):
     estilo = detectar_estilo(pergunta)
     pergunta = limpar_comando(pergunta)
 
     for tentativa in range(tentativas):
         try:
-            # ===== Monta prompt e histórico =====
             messages = montar_prompt(pergunta, estilo)
 
-            # Memória curta
             def normalizar_historico(historico, limite_pares=2, max_chars=300):
                 if not historico:
                     return []
                 ultimos = historico[-limite_pares*2:]
                 seguro = []
                 for m in ultimos:
-                    # ignora mensagens sem content
                     content = m.get("content")
                     if content:
                         seguro.append({
@@ -78,10 +74,10 @@ def responder(pergunta, historico=None, tentativas=3, temperature=0.55, max_toke
                             "content": content[:max_chars]
                         })
                 return seguro
+
             memoria = normalizar_historico(historico)
             messages = memoria + messages
 
-            # ===== Payload =====
             payload = {
                 "model": MODEL,
                 "messages": messages,
@@ -91,7 +87,6 @@ def responder(pergunta, historico=None, tentativas=3, temperature=0.55, max_toke
                 "presence_penalty": 0.25
             }
 
-            # ===== Rate limit / backoff =====
             r = requests.post(
                 GROQ_URL,
                 json=payload,
@@ -99,10 +94,14 @@ def responder(pergunta, historico=None, tentativas=3, temperature=0.55, max_toke
                 timeout=TIMEOUT
             )
 
+            # ===== Detecta rate limit =====
             if r.status_code == 429:
                 sleep_time = (2 ** tentativa) + random.random()
                 print(f"[RATE LIMIT] HTTP 429. Tentativa {tentativa+1}/{tentativas}. Dormindo {sleep_time:.2f}s")
                 time.sleep(sleep_time)
+                if tentativa == tentativas - 1:
+                    # última tentativa falhou => levanta erro específico
+                    raise RuntimeError("RATE_LIMIT")
                 continue
 
             r.raise_for_status()
@@ -123,6 +122,7 @@ def responder(pergunta, historico=None, tentativas=3, temperature=0.55, max_toke
                 time.sleep(1.5)
             else:
                 return f"({random.choice(ERROS_ZEN)})"
+            
 # =============================
 # Inicialização
 # =============================
