@@ -5,6 +5,7 @@ import random
 import json
 import base64
 import os
+from web_tuning import router as tuning_router  # importa o router do arquivo de testes
 from zen import responder, verificar_chave, aquecer_modelo
 from uuid import uuid4
 
@@ -25,6 +26,7 @@ conversation_memory = {}
 verificar_chave()
 aquecer_modelo()
 app = FastAPI()
+app.include_router(tuning_router, prefix="/tuning")
 app.mount("/static", StaticFiles(directory="."), name="static")
 
 # ============================================
