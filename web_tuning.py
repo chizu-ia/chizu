@@ -5,7 +5,9 @@ import os
 
 router = APIRouter()
 
+# ============================================
 # Histórico em memória
+# ============================================
 MESSAGES = []
 
 def get_last_messages(n: int):
@@ -18,7 +20,6 @@ def add_to_history(user_msg: str, assistant_msg: str):
 # ============================================
 # Página HTML do formulário de tuning
 # ============================================
-
 def render_form_html(resposta: str = "", historico_html: str = ""):
     return f"""
     <!DOCTYPE html>
@@ -33,7 +34,7 @@ def render_form_html(resposta: str = "", historico_html: str = ""):
             label {{ display: block; margin-top: 10px; font-weight: bold; }}
             input, select {{ width: 100%; padding: 5px; margin-top: 5px; }}
             button {{ margin-top: 15px; padding: 10px 20px; font-size: 16px; }}
-            pre {{ background: #eee; padding: 10px; border-radius: 5px; }}
+            pre {{ background: #eee; padding: 10px; border-radius: 5px; white-space: pre-wrap; word-wrap: break-word; }}
             .historico {{ margin-top: 20px; }}
         </style>
     </head>
@@ -117,18 +118,24 @@ async def tuning_submit(
         else:
             style_content = f"Estilo selecionado: {style}"
 
-        # Cria a pergunta final como string para o responder
+        # Cria a pergunta final
         pergunta_final = f"{style_content}\nPergunta: {question}"
 
-        # Pega histórico das últimas n mensagens como string concatenada
-        historico_texto = "\n".join([m["content"] for m in get_last_messages(context_count)])
+        # Pega histórico das últimas n mensagens como lista de dicts
+        historico_list = get_last_messages(context_count)
 
-        # Chama o responder passando a string
-        resposta = responder(pergunta_final, historico_texto)
+        # Adiciona a pergunta do usuário ao histórico temporariamente
+        mensagens_para_responder = historico_list + [{"role": "user", "content": pergunta_final}]
 
+        # Chama o responder passando a lista correta
+        resposta = responder(pergunta_final, mensagens_para_responder)
+
+        # Atualiza o histórico
         add_to_history(question, resposta)
+
     except Exception as e:
         resposta = f"O mestre medita. (Erro interno: {str(e)})"
 
+    # Gera HTML do histórico
     historico_html = "".join([f"<pre><b>{msg['role']}:</b> {msg['content']}</pre>" for msg in MESSAGES[-10:]])
     return HTMLResponse(render_form_html(resposta=resposta, historico_html=historico_html))
