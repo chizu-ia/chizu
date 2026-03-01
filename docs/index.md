@@ -64,6 +64,7 @@ Criar um chatbot baseado em inteligência artificial capaz de responder pergunta
 - 🧬 [Embeddings](conceitos/06-embeddings.html)
 - 🔍 [Busca semântica](conceitos/07-busca-semantica.html)
 - 🧩 [Pipeline do ZenBot](conceitos/08-pipeline-do-zenbot.html)
+- 🛡️ [Validação de Perguntas e Controle de Estilo](conceitos/10-validacao-perguntas.html)
 - ☯️ [Metáfora Zen — A Arquitetura Mental do ZenBot](conceitos/09-metafora-zen.html)
 
 ---

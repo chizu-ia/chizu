@@ -46,4 +46,12 @@ Cada conceito aqui apresentado busca equilibrar:
 
 ---
 
+## 🛤️ Conectando teoria e prática
+
+Para transformar estes conceitos em **aprendizado real**, acompanhe o diário de construção do projeto, com decisões técnicas, erros, ajustes e descobertas ao longo do caminho:
+
+- 🛤️ [Jornada de Aprendizado — Diário de Construção](../10-jornada-de-aprendizado.html)
+
+---
+
 📘 *Voltar ao índice geral:* [Documentação ZenBot](../index.html)
