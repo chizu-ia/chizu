@@ -59,7 +59,7 @@ def limpar_comando(pergunta: str) -> str:
 # Motor de resposta
 # =============================
 
-def responder(pergunta, historico=None, tentativas=3, temperature=0.35, max_tokens=256):
+def responder(pergunta, historico=None, tentativas=3, temperature=0.45, max_tokens=350):
 
     estilo = detectar_estilo(pergunta)
     pergunta = limpar_comando(pergunta)
@@ -103,8 +103,8 @@ def responder(pergunta, historico=None, tentativas=3, temperature=0.35, max_toke
                 "messages": messages,
                 "temperature": temperature,
                 "max_tokens": max_tokens,
-                "frequency_penalty": 0.3,
-                "presence_penalty": 0.15
+                "frequency_penalty": 0.2,
+                "presence_penalty": 0.1
             }
 
             r = requests.post(
@@ -134,6 +134,8 @@ def responder(pergunta, historico=None, tentativas=3, temperature=0.35, max_toke
             r.raise_for_status()
 
             resposta_llm = r.json()["choices"][0]["message"]["content"].strip()
+            if not resposta_llm.endswith((".", "。", "!", "?")):
+                resposta_llm = resposta_llm + "..."
 
             resposta_final = resposta_llm
 
