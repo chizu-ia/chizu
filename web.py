@@ -80,7 +80,7 @@ HTML_PAGE = f"""
         </div>
 
         <div class="input-container">
-            <input type="text" id="pergunta" placeholder="Pressione Enter para falar com Chizu..." autofocus>
+            <input type="text" id="pergunta" placeholder="Fale com Chizu..." autofocus>
         </div>
 
         <div class="resposta" id="resposta">
@@ -89,7 +89,7 @@ HTML_PAGE = f"""
 
         <div class="footer">
             digite "sair", "ok" ou "gassho" para encerrar<br>
-            <a href="https://chizuzen.github.io/Zenbot/" target="_blank" class="doc-link">📖 Ver Documentação do Projeto</a>
+            <a href="https://chizuzen.github.io/Zenbot/" target="_blank" class="doc-link">📖 Documentação do Projeto</a>
         </div>
     </div>
 
