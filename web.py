@@ -91,7 +91,7 @@ HTML_PAGE = f"""
             digite "sair", "ok" ou "gassho" para encerrar<br>
             <a href="https://chizuzen.github.io/Zenbot/" target="_blank" class="doc-link">📖 Documentação do Projeto</a>
             <br><br>
-            © {ANO} • contato: <a href="mailto:Chizu.Zenbot@gmail">Chizu.Zenbot@gmail</a>
+            © 2026 • <a href="mailto:Chizu.Zenbot@gmail.com" style="color: inherit; text-decoration: none;">Chizu.Zenbot@gmail.com</a>
         </div>
     </div>
 
