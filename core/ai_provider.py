@@ -5,32 +5,35 @@ import random
 class FreeAIProvider:
     def __init__(self):
         self.keys = {
+            "gemini": os.getenv("GEMINI_API_KEY"),             
             "groq": os.getenv("GROQ_API_KEY"),
-            "gemini": os.getenv("GEMINI_API_KEY"),
             "sambanova": os.getenv("SAMBANOVA_API_KEY"),
             "cerebras": os.getenv("CEREBRAS_API_KEY")
         }
 
     def chat(self, messages, temperature=0.4, max_tokens=180):
-        # Ordem de tentativa: Groq -> Gemini -> SambaNova -> Cerebras
+        # Lista de provedores disponíveis
         providers = [
-            (self._groq_chat, "Groq"),
             (self._gemini_chat, "Gemini"),
+            (self._groq_chat, "Groq"),
             (self._sambanova_chat, "SambaNova"),
             (self._cerebras_chat, "Cerebras")
         ]
+
+        # O mestre embaralha as opções para o equilíbrio perfeito
+        random.shuffle(providers) 
 
         for method, name in providers:
             if not self.keys.get(name.lower()):
                 continue
             try:
-                print(f"[AI] Tentando {name}...")
+                print(f"[AI] Escolhida: {name}. Processando...")
                 return method(messages, temperature, max_tokens)
             except Exception as e:
-                print(f"[AI] {name} falhou: {e}")
+                print(f"[AI] {name} falhou: {e}. Tentando próxima...")
                 continue
         
-        raise RuntimeError("Todos os provedores falharam.")
+        raise RuntimeError("Todas as fontes de sabedoria falharam.")
 
     def _groq_chat(self, messages, temperature, max_tokens):
         payload = {
@@ -46,7 +49,6 @@ class FreeAIProvider:
         return r.json()["choices"][0]["message"]["content"]
 
     def _gemini_chat(self, messages, temperature, max_tokens):
-        # Gemini usa uma estrutura de JSON diferente
         prompt = ""
         for m in messages:
             role = "Model" if m["role"] == "assistant" else "User"
