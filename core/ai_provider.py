@@ -1,116 +1,122 @@
+from fastapi import APIRouter, Form
+from fastapi.responses import HTMLResponse
+from zen import responder
 import os
-import requests
-import random
 
-class FreeAIProvider:
-    def __init__(self):
-        # Chaves de API vindas do ambiente
-        self.keys = {
-            "gemini": os.getenv("GEMINI_API_KEY"),             
-            "groq": os.getenv("GROQ_API_KEY"),
-            "sambanova": os.getenv("SAMBANOVA_API_KEY"),
-            "cerebras": os.getenv("CEREBRAS_API_KEY")
-        }
+router = APIRouter()
 
-    def chat(self, messages, temperature=0.4, max_tokens=180, 
-             top_p=0.9, frequency_penalty=0.0, presence_penalty=0.0):
-        """
-        O Grande Maestro: Tenta cada provedor em sequência, 
-        repassando todos os parâmetros de tuning.
-        """
-        # Ordem de tentativa: Groq -> Cerebras -> Sambanova -> Gemini
+MESSAGES = []
+
+def get_last_messages(n: int):
+    return MESSAGES[-n:]
+
+def add_to_history(user_msg: str, assistant_msg: str):
+    MESSAGES.append({"role": "user", "content": user_msg})
+    MESSAGES.append({"role": "assistant", "content": assistant_msg})
+
+def render_form_html(resposta: str = "", historico_html: str = ""):
+    # Usei aspas triplas para evitar conflitos com as aspas do CSS/HTML
+    return f"""
+    <!DOCTYPE html>
+    <html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <title>ZenBot – Oficina de Tuning</title>
+        <style>
+            body {{ font-family: 'Segoe UI', Tahoma, sans-serif; background: #f0f2f5; padding: 20px; }}
+            .container {{ background: #fff; padding: 30px; border-radius: 15px; max-width: 850px; margin: auto; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }}
+            h2 {{ text-align: center; color: #1a5928; }}
+            label {{ display: block; margin-top: 15px; font-weight: bold; }}
+            input, select {{ width: 100%; padding: 12px; margin-top: 8px; border-radius: 8px; border: 1px solid #ccc; }}
+            button {{ margin-top: 25px; padding: 15px; background: #27ae60; color: white; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-weight: bold; }}
+            pre {{ background: #fdfdfd; padding: 20px; border-left: 6px solid #27ae60; border-radius: 8px; white-space: pre-wrap; }}
+            .historico {{ margin-top: 40px; border-top: 2px solid #eee; }}
+            .msg-box {{ margin-bottom: 15px; padding: 15px; border-radius: 10px; }}
+            .user {{ background: #e3f2fd; text-align: right; }}
+            .assistant {{ background: #f1f8e9; text-align: left; }}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>ZenBot – Oficina de Tuning</h2>
+            <form method="post">
+                <label>Estilo:</label>
+                <select name="style">
+                    <option value="system_prompt.txt">Base</option>
+                    <option value="koans_classicos.txt">Koans</option>
+                    <option value="aforismos_zen.txt">Aforismos</option>
+                </select>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <label>Temp:</label><input type="number" step="0.05" name="temperature" value="0.4">
+                        <label>Top P:</label><input type="number" step="0.05" name="top_p" value="0.9">
+                        <label>Context:</label><input type="number" name="context_count" value="4">
+                    </div>
+                    <div>
+                        <label>Max Tokens:</label><input type="number" name="max_tokens" value="180">
+                        <label>Freq Penalty:</label><input type="number" step="0.1" name="frequency_penalty" value="0.0">
+                        <label>Pres Penalty:</label><input type="number" step="0.1" name="presence_penalty" value="0.0">
+                    </div>
+                </div>
+                <label>Pergunta:</label>
+                <input type="text" name="question" required>
+                <button type="submit">Calibrar e Perguntar</button>
+            </form>
+            <h3>Resposta:</h3>
+            <pre>{resposta if resposta else "Aguardando..."}</pre>
+            <div class="historico"><h3>Diálogo Recente:</h3>{historico_html}</div>
+        </div>
+    </body>
+    </html>
+    """
+
+@router.get("/", response_class=HTMLResponse)
+async def tuning_page():
+    # Renderização segura do histórico
+    hist_html = ""
+    for msg in MESSAGES[-10:]:
+        role_class = "user" if msg["role"] == "user" else "assistant"
+        hist_html += f"<div class='msg-box {role_class}'><b>{msg['role']}:</b> {msg['content']}</div>"
+    return HTMLResponse(render_form_html(historico_html=hist_html))
+
+@router.post("/")
+async def tuning_submit(
+    style: str = Form(...), temperature: float = Form(...), top_p: float = Form(...),
+    max_tokens: int = Form(...), frequency_penalty: float = Form(...),
+    presence_penalty: float = Form(...), context_count: int = Form(...), question: str = Form(...)
+):
+    try:
+        # Busca estilo
+        style_path = os.path.join("styles", style)
+        style_content = "Aja como o Mestre Chizu."
+        if os.path.exists(style_path):
+            with open(style_path, "r", encoding="utf-8") as f:
+                style_content = f.read()
+
+        hist_sel = get_last_messages(context_count)
+        pergunta_com_estilo = f"Estilo: {style_content}\n\nPergunta: {question}"
+
+        # Chamada ao zen.py
+        resposta = responder(
+            pergunta_com_estilo, historico=hist_sel, temperature=temperature,
+            max_tokens=max_tokens, top_p=top_p, frequency_penalty=frequency_penalty,
+            presence_penalty=presence_penalty
+        )
         
-        # 1. TENTATIVA: GROQ (O mais rápido)
-        try:
-            return self._groq_chat(messages, temperature, max_tokens, top_p, frequency_penalty, presence_penalty)
-        except Exception as e:
-            print(f"[LOG] Groq falhou, tentando Cerebras... Erro: {e}")
-            
-        # 2. TENTATIVA: CEREBRAS
-        try:
-            return self._cerebras_chat(messages, temperature, max_tokens, top_p)
-        except Exception as e:
-            print(f"[LOG] Cerebras falhou, tentando Sambanova... Erro: {e}")
-
-        # 3. TENTATIVA: SAMBANOVA
-        try:
-            return self._sambanova_chat(messages, temperature, max_tokens, top_p)
-        except Exception as e:
-            print(f"[LOG] Sambanova falhou, tentando Gemini... Erro: {e}")
-
-        # 4. TENTATIVA FINAL: GEMINI (O porto seguro)
-        try:
-            return self._gemini_chat(messages, temperature, max_tokens, top_p)
-        except Exception as e:
-            print(f"[LOG] Todos os provedores falharam. Erro final: {e}")
-            return "O mestre entrou em meditação profunda e não pode responder agora. Tente mais tarde."
-
-    def _groq_chat(self, messages, temperature, max_tokens, top_p, freq_pen, pres_pen):
-        payload = {
-            "model": "llama-3.3-70b-versatile",
-            "messages": messages,
-            "temperature": temperature,
-            "max_tokens": max_tokens,
-            "top_p": top_p,
-            "frequency_penalty": freq_pen,
-            "presence_penalty": pres_pen
-        }
-        r = requests.post("https://api.groq.com/openai/v1/chat/completions",
-                          headers={"Authorization": f"Bearer {self.keys['groq']}"},
-                          json=payload, timeout=15)
-        r.raise_for_status()
-        return r.json()["choices"][0]["message"]["content"]
-
-    def _cerebras_chat(self, messages, temperature, max_tokens, top_p):
-        headers = {
-            "Authorization": f"Bearer {self.keys['cerebras']}",
-            "Content-Type": "application/json"
-        }
-        payload = {
-            "model": "llama3.1-8b", 
-            "messages": messages,
-            "temperature": temperature,
-            "max_tokens": max_tokens,
-            "top_p": top_p
-        }
-        r = requests.post("https://api.cerebras.ai/v1/chat/completions", 
-                          headers=headers, json=payload, timeout=15)
-        r.raise_for_status()
-        return r.json()["choices"][0]["message"]["content"]
-
-    def _sambanova_chat(self, messages, temperature, max_tokens, top_p):
-        headers = {
-            "Authorization": f"Bearer {self.keys['sambanova']}", 
-            "Content-Type": "application/json"
-        }
-        payload = {
-            "model": "Meta-Llama-3.1-8B-Instruct", 
-            "messages": messages,
-            "temperature": temperature,
-            "max_tokens": max_tokens,
-            "top_p": top_p
-        }
-        r = requests.post("https://api.sambanova.ai/v1/chat/completions", 
-                          headers=headers, json=payload, timeout=25)
-        r.raise_for_status()
-        return r.json()["choices"][0]["message"]["content"]
-
-    def _gemini_chat(self, messages, temperature, max_tokens, top_p):
-        url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key={self.keys['gemini']}"
+        # Limpeza simples
+        if isinstance(resposta, tuple): resposta = resposta[0]
+        resposta_final = str(resposta).replace("\\n", "\n")
         
-        contents = []
-        for m in messages:
-            role = "model" if m["role"] == "assistant" else "user"
-            contents.append({"role": role, "parts": [{"text": m["content"]}]})
-        
-        payload = {
-            "contents": contents,
-            "generationConfig": {
-                "temperature": temperature,
-                "maxOutputTokens": max_tokens,
-                "topP": top_p
-            }
-        }
-        r = requests.post(url, json=payload, timeout=15)
-        r.raise_for_status()
-        return r.json()["candidates"][0]["content"]["parts"][0]["text"]
+        add_to_history(question, resposta_final)
+        res_display = resposta_final
+
+    except Exception as e:
+        res_display = f"Erro: {str(e)}"
+
+    # Reconstroi o histórico para exibir
+    hist_html = ""
+    for msg in MESSAGES[-10:]:
+        role_class = "user" if msg["role"] == "user" else "assistant"
+        hist_html += f"<div class='msg-box {role_class}'><b>{msg['role']}:</b> {msg['content']}</div>"
+    
+    return HTMLResponse(render_form_html(resposta=res_display, historico_html=hist_html))
