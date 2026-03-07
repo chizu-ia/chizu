@@ -1,1 +1,7 @@
-clear
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.2.1+cpu
+sentence-transformers==2.5.1
+fastapi
+uvicorn
+requests
+python-dotenv
