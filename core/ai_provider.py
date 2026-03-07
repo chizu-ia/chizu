@@ -48,20 +48,7 @@ class FreeAIProvider:
         r.raise_for_status()
         return r.json()["choices"][0]["message"]["content"]
 
-    def _gemini_chat(self, messages, temperature, max_tokens):
-        prompt = ""
-        for m in messages:
-            role = "Model" if m["role"] == "assistant" else "User"
-            prompt += f"{role}: {m['content']}\n"
-        
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={self.keys['gemini']}"
-        payload = {
-            "contents": [{"parts":[{"text": prompt}]}],
-            "generationConfig": {"temperature": temperature, "maxOutputTokens": max_tokens}
-        }
-        r = requests.post(url, json=payload, timeout=15)
-        r.raise_for_status()
-        return r.json()["candidates"][0]["content"]["parts"][0]["text"]
+
 
     def _sambanova_chat(self, messages, temperature, max_tokens):
         headers = {"Authorization": f"Bearer {self.keys['sambanova']}", "Content-Type": "application/json"}
@@ -75,14 +62,39 @@ class FreeAIProvider:
         r.raise_for_status()
         return r.json()["choices"][0]["message"]["content"]
 
-    def _cerebras_chat(self, messages, temperature, max_tokens):
-        headers = {"Authorization": f"Bearer {self.keys['cerebras']}"}
+    def _gemini_chat(self, messages, temperature, max_tokens):
+        # Ajuste na URL para garantir a versão estável
+        url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key={self.keys['gemini']}"
+        
+        prompt = ""
+        for m in messages:
+            role = "model" if m["role"] == "assistant" else "user"
+            prompt += f"{role}: {m['content']}\n"
+        
         payload = {
-            "model": "llama3.1-70b",
+            "contents": [{"parts":[{"text": prompt}]}],
+            "generationConfig": {
+                "temperature": temperature,
+                "maxOutputTokens": max_tokens
+            }
+        }
+        r = requests.post(url, json=payload, timeout=15)
+        r.raise_for_status()
+        return r.json()["candidates"][0]["content"]["parts"][0]["text"]
+
+    def _cerebras_chat(self, messages, temperature, max_tokens):
+        # Verifique se o modelo está escrito corretamente (llama-3.1-70b)
+        headers = {
+            "Authorization": f"Bearer {self.keys['cerebras']}",
+            "Content-Type": "application/json"
+        }
+        payload = {
+            "model": "llama3.1-70b", # Nome exato exigido pela Cerebras
             "messages": messages,
             "temperature": temperature,
             "max_tokens": max_tokens
         }
+        # URL oficial da Cerebras v1
         r = requests.post("https://api.cerebras.ai/v1/chat/completions", headers=headers, json=payload, timeout=15)
         r.raise_for_status()
         return r.json()["choices"][0]["message"]["content"]
