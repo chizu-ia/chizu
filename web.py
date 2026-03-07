@@ -148,7 +148,7 @@ async def ask(request: Request):
         try:
             # 1. Desempacotamos os dois valores: o texto e o nome da IA
             resposta_texto, ia_nome = responder(pergunta, historico)
-                    
+            print(f"[LOG] Resposta enviada por: {ia_nome}")
             # 2. Limpamos o texto (agora que ele é uma string pura)
             resposta_llm = (
                 resposta_texto

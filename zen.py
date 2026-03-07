@@ -81,8 +81,8 @@ ai_provider = FreeAIProvider()
 import random
 
 # Adicionamos os novos parâmetros com valores padrão (default)
-def responder(pergunta, historico=None, temperature=0.4, max_tokens=180, 
-              top_p=0.9, frequency_penalty=0.0, presence_penalty=0.0):
+def responder(pergunta, historico=None, temperature=0.45, max_tokens=200, 
+              top_p=0.9, frequency_penalty=0.2, presence_penalty=0.1):
     """
     Orquestra a resposta do Mestre Chizu.
     Aceita parâmetros de tuning quando chamados pela oficina, 
