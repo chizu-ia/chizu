@@ -82,7 +82,7 @@ class FreeAIProvider:
         return r.json()["choices"][0]["message"]["content"]
 
     def _gemini_chat(self, messages, temperature, max_tokens, top_p, freq_pen, pres_pen):
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite-preview:generateContent?key={self.keys['gemini']}"
+        url = f"https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash-lite:generateContent?key={self.keys['gemini']}"
         contents = []
         for m in messages:
             role = "model" if m["role"] == "assistant" else "user"
