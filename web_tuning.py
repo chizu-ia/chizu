@@ -115,10 +115,7 @@ async def tuning_submit(
                 )
 
         # Agora imprimimos no log do Render/Terminal
-        print(f"--- OFICINA DE TUNING ---")
-        print(f"[LOG] Estilo: {style}")
-        print(f"[LOG] Provedor Utilizado: {ia_nome}")
-        print(f"-------------------------")
+        print(f"[LOG] Estilo: {style} | Provedor: {ia_nome}")
 
         if isinstance(resultado, tuple): resultado = resultado[0]
         resposta_final = str(resultado).replace("\\n", "\n")

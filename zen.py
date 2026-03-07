@@ -96,7 +96,6 @@ def responder(pergunta, historico=None, temperature=0.4, max_tokens=180,
         messages = montar_prompt(pergunta_limpa, estilo)
         
         # 2. Normaliza o histórico
-        # Juça, aqui a memória já vem limitada pelo 'context_count' da oficina!
         def normalizar_historico(hist, max_chars=300):
             if not hist: return []
             return [
@@ -135,9 +134,10 @@ def responder(pergunta, historico=None, temperature=0.4, max_tokens=180,
         return resposta_llm, ia_nome
 
     except Exception as e:
-        print(f"[LOG CHIZU] Falha total no sistema: {e}")
-        return random.choice(RESPOSTAS_ZEN)
-       
+            print(f"[LOG CHIZU] Falha total no sistema: {e}")
+            traceback.print_exc() # Isso vai te mostrar o erro real no terminal
+            return random.choice(RESPOSTAS_ZEN), "Sistema (Fallback)" # Adicionei a vírgula e o nome
+        
 # =============================
 # Inicialização
 # =============================

@@ -146,20 +146,22 @@ async def ask(request: Request):
         historico = conversation_memory.setdefault(session_id, [])
 
         try:
-            # Chamamos o mestre apenas UMA vez
-            resposta_llm = responder(pergunta, historico)
-            
-            # Removemos marcas artificiais de silêncio para a resposta ficar pura
+            # 1. Desempacotamos os dois valores: o texto e o nome da IA
+            resposta_texto, ia_nome = responder(pergunta, historico)
+                    
+            # 2. Limpamos o texto (agora que ele é uma string pura)
             resposta_llm = (
-                resposta_llm
+                resposta_texto
                 .replace("(Silêncio)", "")  
                 .replace("(silêncio)", "")
                 .replace("(pausa)", "")
-            )   
+            )
             
-            # Definimos que a resposta final é a versão limpa
-            resposta_final = resposta_llm          
-
+            # 3. Definimos a resposta final como a versão limpa
+            resposta_final = resposta_llm
+            
+            # Opcional: Se quiser ver no terminal qual IA respondeu:
+            #print(f"[LOG] Resposta do Mestre via: {ia_nome}")
         except RuntimeError as e:
 
             if str(e) == "RATE_LIMIT":
@@ -179,21 +181,21 @@ async def ask(request: Request):
         # =============================
         # Memória da conversa
         # =============================
-
         historico.append({
             "role": "user",
             "content": pergunta
         })
 
+        # Usamos a resposta_final, que já é o texto puro e limpo
         historico.append({
             "role": "assistant",
-            "content": resposta_llm
+            "content": resposta_final
         })
 
+        # Mantém apenas as últimas 8 mensagens para não pesar no Render
         conversation_memory[session_id] = historico[-8:]
 
         response = JSONResponse({"resposta": resposta_final})
-
         response.set_cookie("chizu_session", session_id, max_age=60*60*24*7)
 
         return response
