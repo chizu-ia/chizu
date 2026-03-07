@@ -1,57 +1,29 @@
+
+# core/engine.py
 import json
 import math
 import random
-import requests
 import os
 from pathlib import Path
+from sentence_transformers import SentenceTransformer
 
 # =============================
 # Configurações gerais
 # =============================
 
-EMBED_URL = os.getenv("EMBED_URL", "http://localhost:11434/api/embeddings")
-MODEL = os.getenv("EMBED_MODEL", "nomic-embed-text")
-
-THRESHOLD = 0.30
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# =============================
-# Prompts por estilo cognitivo
-# =============================
+# Modelo excelente para Português e leve para o Render
+MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 
-STYLE_MAP = {
-    "aforismo": BASE_DIR / "styles" / "aforismos_zen.txt",
-    "koan": BASE_DIR / "styles" / "koans_classicos.txt",
-    "meditacao": BASE_DIR / "styles" / "meditacoes_guiadas.txt",
-    "padrao": BASE_DIR / "styles" / "system_prompt.txt"
-}
+# Carrega o modelo uma única vez (Singleton)
+print("[ENGINE] Despertando modelo de embeddings local...")
+model_local = SentenceTransformer(MODEL_NAME)
 
-def load_style_prompt(style: str) -> str:
-    path = STYLE_MAP.get(style, STYLE_MAP["padrao"])
-    return path.read_text(encoding="utf-8")
+THRESHOLD = 0.35 # Ajustado para o novo modelo
 
 # =============================
-# Fallback contemplativo
-# =============================
-
-RESPOSTAS_ZEN = [
-    "A resposta não está nas palavras, mas no silêncio entre elas.",
-    "A mente que pergunta já contém a resposta.",
-    "Quando nada surge, o vazio se revela.",
-    "Talvez não haja nada a buscar.",
-    "Observe este instante antes de perguntar novamente.",
-    "O caminho não se revela ao ser forçado.",
-    "A pergunta correta dissolve a necessidade da resposta.",
-    "A resposta está no silêncio, não nas palavras.",
-    "Observe sua própria mente enquanto pergunta.",
-    "Talvez a pergunta seja mais importante que a resposta.",
-    "O vento levou a resposta... tente novamente mais tarde.",
-    "Não há palavras para isso, apenas prática."
-]
-
-# =============================
-# Funções matemáticas
+# Funções Matemáticas
 # =============================
 
 def cosine_similarity(a, b):
@@ -61,74 +33,71 @@ def cosine_similarity(a, b):
     return dot / (na * nb + 1e-9)
 
 # =============================
-# Embeddings
+# Nova Geração de Embedding (Local)
 # =============================
 
 def gerar_embedding(texto):
-    payload = {
-        "model": MODEL,
-        "input": texto
-    }
-    r = requests.post(EMBED_URL, json=payload, timeout=30)
-    r.raise_for_status()
-    data = r.json()
-    return data["data"][0]["embedding"]
+    """Gera o vetor usando o modelo local, sem depender de APIs externas."""
+    embedding = model_local.encode(texto)
+    return embedding.tolist()
 
 # =============================
-# Busca semântica (RAG)
+# Busca Semântica (RAG)
 # =============================
 
 def buscar_blocos(pergunta, top_k=3):
-    with open("data/embeddings_bge.json", "r", encoding="utf-8") as f:
+    caminho_emb = BASE_DIR / "data" / "embeddings_bge.json"
+    
+    if not caminho_emb.exists():
+        print("[AVISO] Arquivo de embeddings não encontrado.")
+        return []
+
+    with open(caminho_emb, "r", encoding="utf-8") as f:
         base = json.load(f)
 
-    emb_pergunta = gerar_embedding(pergunta)
+    try:
+        emb_pergunta = gerar_embedding(pergunta)
+    except Exception as e:
+        print(f"[ERRO] Falha ao processar pensamento: {e}")
+        return []
 
     scores = []
     for item in base:
+        # Nota: Se os embeddings no JSON foram gerados com outro modelo (Ollama),
+        # o ideal é rodar o script de regeneração com este novo modelo local.
         sim = cosine_similarity(emb_pergunta, item["embedding"])
         scores.append((sim, item["texto"]))
 
     scores.sort(reverse=True, key=lambda x: x[0])
-
-    if not scores:
-        return [random.choice(RESPOSTAS_ZEN)]
-
-    top_score = scores[0][0]
-
-    if top_score < THRESHOLD:
-        return [random.choice(RESPOSTAS_ZEN)]
+    
+    if not scores or scores[0][0] < THRESHOLD:
+        return []
 
     return [texto for _, texto in scores[:top_k]]
+
 
 # =============================
 # Motor cognitivo principal
 # =============================
 
-def montar_prompt(pergunta: str, estilo: str = "padrao") -> list:
-    """
-    Constrói o payload final para o LLM,
-    combinando estilo cognitivo + RAG + pergunta.
-    """
+# core/engine.py
 
-    style_prompt = load_style_prompt(estilo)
+def montar_prompt(pergunta, estilo="padrao"):
+    system_prompt = (
+        "Você é o Mestre Chizu, um mestre Zen inspirado em Shunryu Suzuki e Thich Nhat Hanh. "
+        "Sua linguagem é poética, breve e profunda. Não use emojis."
+    )
+    
+    # Busca o contexto no livro (RAG)
     blocos = buscar_blocos(pergunta)
+    contexto = "\n\n".join(blocos) if blocos else "Mantenha o silêncio se não houver palavras sábias."
 
-    contexto = "\n\n".join(blocos)
+    if estilo == "koan":
+        system_prompt += " Responda apenas com um Koan clássico ou original."
+    elif estilo == "aforismo":
+        system_prompt += " Responda com uma única frase curta e impactante."
 
-    messages = [
-        {
-            "role": "system",
-            "content": style_prompt
-        },
-        {
-            "role": "system",
-            "content": f"Contexto relevante:\n{contexto}"
-        },
-        {
-            "role": "user",
-            "content": pergunta
-        }
+    return [
+        {"role": "system", "content": f"{system_prompt}\n\nContexto dos ensinamentos:\n{contexto}"},
+        {"role": "user", "content": pergunta}
     ]
-
-    return messages

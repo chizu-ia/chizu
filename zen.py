@@ -4,6 +4,7 @@ import random
 import requests
 import traceback
 from core.engine import montar_prompt
+from core.ai_provider import FreeAIProvider
 
 # =============================
 # Configurações da API
@@ -17,6 +18,21 @@ TIMEOUT = 30
 # =============================
 # Mensagens zen
 # =============================
+
+RESPOSTAS_ZEN = [
+    "A resposta não está nas palavras, mas no silêncio entre elas.",
+    "A mente que pergunta já contém a resposta.",
+    "Quando nada surge, o vazio se revela.",
+    "Talvez não haja nada a buscar.",
+    "Observe este instante antes de perguntar novamente.",
+    "O caminho não se revela ao ser forçado.",
+    "A pergunta correta dissolve a necessidade da resposta.",
+    "A resposta está no silêncio, não nas palavras.",
+    "Observe sua própria mente enquanto pergunta.",
+    "Talvez a pergunta seja mais importante que a resposta.",
+    "O vento levou a resposta... tente novamente mais tarde.",
+    "Não há palavras para isso, apenas prática."
+]
 
 ERROS_ZEN = [
     "O vento sopra forte e Chizu se cala por instantes. Tente novamente.",
@@ -59,106 +75,62 @@ def limpar_comando(pergunta: str) -> str:
 # Motor de resposta
 # =============================
 
-def responder(pergunta, historico=None, tentativas=3, temperature=0.4, max_tokens=180):
 
+ai_provider = FreeAIProvider()
+
+def responder(pergunta, historico=None, temperature=0.4, max_tokens=180):
+    """
+    Orquestra a resposta do Mestre Chizu, 
+    garantindo resiliência através de múltiplos provedores.
+    """
     estilo = detectar_estilo(pergunta)
-    pergunta = limpar_comando(pergunta)
+    pergunta_limpa = limpar_comando(pergunta)
 
-    for tentativa in range(tentativas):
+    try:
+        # 1. Monta o prompt (System + RAG + Pergunta) usando o engine.py
+        messages = montar_prompt(pergunta_limpa, estilo)
+        
+        # 2. Normaliza o histórico para manter a fluidez da conversa
+        def normalizar_historico(hist, limite_pares=2, max_chars=300):
+            if not hist: return []
+            ultimos = hist[-limite_pares*2:]
+            return [
+                {
+                    "role": m.get("role", "user"), 
+                    "content": str(m.get("content", ""))[:max_chars]
+                } for m in ultimos
+            ]
 
-        try:
+        memoria = normalizar_historico(historico)
+        
+        # Insere a memória entre o System Prompt e a pergunta atual
+        # messages[0] é o System, messages[1] é o User
+        full_messages = [messages[0]] + memoria + [messages[-1]]
 
-            messages = montar_prompt(pergunta, estilo)
+        # 3. MÁGICA DO FALLBACK: Tenta Groq -> Gemini -> SambaNova -> Cerebras
+        resposta_llm = ai_provider.chat(full_messages, temperature, max_tokens)
+        
+        # 4. Polimento Zen na resposta
+        resposta_llm = resposta_llm.strip()
+        
+        # Remove marcas de pensamento se a IA as gerar (como no DeepSeek ou similares)
+        if "</think>" in resposta_llm:
+            resposta_llm = resposta_llm.split("</think>")[-1].strip()
 
-            # =============================
-            # Histórico curto
-            # =============================
+        if not resposta_llm.endswith((".", "。", "!", "?", "...", "—")):
+            resposta_llm += "..."
 
-            def normalizar_historico(historico, limite_pares=2, max_chars=300):
+        return resposta_llm, resposta_llm
 
-                if not historico:
-                    return []
-
-                ultimos = historico[-limite_pares*2:]
-
-                seguro = []
-
-                for m in ultimos:
-                    content = m.get("content")
-
-                    if content:
-                        seguro.append({
-                            "role": m.get("role", "user"),
-                            "content": content[:max_chars]
-                        })
-
-                return seguro
-
-            memoria = normalizar_historico(historico)
-
-            messages = memoria + messages
-
-            payload = {
-                "model": MODEL,
-                "messages": messages,
-                "temperature": temperature,
-                "top_p": 0.9,
-                "max_tokens": max_tokens,
-                "frequency_penalty": 0.2,
-                "presence_penalty": 0.1
-            }
-
-            r = requests.post(
-                GROQ_URL,
-                json=payload,
-                headers={"Authorization": f"Bearer {GROQ_API_KEY}"},
-                timeout=TIMEOUT
-            )
-
-            # =============================
-            # Rate limit
-            # =============================
-
-            if r.status_code == 429:
-
-                sleep_time = (2 ** tentativa) + random.random()
-
-                print(f"[RATE LIMIT] Tentativa {tentativa+1}/{tentativas}")
-
-                time.sleep(sleep_time)
-
-                if tentativa == tentativas - 1:
-                    raise RuntimeError("RATE_LIMIT")
-
-                continue
-
-            r.raise_for_status()
-
-            resposta_llm = r.json()["choices"][0]["message"]["content"].strip()
-            if not resposta_llm.endswith((".", "。", "!", "?")):
-                resposta_llm = resposta_llm + "..."
-
-            resposta_final = resposta_llm
-
-            return resposta_llm, resposta_final
-
-
-        except Exception as e:
-
-            print("[ERRO REAL NO CHIZU]")
-            traceback.print_exc()
-
-            if tentativa < tentativas - 1:
-
-                time.sleep(1.5)
-
-            else:
-
-                erro = random.choice(ERROS_ZEN)
-
-                return erro, erro
-
-
+    except Exception as e:
+        # Se o "tremor na montanha digital" derrubar todas as APIs
+        print(f"[LOG CHIZU] Falha total no sistema: {e}")
+        
+        # O mestre recorre à sua sabedoria interior (estática)
+        sabedoria_silenciosa = random.choice(RESPOSTAS_ZEN)
+        
+        return sabedoria_silenciosa, sabedoria_silenciosa
+    
 # =============================
 # Inicialização
 # =============================
@@ -171,3 +143,4 @@ def verificar_chave():
 
 def aquecer_modelo():
     print(random.choice(AQUECIMENTO))
+    

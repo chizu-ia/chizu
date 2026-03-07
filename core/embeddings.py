@@ -1,64 +1,47 @@
-import requests
+# core/embeddings.py
 import json
 import time
 from pathlib import Path
+from sentence_transformers import SentenceTransformer
 
-OLLAMA_URL = "http://localhost:11434/api/embeddings"
-MODEL = "nomic-embed-text"
-
-def gerar_embedding(texto, tentativas=3):
-    payload = {
-        "model": MODEL,
-        "prompt": texto
-    }
-
-    for tentativa in range(1, tentativas + 1):
-        try:
-            r = requests.post(OLLAMA_URL, json=payload, timeout=60)
-            r.raise_for_status()
-            return r.json()["embedding"]
-
-        except Exception as e:
-            print(f"⚠️ Erro na tentativa {tentativa}: {e}")
-            time.sleep(2 * tentativa)
-
-    raise RuntimeError("Falha ao gerar embedding após várias tentativas.")
+# MESMO MODELO DO ENGINE.PY PARA MANTER A HARMONIA
+MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+model = SentenceTransformer(MODEL_NAME)
 
 def main():
     chunks_path = Path("textos/chunks.txt")
-    out_path = Path("data/embeddings.json")
+    # Usando o nome que o seu engine.py procura:
+    out_path = Path("data/embeddings_bge.json") 
+
+    if not chunks_path.exists():
+        print(f"❌ Arquivo não encontrado: {chunks_path}")
+        return
 
     blocos = chunks_path.read_text(encoding="utf-8").split("\n\n---\n\n")
-
     embeddings = []
-
     total = len(blocos)
-    print(f"Total de blocos: {total}")
+    
+    print(f"✨ Iniciando geração local para {total} blocos...")
 
     for i, bloco in enumerate(blocos, 1):
-        print(f"Gerando embedding {i}/{total}")
-
         bloco = bloco.strip()
+        if not bloco: continue
 
-        if not bloco:
-            continue
-
-        if len(bloco) > 4000:
-            print("⚠️ Bloco muito grande — truncando")
-            bloco = bloco[:4000]
-
-        vec = gerar_embedding(bloco)
+        # Gera o vetor localmente
+        vec = model.encode(bloco).tolist()
 
         embeddings.append({
             "id": i,
             "texto": bloco,
             "embedding": vec
         })
+        
+        if i % 10 == 0:
+            print(f"Processed {i}/{total}...")
 
-        time.sleep(0.3)  # proteção contra overload
-
+    out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(embeddings, ensure_ascii=False, indent=2))
-    print("✅ Embeddings gerados com sucesso!")
+    print(f"✅ Sucesso! {out_path} gerado com o novo modelo local.")
 
 if __name__ == "__main__":
     main()
