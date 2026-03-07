@@ -80,8 +80,8 @@ class FreeAIProvider:
         return r.json()["choices"][0]["message"]["content"]
 
     def _gemini_chat(self, messages, temperature, max_tokens):
-        # O endereço v1 é o porto mais seguro para o Chizu agora
-        url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key={self.keys['gemini']}"
+        # Este é o endereço que validamos, agora com a garantia de que a URL existe
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={self.keys['gemini']}"
         
         contents = []
         for m in messages:

@@ -197,9 +197,9 @@ As respostas devem parecer escritas por **quatro consciências diferentes**.
 ## 🏗️ Estrutura Técnica dos Prompts
 
 ### Organização dos arquivos
-```text
-├── aforismos_zen.txt
-├── koans_classicos.txt
-├── meditacoes_guiadas.txt
-└── system_prompt.txt
-````
+
+- aforismos_zen.txt
+- koans_classicos.txt
+- meditacoes_guiadas.txt
+- system_prompt.txt
+
