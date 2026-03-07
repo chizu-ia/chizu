@@ -5,10 +5,6 @@ import requests
 import traceback
 from core.engine import montar_prompt
 from core.ai_provider import FreeAIProvider
-from sentence_transformers import SentenceTransformer
-
-# Usamos o 'all-MiniLM-L6-v2' por ser leve para o plano gratuito do Render
-model = SentenceTransformer('all-MiniLM-L6-v2')
 
 # =============================
 # Configurações da API
