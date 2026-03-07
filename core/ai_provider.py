@@ -80,8 +80,8 @@ class FreeAIProvider:
         return r.json()["choices"][0]["message"]["content"]
 
     def _gemini_chat(self, messages, temperature, max_tokens):
-        # Este é o endereço que validamos, agora com a garantia de que a URL existe
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={self.keys['gemini']}"
+        # Removendo o 'v1beta' e o '-latest' para usar a rota estável e universal
+        url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key={self.keys['gemini']}"
         
         contents = []
         for m in messages:
@@ -95,6 +95,7 @@ class FreeAIProvider:
                 "maxOutputTokens": max_tokens
             }
         }
+        
         r = requests.post(url, json=payload, timeout=15)
         r.raise_for_status()
-        return r.json()["candidates"][0]["content"]["parts"][0]["text"]
+        return r.json()["candidates"][0]["content"]["parts"][0]["text"]]
