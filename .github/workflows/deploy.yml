@@ -31,16 +31,18 @@ jobs:
       - name: Install dependencies
         run: |
           pip install mkdocs
+          # Se você decidir usar o tema Material no futuro, adicione aqui:
+          # pip install mkdocs-material
       
       - name: Build site
-        run: mkdocs build
+        run: mkdocs build --clean
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          # O MkDocs gera o site pronto na pasta 'site' por padrão
           path: './site'
       
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        
