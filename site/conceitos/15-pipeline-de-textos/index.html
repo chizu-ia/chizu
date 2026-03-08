@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <meta name="author" content="Projeto Chizu">
-        <link rel="canonical" href="https://chizuzen.github.io/Zenbot/conceitos/07-busca-semantica/">
+        <link rel="canonical" href="https://chizuzen.github.io/Zenbot/conceitos/15-pipeline-de-textos/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Busca semântica - ZenBot</title>
+        <title>Pipeline de textos - ZenBot</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -131,7 +131,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">Busca semântica</a>
+    <a href="../07-busca-semantica/" class="dropdown-item">Busca semântica</a>
 </li>
                                     
 <li>
@@ -163,7 +163,7 @@
 </li>
                                     
 <li>
-    <a href="../15-pipeline-de-textos/" class="dropdown-item">Pipeline de textos</a>
+    <a href="./" class="dropdown-item active" aria-current="page">Pipeline de textos</a>
 </li>
                                 </ul>
                             </li>
@@ -176,12 +176,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../06-embeddings/" class="nav-link">
+                                <a rel="prev" href="../14-rag-no-zenbot/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../08-pipeline-do-zenbot/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -203,53 +203,41 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#busca-semantica" class="nav-link">Busca Semântica</a>
+            <li class="nav-item" data-bs-level="1"><a href="#pipeline-de-textos" class="nav-link">Pipeline de Textos</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#o-que-e-busca-semantica" class="nav-link">🔍 O que é busca semântica?</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#diferenca-entre-busca-tradicional-e-semantica" class="nav-link">📚 Diferença entre busca tradicional e semântica</a>
+            <li class="nav-item" data-bs-level="2"><a href="#visao-geral-do-pipeline" class="nav-link">🧭 Visão geral do pipeline</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#como-a-busca-semantica-funciona" class="nav-link">🧠 Como a busca semântica funciona?</a>
+            <li class="nav-item" data-bs-level="2"><a href="#1-entrada-do-texto" class="nav-link">📥 1. Entrada do texto</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#medindo-similaridade" class="nav-link">📐 Medindo similaridade</a>
+            <li class="nav-item" data-bs-level="2"><a href="#2-divisao-em-chunks" class="nav-link">🧩 2. Divisão em Chunks</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#como-o-zenbot-implementa-a-busca-semantica" class="nav-link">⚙️ Como o ZenBot implementa a busca semântica?</a>
+            <li class="nav-item" data-bs-level="2"><a href="#3-geracao-de-embeddings" class="nav-link">🔢 3. Geração de Embeddings</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#por-que-isso-melhora-tanto-as-respostas" class="nav-link">🧩 Por que isso melhora tanto as respostas?</a>
+            <li class="nav-item" data-bs-level="2"><a href="#4-armazenamento" class="nav-link">💾 4. Armazenamento</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#limitacoes-da-busca-semantica" class="nav-link">🛑 Limitações da busca semântica</a>
+            <li class="nav-item" data-bs-level="2"><a href="#5-busca-durante-perguntas" class="nav-link">🔎 5. Busca durante perguntas</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#metafora-zen" class="nav-link">🧘 Metáfora Zen</a>
+            <li class="nav-item" data-bs-level="2"><a href="#6-geracao-da-resposta-rag" class="nav-link">🤖 6. Geração da resposta (RAG)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#busca-semantica-llm-inteligencia-pratica" class="nav-link">🧠 Busca semântica + LLM = Inteligência prática</a>
+            <li class="nav-item" data-bs-level="2"><a href="#analogia-simples" class="nav-link">🧘 Analogia simples</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#conceito-chave" class="nav-link">📌 Conceito-chave</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#proximo-capitulo" class="nav-link">🔗 Próximo capítulo</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#aprofundamento-tecnico" class="nav-link">📚 Aprofundamento técnico</a>
+            <li class="nav-item" data-bs-level="2"><a href="#resumo" class="nav-link">📌 Resumo</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -260,137 +248,133 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="busca-semantica">Busca Semântica</h1>
-<p>Este capítulo explica o que é <strong>busca semântica</strong>, como ela funciona e por que ela transforma completamente a qualidade das respostas do ZenBot.</p>
+<h1 id="pipeline-de-textos">Pipeline de Textos</h1>
+<p>Este capítulo descreve o <strong>pipeline de processamento de textos</strong> utilizado pelo ZenBot.</p>
+<p>Antes que o sistema consiga responder perguntas sobre um livro ou documento, o conteúdo precisa passar por uma série de etapas de processamento.</p>
+<p>Esse fluxo transforma textos brutos em <strong>informações pesquisáveis por significado</strong>.</p>
 <hr />
-<h2 id="o-que-e-busca-semantica">🔍 O que é busca semântica?</h2>
-<p>Busca semântica é uma técnica que encontra informações <strong>pelo significado</strong>, não apenas pelas palavras.</p>
-<p>Ela responde à pergunta:</p>
-<blockquote>
-<p>O que a pessoa quer dizer, e não exatamente o que ela escreveu?</p>
-</blockquote>
+<h2 id="visao-geral-do-pipeline">🧭 Visão geral do pipeline</h2>
+<p>O pipeline do ZenBot segue estas etapas principais:</p>
+<ol>
+<li>Entrada do texto</li>
+<li>Divisão em chunks</li>
+<li>Geração de embeddings</li>
+<li>Armazenamento dos dados</li>
+<li>Busca semântica durante as consultas</li>
+</ol>
+<p>Fluxo simplificado:</p>
+<pre><code class="language-text">Livro / Documento
+        ↓
+Divisão em Chunks
+        ↓
+Geração de Embeddings
+        ↓
+Armazenamento
+        ↓
+Busca Semântica
+        ↓
+RAG
+        ↓
+Resposta ao usuário
+</code></pre>
 <hr />
-<h2 id="diferenca-entre-busca-tradicional-e-semantica">📚 Diferença entre busca tradicional e semântica</h2>
-<h3 id="busca-tradicional-por-palavras-chave">Busca tradicional (por palavras-chave)</h3>
+<h2 id="1-entrada-do-texto">📥 1. Entrada do texto</h2>
+<p>O processo começa com um <strong>livro ou documento</strong> que será utilizado como fonte de conhecimento.</p>
+<p>Esses textos podem vir de:</p>
 <ul>
-<li>Procura termos exatos.</li>
-<li>Funciona bem para pesquisas técnicas simples.</li>
-<li>Falha quando a pergunta é vaga, subjetiva ou filosófica.</li>
+<li>livros</li>
+<li>arquivos de texto</li>
+<li>documentos convertidos</li>
+<li>conteúdos preparados manualmente</li>
+</ul>
+<p>O objetivo dessa etapa é disponibilizar o conteúdo que será processado pelo sistema.</p>
+<hr />
+<h2 id="2-divisao-em-chunks">🧩 2. Divisão em Chunks</h2>
+<p>O texto completo é dividido em <strong>pequenos fragmentos</strong>, chamados de <strong>chunks</strong>.</p>
+<p>Isso é necessário porque:</p>
+<ul>
+<li>modelos de linguagem têm limites de contexto</li>
+<li>pedaços menores facilitam a busca</li>
+<li>cada fragmento pode ser indexado separadamente</li>
 </ul>
 <p>Exemplo:</p>
+<p>Texto original:</p>
 <blockquote>
-<p>“Como ter paz interior?”</p>
+<p>A mente do principiante tem muitas possibilidades.</p>
 </blockquote>
-<p>Se não existir exatamente essa frase no texto, o sistema pode <strong>não encontrar nada</strong>.</p>
+<p>Chunk gerado:</p>
+<blockquote>
+<p>A mente do principiante tem muitas possibilidades.</p>
+</blockquote>
+<p>Cada chunk passa a ser tratado como uma <strong>unidade independente de conhecimento</strong>.</p>
 <hr />
-<h3 id="busca-semantica-por-significado">Busca semântica (por significado)</h3>
-<ul>
-<li>Procura ideias, conceitos e intenções.</li>
-<li>Entende contexto.</li>
-<li>Encontra respostas mesmo sem coincidência literal.</li>
-</ul>
-<p>Ela pode encontrar textos sobre:</p>
-<ul>
-<li>meditação</li>
-<li>silêncio</li>
-<li>atenção plena</li>
-<li>desapego</li>
-<li>respiração consciente</li>
-</ul>
+<h2 id="3-geracao-de-embeddings">🔢 3. Geração de Embeddings</h2>
+<p>Depois que os chunks são criados, cada um deles é convertido em um <strong>embedding</strong>.</p>
+<p>Embeddings são vetores numéricos que representam o <strong>significado do texto</strong>.</p>
+<p>Exemplo simplificado:</p>
+<pre><code class="language-text">Texto:
+Respire e volte ao momento presente.
+
+Embedding:
+[0.18, -0.33, 0.71, 0.04, -0.55, ...]
+</code></pre>
+<p>Esses vetores permitem que o sistema compare <strong>significados entre textos</strong>.</p>
 <hr />
-<h2 id="como-a-busca-semantica-funciona">🧠 Como a busca semântica funciona?</h2>
-<p>Ela se baseia em <strong>embeddings</strong>.</p>
-<p>Fluxo básico:</p>
+<h2 id="4-armazenamento">💾 4. Armazenamento</h2>
+<p>Após a geração dos embeddings, os dados são armazenados para consulta futura.</p>
+<p>Cada registro normalmente contém:</p>
+<ul>
+<li>o texto do chunk</li>
+<li>o embedding correspondente</li>
+</ul>
+<p>Exemplo simplificado:</p>
+<pre><code class="language-json">{
+  &quot;texto&quot;: &quot;Respire e volte ao momento presente.&quot;,
+  &quot;embedding&quot;: [0.18, -0.33, 0.71, 0.04, -0.55]
+}
+</code></pre>
+<p>Esse conjunto forma a <strong>base de conhecimento do ZenBot</strong>.</p>
+<hr />
+<h2 id="5-busca-durante-perguntas">🔎 5. Busca durante perguntas</h2>
+<p>Quando um usuário faz uma pergunta, ocorre o seguinte processo:</p>
 <ol>
-<li>Todo texto é convertido em vetores numéricos.</li>
-<li>A pergunta do usuário também vira um vetor.</li>
-<li>O sistema mede a distância entre os vetores.</li>
-<li>Os textos mais próximos são selecionados.</li>
+<li>a pergunta é convertida em embedding</li>
+<li>o sistema compara esse vetor com os embeddings armazenados</li>
+<li>os chunks mais próximos são encontrados</li>
+<li>esses trechos são enviados ao modelo de linguagem</li>
+</ol>
+<p>Esse mecanismo utiliza <strong>busca semântica</strong>.</p>
+<hr />
+<h2 id="6-geracao-da-resposta-rag">🤖 6. Geração da resposta (RAG)</h2>
+<p>Após recuperar os trechos relevantes, o sistema utiliza a técnica <strong>RAG (Retrieval Augmented Generation)</strong>.</p>
+<p>O modelo recebe:</p>
+<ul>
+<li>a pergunta do usuário</li>
+<li>os chunks recuperados</li>
+</ul>
+<p>E então gera uma resposta baseada nesse contexto.</p>
+<hr />
+<h2 id="analogia-simples">🧘 Analogia simples</h2>
+<p>Podemos imaginar o pipeline como o trabalho de um <strong>bibliotecário</strong>.</p>
+<ol>
+<li>os livros chegam à biblioteca  </li>
+<li>eles são organizados em pequenos trechos  </li>
+<li>cada trecho é catalogado por significado  </li>
+<li>quando alguém faz uma pergunta, o bibliotecário encontra os trechos relevantes  </li>
+<li>esses trechos ajudam a formular a resposta  </li>
 </ol>
 <hr />
-<h2 id="medindo-similaridade">📐 Medindo similaridade</h2>
-<p>A métrica mais comum é:</p>
+<h2 id="resumo">📌 Resumo</h2>
+<p>O pipeline de textos do ZenBot segue esta sequência:</p>
 <ul>
-<li><strong>similaridade do cosseno</strong></li>
+<li><strong>Entrada de textos</strong></li>
+<li><strong>Divisão em chunks</strong></li>
+<li><strong>Geração de embeddings</strong></li>
+<li><strong>Armazenamento dos dados</strong></li>
+<li><strong>Busca semântica</strong></li>
+<li><strong>RAG para geração de respostas</strong></li>
 </ul>
-<p>Ela mede o ângulo entre dois vetores.</p>
-<p>Resultado:</p>
-<ul>
-<li>Próximo de 1 → muito semelhante</li>
-<li>Próximo de 0 → sem relação</li>
-</ul>
-<hr />
-<h2 id="como-o-zenbot-implementa-a-busca-semantica">⚙️ Como o ZenBot implementa a busca semântica?</h2>
-<p>O ZenBot segue este pipeline:
-Textos → fragmentação → embeddings → armazenamento vetorial
-Pergunta → embedding → busca → seleção → resposta</p>
-<p>Ou, em palavras:</p>
-<ol>
-<li>Divide livros e textos em pequenos trechos</li>
-<li>Gera embeddings para cada trecho</li>
-<li>Armazena tudo</li>
-<li>Quando recebe uma pergunta:</li>
-<li>Calcula o embedding da pergunta</li>
-<li>Busca os vetores mais próximos</li>
-<li>Recupera os trechos relevantes</li>
-<li>Envia ao modelo de linguagem para gerar a resposta</li>
-</ol>
-<hr />
-<h2 id="por-que-isso-melhora-tanto-as-respostas">🧩 Por que isso melhora tanto as respostas?</h2>
-<p>Porque o modelo <strong>não precisa inventar</strong>.</p>
-<p>Ele responde <strong>com base nos textos reais</strong>.</p>
-<p>Isso garante:</p>
-<ul>
-<li>Fidelidade ao conteúdo</li>
-<li>Coerência filosófica</li>
-<li>Profundidade conceitual</li>
-<li>Redução de alucinações</li>
-</ul>
-<hr />
-<h2 id="limitacoes-da-busca-semantica">🛑 Limitações da busca semântica</h2>
-<p>Ela ainda depende:</p>
-<ul>
-<li>Da qualidade dos textos</li>
-<li>Da boa fragmentação</li>
-<li>De bons embeddings</li>
-<li>Do tamanho da base</li>
-</ul>
-<p>Se os textos forem pobres, a resposta será pobre.</p>
-<hr />
-<h2 id="metafora-zen">🧘 Metáfora Zen</h2>
-<p>Busca semântica é como:</p>
-<blockquote>
-<p>Um monge que escuta a pergunta além das palavras.</p>
-</blockquote>
-<p>Ele percebe a <strong>intenção silenciosa por trás da frase</strong>.</p>
-<hr />
-<h2 id="busca-semantica-llm-inteligencia-pratica">🧠 Busca semântica + LLM = Inteligência prática</h2>
-<p>Sem busca semântica:</p>
-<blockquote>
-<p>LLM gera textos bonitos, mas pode errar.</p>
-</blockquote>
-<p>Sem LLM:</p>
-<blockquote>
-<p>Busca semântica encontra textos, mas não conversa.</p>
-</blockquote>
-<p>Juntos:</p>
-<blockquote>
-<p>O sistema entende, busca, organiza e responde.</p>
-</blockquote>
-<hr />
-<h2 id="conceito-chave">📌 Conceito-chave</h2>
-<blockquote>
-<p>Busca semântica é o elo entre significado humano e recuperação inteligente da informação.</p>
-</blockquote>
-<hr />
-<h2 id="proximo-capitulo">🔗 Próximo capítulo</h2>
-<p>👉 <strong>08 — Pipeline do ZenBot</strong></p>
-<p>Aqui veremos todo o sistema funcionando como um organismo único.</p>
-<hr />
-<h2 id="aprofundamento-tecnico">📚 Aprofundamento técnico</h2>
-<p>Este capítulo apresentou o conceito geral de <strong>busca semântica</strong>.</p>
-<p>Para entender como o ZenBot implementa esse mecanismo internamente, veja o capítulo:</p>
-<p>➡ <strong><a href="../13-busca-semantica/">Busca Semântica no ZenBot</a></strong></p></div>
+<p>Esse processo transforma textos comuns em uma <strong>base de conhecimento consultável por significado</strong>.</p></div>
             </div>
         </div>
 

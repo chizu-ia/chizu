@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <meta name="author" content="Projeto Chizu">
-        <link rel="canonical" href="https://chizuzen.github.io/Zenbot/conceitos/07-busca-semantica/">
+        <link rel="canonical" href="https://chizuzen.github.io/Zenbot/conceitos/13-busca-semantica/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Busca semântica - ZenBot</title>
+        <title>Busca semântica no ZenBot - ZenBot</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -131,7 +131,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">Busca semântica</a>
+    <a href="../07-busca-semantica/" class="dropdown-item">Busca semântica</a>
 </li>
                                     
 <li>
@@ -155,7 +155,7 @@
 </li>
                                     
 <li>
-    <a href="../13-busca-semantica/" class="dropdown-item">Busca semântica no ZenBot</a>
+    <a href="./" class="dropdown-item active" aria-current="page">Busca semântica no ZenBot</a>
 </li>
                                     
 <li>
@@ -176,12 +176,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../06-embeddings/" class="nav-link">
+                                <a rel="prev" href="../12-chunks-e-embeddings/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../08-pipeline-do-zenbot/" class="nav-link">
+                                <a rel="next" href="../14-rag-no-zenbot/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -205,51 +205,31 @@
             
             <li class="nav-item" data-bs-level="1"><a href="#busca-semantica" class="nav-link">Busca Semântica</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#o-que-e-busca-semantica" class="nav-link">🔍 O que é busca semântica?</a>
+            <li class="nav-item" data-bs-level="2"><a href="#o-que-e-busca-semantica" class="nav-link">🔎 O que é Busca Semântica</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#diferenca-entre-busca-tradicional-e-semantica" class="nav-link">📚 Diferença entre busca tradicional e semântica</a>
+            <li class="nav-item" data-bs-level="2"><a href="#como-a-busca-semantica-funciona" class="nav-link">🧠 Como a Busca Semântica Funciona</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#como-a-busca-semantica-funciona" class="nav-link">🧠 Como a busca semântica funciona?</a>
+            <li class="nav-item" data-bs-level="2"><a href="#similaridade-entre-vetores" class="nav-link">📏 Similaridade entre Vetores</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#medindo-similaridade" class="nav-link">📐 Medindo similaridade</a>
+            <li class="nav-item" data-bs-level="2"><a href="#fluxo-da-busca-semantica-no-zenbot" class="nav-link">⚙️ Fluxo da Busca Semântica no ZenBot</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#como-o-zenbot-implementa-a-busca-semantica" class="nav-link">⚙️ Como o ZenBot implementa a busca semântica?</a>
+            <li class="nav-item" data-bs-level="2"><a href="#exemplo-pratico" class="nav-link">📚 Exemplo Prático</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#por-que-isso-melhora-tanto-as-respostas" class="nav-link">🧩 Por que isso melhora tanto as respostas?</a>
+            <li class="nav-item" data-bs-level="2"><a href="#analogia-simples" class="nav-link">🧘 Analogia simples</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#limitacoes-da-busca-semantica" class="nav-link">🛑 Limitações da busca semântica</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#metafora-zen" class="nav-link">🧘 Metáfora Zen</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#busca-semantica-llm-inteligencia-pratica" class="nav-link">🧠 Busca semântica + LLM = Inteligência prática</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#conceito-chave" class="nav-link">📌 Conceito-chave</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#proximo-capitulo" class="nav-link">🔗 Próximo capítulo</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#aprofundamento-tecnico" class="nav-link">📚 Aprofundamento técnico</a>
+            <li class="nav-item" data-bs-level="2"><a href="#resumo" class="nav-link">📌 Resumo</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -261,136 +241,103 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="busca-semantica">Busca Semântica</h1>
-<p>Este capítulo explica o que é <strong>busca semântica</strong>, como ela funciona e por que ela transforma completamente a qualidade das respostas do ZenBot.</p>
+<p>Este capítulo explica o conceito de <strong>busca semântica</strong>, um dos mecanismos centrais utilizados pelo ZenBot para encontrar informações relevantes nos textos.</p>
+<p>Diferente de uma busca tradicional baseada apenas em palavras, a busca semântica tenta encontrar <strong>significados relacionados</strong>.</p>
 <hr />
-<h2 id="o-que-e-busca-semantica">🔍 O que é busca semântica?</h2>
-<p>Busca semântica é uma técnica que encontra informações <strong>pelo significado</strong>, não apenas pelas palavras.</p>
-<p>Ela responde à pergunta:</p>
-<blockquote>
-<p>O que a pessoa quer dizer, e não exatamente o que ela escreveu?</p>
-</blockquote>
-<hr />
-<h2 id="diferenca-entre-busca-tradicional-e-semantica">📚 Diferença entre busca tradicional e semântica</h2>
-<h3 id="busca-tradicional-por-palavras-chave">Busca tradicional (por palavras-chave)</h3>
-<ul>
-<li>Procura termos exatos.</li>
-<li>Funciona bem para pesquisas técnicas simples.</li>
-<li>Falha quando a pergunta é vaga, subjetiva ou filosófica.</li>
-</ul>
+<h2 id="o-que-e-busca-semantica">🔎 O que é Busca Semântica</h2>
+<p>A <strong>busca semântica</strong> é uma técnica que permite encontrar conteúdos com <strong>significado semelhante</strong>, mesmo que as palavras utilizadas sejam diferentes.</p>
+<p>Em uma busca tradicional, o sistema procura <strong>palavras exatas</strong>.</p>
 <p>Exemplo:</p>
+<p>Consulta:</p>
 <blockquote>
-<p>“Como ter paz interior?”</p>
+<p>Como acalmar a mente?</p>
 </blockquote>
-<p>Se não existir exatamente essa frase no texto, o sistema pode <strong>não encontrar nada</strong>.</p>
-<hr />
-<h3 id="busca-semantica-por-significado">Busca semântica (por significado)</h3>
+<p>Uma busca tradicional procuraria apenas por palavras como:</p>
 <ul>
-<li>Procura ideias, conceitos e intenções.</li>
-<li>Entende contexto.</li>
-<li>Encontra respostas mesmo sem coincidência literal.</li>
+<li>acalmar</li>
+<li>mente</li>
 </ul>
-<p>Ela pode encontrar textos sobre:</p>
+<p>Se essas palavras não estiverem no texto, o sistema não encontra nada.</p>
+<p>Já a <strong>busca semântica</strong> procura ideias relacionadas, como:</p>
 <ul>
-<li>meditação</li>
-<li>silêncio</li>
+<li>respirar</li>
 <li>atenção plena</li>
-<li>desapego</li>
-<li>respiração consciente</li>
+<li>silêncio interior</li>
+<li>observar pensamentos</li>
 </ul>
+<p>Mesmo sem repetir as mesmas palavras.</p>
 <hr />
-<h2 id="como-a-busca-semantica-funciona">🧠 Como a busca semântica funciona?</h2>
-<p>Ela se baseia em <strong>embeddings</strong>.</p>
-<p>Fluxo básico:</p>
+<h2 id="como-a-busca-semantica-funciona">🧠 Como a Busca Semântica Funciona</h2>
+<p>A busca semântica funciona usando <strong>embeddings</strong>, que são representações numéricas do significado dos textos.</p>
+<p>O processo funciona da seguinte forma:</p>
 <ol>
-<li>Todo texto é convertido em vetores numéricos.</li>
-<li>A pergunta do usuário também vira um vetor.</li>
-<li>O sistema mede a distância entre os vetores.</li>
-<li>Os textos mais próximos são selecionados.</li>
+<li>O sistema possui vários <strong>chunks</strong> de texto armazenados</li>
+<li>Cada chunk possui um <strong>embedding</strong></li>
+<li>Quando o usuário faz uma pergunta, ela também é convertida em embedding</li>
+<li>O sistema compara esse vetor com os embeddings existentes</li>
+<li>Os textos com <strong>maior proximidade semântica</strong> são selecionados</li>
 </ol>
+<p>Essa proximidade normalmente é calculada usando <strong>similaridade vetorial</strong>.</p>
 <hr />
-<h2 id="medindo-similaridade">📐 Medindo similaridade</h2>
-<p>A métrica mais comum é:</p>
+<h2 id="similaridade-entre-vetores">📏 Similaridade entre Vetores</h2>
+<p>Embeddings podem ser comparados matematicamente.</p>
+<p>Uma das técnicas mais comuns é a <strong>similaridade de cosseno (cosine similarity)</strong>.</p>
+<p>Ela mede o <strong>ângulo entre dois vetores</strong>.</p>
 <ul>
-<li><strong>similaridade do cosseno</strong></li>
+<li>vetores próximos → significados semelhantes  </li>
+<li>vetores distantes → significados diferentes  </li>
 </ul>
-<p>Ela mede o ângulo entre dois vetores.</p>
-<p>Resultado:</p>
-<ul>
-<li>Próximo de 1 → muito semelhante</li>
-<li>Próximo de 0 → sem relação</li>
-</ul>
+<p>Exemplo simplificado:</p>
+<pre><code class="language-text">Pergunta: &quot;Como acalmar a mente?&quot;
+        ↓
+Embedding da pergunta
+        ↓
+Comparação com embeddings dos textos
+        ↓
+Seleção dos chunks mais próximos
+</code></pre>
 <hr />
-<h2 id="como-o-zenbot-implementa-a-busca-semantica">⚙️ Como o ZenBot implementa a busca semântica?</h2>
-<p>O ZenBot segue este pipeline:
-Textos → fragmentação → embeddings → armazenamento vetorial
-Pergunta → embedding → busca → seleção → resposta</p>
-<p>Ou, em palavras:</p>
+<h2 id="fluxo-da-busca-semantica-no-zenbot">⚙️ Fluxo da Busca Semântica no ZenBot</h2>
+<p>No ZenBot, o fluxo básico funciona assim:</p>
 <ol>
-<li>Divide livros e textos em pequenos trechos</li>
-<li>Gera embeddings para cada trecho</li>
-<li>Armazena tudo</li>
-<li>Quando recebe uma pergunta:</li>
-<li>Calcula o embedding da pergunta</li>
-<li>Busca os vetores mais próximos</li>
-<li>Recupera os trechos relevantes</li>
-<li>Envia ao modelo de linguagem para gerar a resposta</li>
+<li>O usuário faz uma pergunta</li>
+<li>A pergunta é convertida em embedding</li>
+<li>O sistema procura os embeddings mais próximos</li>
+<li>Os chunks correspondentes são recuperados</li>
+<li>Esses textos são enviados ao modelo de linguagem</li>
+<li>O modelo gera a resposta usando esse contexto</li>
 </ol>
+<p>Esse processo permite que o sistema responda usando <strong>informações presentes nos livros carregados</strong>.</p>
 <hr />
-<h2 id="por-que-isso-melhora-tanto-as-respostas">🧩 Por que isso melhora tanto as respostas?</h2>
-<p>Porque o modelo <strong>não precisa inventar</strong>.</p>
-<p>Ele responde <strong>com base nos textos reais</strong>.</p>
-<p>Isso garante:</p>
+<h2 id="exemplo-pratico">📚 Exemplo Prático</h2>
+<p>Suponha que exista um chunk no sistema:</p>
+<blockquote>
+<p>Observe sua respiração e permita que os pensamentos passem.</p>
+</blockquote>
+<p>Usuário pergunta:</p>
+<blockquote>
+<p>Como posso acalmar minha mente?</p>
+</blockquote>
+<p>Mesmo que as palavras sejam diferentes, o significado é semelhante.</p>
+<p>A busca semântica identifica essa proximidade e recupera esse trecho como contexto para a resposta.</p>
+<hr />
+<h2 id="analogia-simples">🧘 Analogia simples</h2>
+<p>Podemos imaginar a busca semântica como um <strong>mapa de significados</strong>.</p>
 <ul>
-<li>Fidelidade ao conteúdo</li>
-<li>Coerência filosófica</li>
-<li>Profundidade conceitual</li>
-<li>Redução de alucinações</li>
+<li>Cada texto é um ponto nesse mapa</li>
+<li>Textos com significados parecidos ficam próximos</li>
+<li>Textos muito diferentes ficam distantes</li>
 </ul>
+<p>Quando surge uma pergunta, o sistema procura <strong>os pontos mais próximos no mapa</strong>.</p>
 <hr />
-<h2 id="limitacoes-da-busca-semantica">🛑 Limitações da busca semântica</h2>
-<p>Ela ainda depende:</p>
+<h2 id="resumo">📌 Resumo</h2>
 <ul>
-<li>Da qualidade dos textos</li>
-<li>Da boa fragmentação</li>
-<li>De bons embeddings</li>
-<li>Do tamanho da base</li>
+<li><strong>Busca tradicional</strong> → procura palavras exatas  </li>
+<li><strong>Busca semântica</strong> → procura significados semelhantes  </li>
+<li><strong>Embeddings</strong> permitem representar textos como vetores  </li>
+<li><strong>Similaridade vetorial</strong> identifica conteúdos relacionados  </li>
 </ul>
-<p>Se os textos forem pobres, a resposta será pobre.</p>
-<hr />
-<h2 id="metafora-zen">🧘 Metáfora Zen</h2>
-<p>Busca semântica é como:</p>
-<blockquote>
-<p>Um monge que escuta a pergunta além das palavras.</p>
-</blockquote>
-<p>Ele percebe a <strong>intenção silenciosa por trás da frase</strong>.</p>
-<hr />
-<h2 id="busca-semantica-llm-inteligencia-pratica">🧠 Busca semântica + LLM = Inteligência prática</h2>
-<p>Sem busca semântica:</p>
-<blockquote>
-<p>LLM gera textos bonitos, mas pode errar.</p>
-</blockquote>
-<p>Sem LLM:</p>
-<blockquote>
-<p>Busca semântica encontra textos, mas não conversa.</p>
-</blockquote>
-<p>Juntos:</p>
-<blockquote>
-<p>O sistema entende, busca, organiza e responde.</p>
-</blockquote>
-<hr />
-<h2 id="conceito-chave">📌 Conceito-chave</h2>
-<blockquote>
-<p>Busca semântica é o elo entre significado humano e recuperação inteligente da informação.</p>
-</blockquote>
-<hr />
-<h2 id="proximo-capitulo">🔗 Próximo capítulo</h2>
-<p>👉 <strong>08 — Pipeline do ZenBot</strong></p>
-<p>Aqui veremos todo o sistema funcionando como um organismo único.</p>
-<hr />
-<h2 id="aprofundamento-tecnico">📚 Aprofundamento técnico</h2>
-<p>Este capítulo apresentou o conceito geral de <strong>busca semântica</strong>.</p>
-<p>Para entender como o ZenBot implementa esse mecanismo internamente, veja o capítulo:</p>
-<p>➡ <strong><a href="../13-busca-semantica/">Busca Semântica no ZenBot</a></strong></p></div>
+<p>A busca semântica é o mecanismo que permite ao ZenBot <strong>encontrar conhecimento relevante dentro dos textos antes de gerar uma resposta</strong>.</p></div>
             </div>
         </div>
 

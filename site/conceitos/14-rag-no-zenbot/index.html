@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <meta name="author" content="Projeto Chizu">
-        <link rel="canonical" href="https://chizuzen.github.io/Zenbot/conceitos/07-busca-semantica/">
+        <link rel="canonical" href="https://chizuzen.github.io/Zenbot/conceitos/14-rag-no-zenbot/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Busca semântica - ZenBot</title>
+        <title>RAG no ZenBot - ZenBot</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -131,7 +131,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">Busca semântica</a>
+    <a href="../07-busca-semantica/" class="dropdown-item">Busca semântica</a>
 </li>
                                     
 <li>
@@ -159,7 +159,7 @@
 </li>
                                     
 <li>
-    <a href="../14-rag-no-zenbot/" class="dropdown-item">RAG no ZenBot</a>
+    <a href="./" class="dropdown-item active" aria-current="page">RAG no ZenBot</a>
 </li>
                                     
 <li>
@@ -176,12 +176,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../06-embeddings/" class="nav-link">
+                                <a rel="prev" href="../13-busca-semantica/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../08-pipeline-do-zenbot/" class="nav-link">
+                                <a rel="next" href="../15-pipeline-de-textos/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -203,53 +203,25 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#busca-semantica" class="nav-link">Busca Semântica</a>
+            <li class="nav-item" data-bs-level="1"><a href="#rag-no-zenbot" class="nav-link">RAG no ZenBot</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#o-que-e-busca-semantica" class="nav-link">🔍 O que é busca semântica?</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#diferenca-entre-busca-tradicional-e-semantica" class="nav-link">📚 Diferença entre busca tradicional e semântica</a>
+            <li class="nav-item" data-bs-level="2"><a href="#o-que-e-rag" class="nav-link">🧠 O que é RAG</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#como-a-busca-semantica-funciona" class="nav-link">🧠 Como a busca semântica funciona?</a>
+            <li class="nav-item" data-bs-level="2"><a href="#como-o-rag-funciona" class="nav-link">🔎 Como o RAG funciona</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#medindo-similaridade" class="nav-link">📐 Medindo similaridade</a>
+            <li class="nav-item" data-bs-level="2"><a href="#fluxo-de-funcionamento-no-zenbot" class="nav-link">⚙️ Fluxo de funcionamento no ZenBot</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#como-o-zenbot-implementa-a-busca-semantica" class="nav-link">⚙️ Como o ZenBot implementa a busca semântica?</a>
+            <li class="nav-item" data-bs-level="2"><a href="#analogia-simples" class="nav-link">🧘 Analogia simples</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#por-que-isso-melhora-tanto-as-respostas" class="nav-link">🧩 Por que isso melhora tanto as respostas?</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#limitacoes-da-busca-semantica" class="nav-link">🛑 Limitações da busca semântica</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#metafora-zen" class="nav-link">🧘 Metáfora Zen</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#busca-semantica-llm-inteligencia-pratica" class="nav-link">🧠 Busca semântica + LLM = Inteligência prática</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#conceito-chave" class="nav-link">📌 Conceito-chave</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#proximo-capitulo" class="nav-link">🔗 Próximo capítulo</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#aprofundamento-tecnico" class="nav-link">📚 Aprofundamento técnico</a>
+            <li class="nav-item" data-bs-level="2"><a href="#resumo" class="nav-link">📌 Resumo</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -260,137 +232,115 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="busca-semantica">Busca Semântica</h1>
-<p>Este capítulo explica o que é <strong>busca semântica</strong>, como ela funciona e por que ela transforma completamente a qualidade das respostas do ZenBot.</p>
+<h1 id="rag-no-zenbot">RAG no ZenBot</h1>
+<p>Este capítulo explica como o ZenBot utiliza a técnica chamada <strong>RAG (Retrieval Augmented Generation)</strong> para gerar respostas baseadas nos textos carregados no sistema.</p>
+<p>RAG combina duas capacidades:</p>
+<ul>
+<li><strong>recuperação de informação</strong> (retrieval)</li>
+<li><strong>geração de texto</strong> (generation)</li>
+</ul>
+<p>Essa combinação permite que o modelo responda perguntas utilizando <strong>conteúdo real armazenado no sistema</strong>.</p>
 <hr />
-<h2 id="o-que-e-busca-semantica">🔍 O que é busca semântica?</h2>
-<p>Busca semântica é uma técnica que encontra informações <strong>pelo significado</strong>, não apenas pelas palavras.</p>
-<p>Ela responde à pergunta:</p>
+<h2 id="o-que-e-rag">🧠 O que é RAG</h2>
+<p><strong>RAG</strong> significa <em>Retrieval Augmented Generation</em>, que pode ser traduzido como:</p>
 <blockquote>
-<p>O que a pessoa quer dizer, e não exatamente o que ela escreveu?</p>
+<p>Geração de texto aumentada por recuperação de informações.</p>
 </blockquote>
-<hr />
-<h2 id="diferenca-entre-busca-tradicional-e-semantica">📚 Diferença entre busca tradicional e semântica</h2>
-<h3 id="busca-tradicional-por-palavras-chave">Busca tradicional (por palavras-chave)</h3>
+<p>Em vez de responder apenas com base no conhecimento interno do modelo, o sistema primeiro <strong>busca informações relevantes</strong> e depois usa essas informações para gerar a resposta.</p>
+<p>Isso torna as respostas:</p>
 <ul>
-<li>Procura termos exatos.</li>
-<li>Funciona bem para pesquisas técnicas simples.</li>
-<li>Falha quando a pergunta é vaga, subjetiva ou filosófica.</li>
-</ul>
-<p>Exemplo:</p>
-<blockquote>
-<p>“Como ter paz interior?”</p>
-</blockquote>
-<p>Se não existir exatamente essa frase no texto, o sistema pode <strong>não encontrar nada</strong>.</p>
-<hr />
-<h3 id="busca-semantica-por-significado">Busca semântica (por significado)</h3>
-<ul>
-<li>Procura ideias, conceitos e intenções.</li>
-<li>Entende contexto.</li>
-<li>Encontra respostas mesmo sem coincidência literal.</li>
-</ul>
-<p>Ela pode encontrar textos sobre:</p>
-<ul>
-<li>meditação</li>
-<li>silêncio</li>
-<li>atenção plena</li>
-<li>desapego</li>
-<li>respiração consciente</li>
+<li>mais precisas</li>
+<li>mais contextualizadas</li>
+<li>baseadas nos textos fornecidos ao sistema</li>
 </ul>
 <hr />
-<h2 id="como-a-busca-semantica-funciona">🧠 Como a busca semântica funciona?</h2>
-<p>Ela se baseia em <strong>embeddings</strong>.</p>
-<p>Fluxo básico:</p>
+<h2 id="como-o-rag-funciona">🔎 Como o RAG funciona</h2>
+<p>O processo geral do RAG segue três etapas principais:</p>
 <ol>
-<li>Todo texto é convertido em vetores numéricos.</li>
-<li>A pergunta do usuário também vira um vetor.</li>
-<li>O sistema mede a distância entre os vetores.</li>
-<li>Os textos mais próximos são selecionados.</li>
+<li><strong>Receber a pergunta do usuário</strong></li>
+<li><strong>Buscar trechos relevantes nos textos</strong></li>
+<li><strong>Gerar a resposta usando esses trechos como contexto</strong></li>
 </ol>
+<p>Esse processo permite que o modelo responda perguntas sobre conteúdos específicos, como livros ou documentos.</p>
 <hr />
-<h2 id="medindo-similaridade">📐 Medindo similaridade</h2>
-<p>A métrica mais comum é:</p>
-<ul>
-<li><strong>similaridade do cosseno</strong></li>
-</ul>
-<p>Ela mede o ângulo entre dois vetores.</p>
-<p>Resultado:</p>
-<ul>
-<li>Próximo de 1 → muito semelhante</li>
-<li>Próximo de 0 → sem relação</li>
-</ul>
-<hr />
-<h2 id="como-o-zenbot-implementa-a-busca-semantica">⚙️ Como o ZenBot implementa a busca semântica?</h2>
-<p>O ZenBot segue este pipeline:
-Textos → fragmentação → embeddings → armazenamento vetorial
-Pergunta → embedding → busca → seleção → resposta</p>
-<p>Ou, em palavras:</p>
+<h2 id="fluxo-de-funcionamento-no-zenbot">⚙️ Fluxo de funcionamento no ZenBot</h2>
+<p>No ZenBot, o fluxo funciona da seguinte forma:</p>
 <ol>
-<li>Divide livros e textos em pequenos trechos</li>
-<li>Gera embeddings para cada trecho</li>
-<li>Armazena tudo</li>
-<li>Quando recebe uma pergunta:</li>
-<li>Calcula o embedding da pergunta</li>
-<li>Busca os vetores mais próximos</li>
-<li>Recupera os trechos relevantes</li>
-<li>Envia ao modelo de linguagem para gerar a resposta</li>
+<li>O usuário faz uma pergunta</li>
+<li>A pergunta é convertida em <strong>embedding</strong></li>
+<li>O sistema executa uma <strong>busca semântica</strong></li>
+<li>Os <strong>chunks mais relevantes</strong> são recuperados</li>
+<li>Esses textos são enviados ao modelo de linguagem</li>
+<li>O modelo gera a resposta usando esses trechos como base</li>
 </ol>
+<p>Fluxo simplificado:</p>
+<p>```text
+Pergunta do usuário
+        ↓
+Embedding da pergunta
+        ↓
+Busca semântica
+        ↓
+Chunks relevantes
+        ↓
+Modelo de linguagem
+        ↓
+Resposta final</p>
+<pre><code>---
+
+## 📚 Por que usar RAG
+
+Sem RAG, o modelo responde apenas com base no **conhecimento aprendido durante o treinamento**.
+
+Com RAG, o sistema pode responder utilizando:
+
+- livros carregados
+- documentos do projeto
+- bases de conhecimento específicas
+
+Isso permite que o ZenBot funcione como um **assistente especializado nos textos fornecidos**.
+
+---
+
+## 📦 Exemplo simplificado
+
+Usuário pergunta:
+
+&gt; O que é atenção plena?
+
+O sistema realiza os seguintes passos:
+
+1. converte a pergunta em embedding  
+2. encontra chunks relacionados a **atenção, respiração e presença**  
+3. envia esses trechos ao modelo  
+4. o modelo gera uma resposta baseada nesses textos  
+
+Exemplo de contexto enviado ao modelo:
+
+```text
+A atenção plena consiste em observar o momento presente sem julgamento.
+
+Respirar conscientemente é uma das formas mais simples de retornar ao presente.
+</code></pre>
 <hr />
-<h2 id="por-que-isso-melhora-tanto-as-respostas">🧩 Por que isso melhora tanto as respostas?</h2>
-<p>Porque o modelo <strong>não precisa inventar</strong>.</p>
-<p>Ele responde <strong>com base nos textos reais</strong>.</p>
-<p>Isso garante:</p>
+<h2 id="analogia-simples">🧘 Analogia simples</h2>
+<p>Podemos imaginar o RAG como um <strong>professor consultando um livro antes de responder uma pergunta</strong>.</p>
+<ol>
+<li>alguém faz uma pergunta  </li>
+<li>o professor procura no livro os trechos relevantes  </li>
+<li>ele lê rapidamente essas partes  </li>
+<li>então formula a resposta  </li>
+</ol>
+<p>O modelo de linguagem faz algo semelhante: ele <strong>consulta os textos antes de responder</strong>.</p>
+<hr />
+<h2 id="resumo">📌 Resumo</h2>
 <ul>
-<li>Fidelidade ao conteúdo</li>
-<li>Coerência filosófica</li>
-<li>Profundidade conceitual</li>
-<li>Redução de alucinações</li>
+<li><strong>RAG</strong> significa <em>Retrieval Augmented Generation</em>  </li>
+<li>Combina <strong>busca de informação</strong> com <strong>geração de texto</strong>  </li>
+<li>O sistema recupera trechos relevantes antes de responder  </li>
+<li>As respostas passam a ser baseadas nos <strong>textos carregados</strong></li>
 </ul>
-<hr />
-<h2 id="limitacoes-da-busca-semantica">🛑 Limitações da busca semântica</h2>
-<p>Ela ainda depende:</p>
-<ul>
-<li>Da qualidade dos textos</li>
-<li>Da boa fragmentação</li>
-<li>De bons embeddings</li>
-<li>Do tamanho da base</li>
-</ul>
-<p>Se os textos forem pobres, a resposta será pobre.</p>
-<hr />
-<h2 id="metafora-zen">🧘 Metáfora Zen</h2>
-<p>Busca semântica é como:</p>
-<blockquote>
-<p>Um monge que escuta a pergunta além das palavras.</p>
-</blockquote>
-<p>Ele percebe a <strong>intenção silenciosa por trás da frase</strong>.</p>
-<hr />
-<h2 id="busca-semantica-llm-inteligencia-pratica">🧠 Busca semântica + LLM = Inteligência prática</h2>
-<p>Sem busca semântica:</p>
-<blockquote>
-<p>LLM gera textos bonitos, mas pode errar.</p>
-</blockquote>
-<p>Sem LLM:</p>
-<blockquote>
-<p>Busca semântica encontra textos, mas não conversa.</p>
-</blockquote>
-<p>Juntos:</p>
-<blockquote>
-<p>O sistema entende, busca, organiza e responde.</p>
-</blockquote>
-<hr />
-<h2 id="conceito-chave">📌 Conceito-chave</h2>
-<blockquote>
-<p>Busca semântica é o elo entre significado humano e recuperação inteligente da informação.</p>
-</blockquote>
-<hr />
-<h2 id="proximo-capitulo">🔗 Próximo capítulo</h2>
-<p>👉 <strong>08 — Pipeline do ZenBot</strong></p>
-<p>Aqui veremos todo o sistema funcionando como um organismo único.</p>
-<hr />
-<h2 id="aprofundamento-tecnico">📚 Aprofundamento técnico</h2>
-<p>Este capítulo apresentou o conceito geral de <strong>busca semântica</strong>.</p>
-<p>Para entender como o ZenBot implementa esse mecanismo internamente, veja o capítulo:</p>
-<p>➡ <strong><a href="../13-busca-semantica/">Busca Semântica no ZenBot</a></strong></p></div>
+<p>Essa arquitetura permite que o ZenBot funcione como um <strong>assistente capaz de responder perguntas sobre os livros presentes no sistema</strong>.</p></div>
             </div>
         </div>
 

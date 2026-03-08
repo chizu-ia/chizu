@@ -1,6 +1,6 @@
-# ZenBot — Documentação Geral
+# Chizu ZenBot — Documentação Geral
 
-Bem-vindo ao ZenBot.
+Bem-vindo ao Chizu ZenBot.
 
 O ZenBot é um projeto experimental que une tecnologia, inteligência artificial e aprendizado contínuo.  
 Ele foi criado tanto como um laboratório prático de estudo quanto como uma ferramenta real de consulta e reflexão.
@@ -26,48 +26,39 @@ Criar um chatbot baseado em inteligência artificial capaz de responder pergunta
 - Embeddings, representações matemáticas do significado dos textos.
 - Busca semântica, técnica que encontra informações pelo sentido, não apenas por palavras.
 
----
 
-## 📚 Navegação pela documentação
+## 📚 Estrutura da documentação
 
-### 🔹 Visão Geral
+### 🔭 Projeto
 
 - 🚀 [Motivação](01-motivacao.md)
 - 🔭 [Visão geral do projeto](02-visao-geral.md)
 - 📈 [Evolução do projeto](03-evolucao-do-projeto.md)
 - 🏛️ [Arquitetura](04-arquitetura.md)
 
-### 🔹 Desenvolvimento
+### 🧰 Desenvolvimento
 
 - 🧰 [Ferramentas](05-ferramentas.md)
 - 🔄 [Fluxo de trabalho](06-fluxo-de-trabalho.md)
 - 💻 [Comandos úteis](07-comandos-uteis.md)
 - 📑 [Organização dos textos](08-organizacao-dos-textos.md)
 
-### 🔹 Planejamento
+### 🗺️ Planejamento
 
 - 🗺️ [Roadmap](09-roadmap.md)
 
-### 🔹 Jornada
+### 🛤️ Jornada
 
-- 🛤️ [Jornada de Aprendizado — Diário de Construção](10-jornada-de-aprendizado.md)
-
----
-
-## 🧠 Conceitos fundamentais
-
-- 🖥️ [Sistemas operacionais](conceitos/01-sistemas-operacionais.md)
-- 🛠️ [Ferramentas de desenvolvimento](conceitos/02-ferramentas-de-desenvolvimento.md)
-- 🌐 [Servidores e deploy](conceitos/03-servidores-e-deploy.md)
-- 🤖 [Inteligência artificial](conceitos/04-inteligencia-artificial.md)
-- 🧠 [Modelos e LLMs](conceitos/05-modelos-e-llms.md)
-- 🧬 [Embeddings](conceitos/06-embeddings.md)
-- 🔍 [Busca semântica](conceitos/07-busca-semantica.md)
-- 🧩 [Pipeline do ZenBot](conceitos/08-pipeline-do-zenbot.md)
-- 🛡️ [Validação de Perguntas e Controle de Estilo](conceitos/10-validacao-perguntas.md)
-- ☯️ [Metáfora Zen — A Arquitetura Mental do ZenBot](conceitos/09-metafora-zen.md)
+- 🛤️ [Jornada de aprendizado](10-jornada-de-aprendizado.md)
 
 ---
+
+## 🧠 Conceitos Fundamentais
+
+Os conceitos técnicos usados no ZenBot estão organizados em uma seção própria.
+
+👉 [Explorar os conceitos](conceitos/index.md)
+
 
 ## 🤝 Colaboração
 

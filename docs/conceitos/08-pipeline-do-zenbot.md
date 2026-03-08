@@ -245,4 +245,14 @@ Exemplo:
 {
   "answer": "A mente zen é o estado de atenção plena..."
 }
+````
+---
+
+## 📚 Aprofundamento técnico
+
+Este capítulo apresentou uma visão geral do pipeline do ZenBot.
+
+Para uma explicação completa das etapas de processamento de texto, consulte:
+
+➡ **[Pipeline de Textos](15-pipeline-de-textos.md)**
 

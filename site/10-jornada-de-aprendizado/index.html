@@ -8,7 +8,7 @@
         <meta name="author" content="Projeto Chizu">
         <link rel="canonical" href="https://chizuzen.github.io/Zenbot/10-jornada-de-aprendizado/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Jornada de Aprendizado - ZenBot</title>
+        <title>Diário de construção - ZenBot</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -17,6 +17,7 @@
         <link href="../css/base.css" rel="stylesheet">
         <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
         <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../style.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
         <script>hljs.highlightAll();</script> 
     </head>
@@ -37,54 +38,88 @@
                             <li class="nav-item">
                                 <a href=".." class="nav-link">Início</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="../01-motivacao/" class="nav-link">Motivação</a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Visão Geral</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../01-motivacao/" class="dropdown-item">Motivação</a>
+</li>
+                                    
+<li>
+    <a href="../02-visao-geral/" class="dropdown-item">Visão geral</a>
+</li>
+                                    
+<li>
+    <a href="../03-evolucao-do-projeto/" class="dropdown-item">Evolução</a>
+</li>
+                                    
+<li>
+    <a href="../04-arquitetura/" class="dropdown-item">Arquitetura</a>
+</li>
+                                </ul>
                             </li>
-                            <li class="nav-item">
-                                <a href="../02-visao-geral/" class="nav-link">Visão Geral</a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Desenvolvimento</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../05-ferramentas/" class="dropdown-item">Ferramentas</a>
+</li>
+                                    
+<li>
+    <a href="../06-fluxo-de-trabalho/" class="dropdown-item">Fluxo de trabalho</a>
+</li>
+                                    
+<li>
+    <a href="../07-comandos-uteis/" class="dropdown-item">Comandos úteis</a>
+</li>
+                                    
+<li>
+    <a href="../08-organizacao-dos-textos/" class="dropdown-item">Organização dos textos</a>
+</li>
+                                </ul>
                             </li>
-                            <li class="nav-item">
-                                <a href="../03-evolucao-do-projeto/" class="nav-link">Evolução do Projeto</a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Planejamento</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../09-roadmap/" class="dropdown-item">Roadmap</a>
+</li>
+                                </ul>
                             </li>
-                            <li class="nav-item">
-                                <a href="../04-arquitetura/" class="nav-link">Arquitetura</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../05-ferramentas/" class="nav-link">Ferramentas</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../06-fluxo-de-trabalho/" class="nav-link">Fluxo de Trabalho</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../07-comandos-uteis/" class="nav-link">Comandos Úteis</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../08-organizacao-dos-textos/" class="nav-link">Organização dos Textos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../09-roadmap/" class="nav-link">Roadmap</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="./" class="nav-link active" aria-current="page">Jornada de Aprendizado</a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Jornada</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Diário de construção</a>
+</li>
+                                </ul>
                             </li>
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Conceitos</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../conceitos/01-sistemas-operacionais/" class="dropdown-item">Sistemas Operacionais</a>
+    <a href="../conceitos/" class="dropdown-item">Introdução</a>
 </li>
                                     
 <li>
-    <a href="../conceitos/02-ferramentas-de-desenvolvimento/" class="dropdown-item">Ferramentas de Desenvolvimento</a>
+    <a href="../conceitos/01-sistemas-operacionais/" class="dropdown-item">Sistemas operacionais</a>
 </li>
                                     
 <li>
-    <a href="../conceitos/03-servidores-e-deploy/" class="dropdown-item">Servidores e Deploy</a>
+    <a href="../conceitos/02-ferramentas-de-desenvolvimento/" class="dropdown-item">Ferramentas de desenvolvimento</a>
 </li>
                                     
 <li>
-    <a href="../conceitos/04-inteligencia-artificial/" class="dropdown-item">Inteligência Artificial</a>
+    <a href="../conceitos/03-servidores-e-deploy/" class="dropdown-item">Servidores e deploy</a>
+</li>
+                                    
+<li>
+    <a href="../conceitos/04-inteligencia-artificial/" class="dropdown-item">Inteligência artificial</a>
 </li>
                                     
 <li>
@@ -96,7 +131,7 @@
 </li>
                                     
 <li>
-    <a href="../conceitos/07-busca-semantica/" class="dropdown-item">Busca Semântica</a>
+    <a href="../conceitos/07-busca-semantica/" class="dropdown-item">Busca semântica</a>
 </li>
                                     
 <li>
@@ -108,11 +143,27 @@
 </li>
                                     
 <li>
-    <a href="../conceitos/10-validacao-perguntas/" class="dropdown-item">Validação de Perguntas</a>
+    <a href="../conceitos/10-validacao-perguntas/" class="dropdown-item">Validação de perguntas</a>
 </li>
                                     
 <li>
-    <a href="../conceitos/11-ajustes/" class="dropdown-item">Ajustes</a>
+    <a href="../conceitos/11-ajustes/" class="dropdown-item">Ajustes do sistema</a>
+</li>
+                                    
+<li>
+    <a href="../conceitos/12-chunks-e-embeddings/" class="dropdown-item">Chunks e embeddings</a>
+</li>
+                                    
+<li>
+    <a href="../conceitos/13-busca-semantica/" class="dropdown-item">Busca semântica no ZenBot</a>
+</li>
+                                    
+<li>
+    <a href="../conceitos/14-rag-no-zenbot/" class="dropdown-item">RAG no ZenBot</a>
+</li>
+                                    
+<li>
+    <a href="../conceitos/15-pipeline-de-textos/" class="dropdown-item">Pipeline de textos</a>
 </li>
                                 </ul>
                             </li>
@@ -130,7 +181,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../conceitos/01-sistemas-operacionais/" class="nav-link">
+                                <a rel="next" href="../conceitos/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>

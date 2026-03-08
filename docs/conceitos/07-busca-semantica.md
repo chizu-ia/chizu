@@ -158,3 +158,13 @@ Juntos:
 👉 **08 — Pipeline do ZenBot**
 
 Aqui veremos todo o sistema funcionando como um organismo único.
+
+---
+
+## 📚 Aprofundamento técnico
+
+Este capítulo apresentou o conceito geral de **busca semântica**.
+
+Para entender como o ZenBot implementa esse mecanismo internamente, veja o capítulo:
+
+➡ **[Busca Semântica no ZenBot](13-busca-semantica.md)**

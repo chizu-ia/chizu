@@ -1,25 +1,5 @@
 # 🧠 Conceitos Fundamentais — ZenBot
 
-Esta seção reúne os **principais conceitos técnicos e teóricos** que sustentam a construção do ZenBot.
-
-Ela foi pensada como um **guia progressivo de aprendizado**, partindo das bases da computação até os fundamentos modernos da inteligência artificial.
-
----
-
-## 📚 Navegação pelos conceitos
-
-- 🖥️ [Sistemas operacionais](01-sistemas-operacionais.md)
-- 🛠️ [Ferramentas de desenvolvimento](02-ferramentas-de-desenvolvimento.md)
-- 🌐 [Servidores e deploy](03-servidores-e-deploy.md)
-- 🤖 [Inteligência artificial](04-inteligencia-artificial.md)
-- 🧠 [Modelos e LLMs](05-modelos-e-llms.md)
-- 🧬 [Embeddings](06-embeddings.md)
-- 🔍 [Busca semântica](07-busca-semantica.md)
-- 🧩 [Pipeline do ZenBot](08-pipeline-do-zenbot.md)
-- 🛡️ [Validação de Perguntas e Controle de Estilo](10-validacao-perguntas.md)
-- ☯️ [Metáfora Zen — A Arquitetura Mental do ZenBot](09-metafora-zen.md)
-
----
 
 ## 🎯 Objetivo desta seção
 
@@ -44,6 +24,39 @@ Cada conceito aqui apresentado busca equilibrar:
 > + clareza didática  
 > + reflexão conceitual  
 
+
+---
+
+## Fundamentos de Infraestrutura
+
+- 🖥️ [Sistemas operacionais](01-sistemas-operacionais.md)
+- 🛠️ [Ferramentas de desenvolvimento](02-ferramentas-de-desenvolvimento.md)
+- 🌐 [Servidores e deploy](03-servidores-e-deploy.md)
+
+## Fundamentos de Inteligência Artificial
+
+- 🤖 [Inteligência artificial](04-inteligencia-artificial.md)
+- 🧠 [Modelos e LLMs](05-modelos-e-llms.md)
+
+## Conceitos de Busca Semântica
+
+- 🧬 [Embeddings](06-embeddings.md)
+- 🔍 [Busca semântica](07-busca-semantica.md)
+- 🧩 [Pipeline do ZenBot](08-pipeline-do-zenbot.md)
+
+## Conceitos do ZenBot
+
+- ☯️ [Metáfora Zen](09-metafora-zen.md)
+- 🛡️ [Validação de Perguntas](10-validacao-perguntas.md)
+- 🎛️ [Ajustes do Sistema](11-ajustes.md)
+
+## Arquitetura do ZenBot
+
+- 🧩 [Chunks e Embeddings](12-chunks-e-embeddings.md)
+- 🔎 [Busca Semântica no ZenBot](13-busca-semantica.md)
+- 🤖 [RAG no ZenBot](14-rag-no-zenbot.md)
+- ⚙️ [Pipeline de Textos](15-pipeline-de-textos.md)
+
 ---
 
 ## 🛤️ Conectando teoria e prática
@@ -51,6 +64,7 @@ Cada conceito aqui apresentado busca equilibrar:
 Para transformar estes conceitos em **aprendizado real**, acompanhe o diário de construção do projeto, com decisões técnicas, erros, ajustes e descobertas ao longo do caminho:
 
 - 🛤️ [Jornada de Aprendizado — Diário de Construção](../10-jornada-de-aprendizado.md)
+
 
 ---
 

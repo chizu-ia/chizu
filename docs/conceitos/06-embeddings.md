@@ -188,3 +188,20 @@ Mas isso já é suficiente para criar **sistemas incrivelmente inteligentes**.
 👉 **07 — Busca Semântica**
 
 Aqui veremos como esses vetores são usados para encontrar as respostas certas.
+
+---
+
+## 📚 Aprofundamento técnico
+
+Este capítulo apresentou uma visão geral sobre embeddings.
+
+Se você quiser entender **como o ZenBot utiliza embeddings na prática**, incluindo:
+
+- geração de embeddings
+- armazenamento
+- relação com chunks
+- uso na busca semântica
+
+consulte o capítulo detalhado:
+
+➡ **[Chunks e Embeddings](12-chunks-e-embeddings.md)**

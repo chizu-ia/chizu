@@ -1,70 +1,217 @@
+/* ============================================
+   ZENBOT - Tema MkDocs Harmonizado com Zen
+   Fonte: Courier New (tudo) - Clean & Sutil
+   ============================================ */
+
+/* -------- Base -------- */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Cantarell, sans-serif;
-  background: #f8fafc;
-  margin: 0;
-  padding: 0;
-  color: #1f2937;
+  font-family: 'Courier New', Courier, monospace !important;
+  background: #f4f1ea !important;
+  color: #2c3e2f !important;
+  line-height: 1.6 !important;
 }
 
-header {
-  background: linear-gradient(135deg, #1e3a8a, #2563eb);
-  color: white;
-  padding: 1.2rem 2rem;
+/* -------- Navbar -------- */
+.navbar.bg-primary {
+  background: #2d362e !important;
+  border-bottom: 1px solid #e0d6cc !important;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 1.6rem;
+.navbar-brand {
+  color: #f4f1ea !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: 1.4rem !important;
 }
 
-/* Link de voltar - Legibilidade Garantida */
-header a {
-  color: #dbeafe; 
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: color 0.2s ease;
+.navbar-dark .nav-link {
+  color: #c9c0b6 !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  transition: color 0.2s ease !important;
 }
 
-header a:hover {
-  color: white;
-  text-decoration: underline;
+.navbar-dark .nav-link:hover {
+  color: #f4f1ea !important;
 }
 
-main {
-  max-width: 960px;
-  margin: 2rem auto;
-  background: white;
-  padding: 2.5rem;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+/* Link ativo na navbar - sutil */
+.navbar-dark .nav-link.active {
+  color: #f4f1ea !important;
+  border-bottom: 2px solid #9b8c7c !important;
+  padding-bottom: 4px !important;
 }
 
-/* Blocos de Código e Árvore de Pastas - Fundo Claro */
+/* -------- Dropdown -------- */
+.dropdown-menu {
+  background: #fdfcfb !important;
+  border: 1px solid #e0d6cc !important;
+  border-radius: 12px !important;
+}
+
+.dropdown-item {
+  color: #2c3e2f !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  border-radius: 6px !important;
+  margin: 2px 6px !important;
+}
+
+/* Item ativo - verde musgo sutil */
+.dropdown-item.active,
+.dropdown-item:active {
+  background: #4a5a4c !important;
+  color: #f4f1ea !important;
+}
+
+.dropdown-item:hover {
+  background: #f4f1ea !important;
+  color: #2d362e !important;
+}
+
+/* -------- Sidebar - Seamless -------- */
+.bs-sidebar {
+  background: #f4f1ea !important; /* Mesmo do body */
+  border-radius: 16px !important;
+  padding: 1.2rem !important;
+  border: 1px solid #e0d6cc !important;
+}
+
+.bs-sidebar .nav-link {
+  color: #5c6b5f !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  border-radius: 8px !important;
+  margin: 2px 0 !important;
+  padding: 6px 12px !important;
+}
+
+.bs-sidebar .nav-link:hover {
+  background: #fdfcfb !important; /* Branco queimado no hover */
+  color: #2d362e !important;
+}
+
+.bs-sidebar .nav-link.active {
+  color: #2d362e !important;
+  background: #fdfcfb !important;
+  border-left: 2px solid #9b8c7c !important;
+  padding-left: 10px !important;
+}
+
+/* -------- Conteúdo Principal -------- */
+.col-md-9[role="main"] {
+  background: #fdfcfb !important;
+  border-radius: 24px !important;
+  padding: 2.5rem !important;
+  margin-top: 1rem !important;
+  margin-bottom: 2rem !important;
+  border: 1px solid #e0d6cc !important;
+  text-align: left !important;
+}
+
+/* -------- Títulos -------- */
+.col-md-9[role="main"] h1 {
+  color: #2d362e !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  font-weight: 400 !important;
+  font-size: 2rem !important;
+  padding-bottom: 0.8rem !important;
+  border-bottom: 1px solid #e0d6cc !important;
+  margin-bottom: 1.5rem !important;
+  text-align: left !important;
+}
+
+.col-md-9[role="main"] h2 {
+  color: #3e4a3f !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  font-weight: 400 !important;
+  font-size: 1.4rem !important;
+  margin-top: 2rem !important;
+  margin-bottom: 0.8rem !important;
+}
+
+.col-md-9[role="main"] h3 {
+  color: #4a5a4c !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  font-weight: 400 !important;
+  font-size: 1.15rem !important;
+  margin-top: 1.5rem !important;
+}
+
+/* -------- Parágrafos -------- */
+.col-md-9[role="main"] p {
+  color: #3e4a3f !important;
+  font-size: 1rem !important;
+  line-height: 1.7 !important;
+  margin-bottom: 1rem !important;
+}
+
+/* -------- Links -------- */
+.col-md-9[role="main"] a {
+  text-decoration: none !important;
+  color: #5c6b5f !important;
+  border-bottom: 1px solid transparent !important;
+  transition: all 0.2s ease !important;
+}
+
+.col-md-9[role="main"] a:hover {
+  color: #2d362e !important;
+  border-bottom: 1px solid #9b8c7c !important;
+}
+
+/* -------- Listas -------- */
+.col-md-9[role="main"] ul {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+.col-md-9[role="main"] ul li {
+  padding: 0.3rem 0 !important;
+  position: relative !important;
+  padding-left: 1.2rem !important;
+}
+
+.col-md-9[role="main"] ul li::before {
+  content: "–" !important;
+  color: #9b8c7c !important;
+  position: absolute !important;
+  left: 0 !important;
+}
+
+/* -------- Código -------- */
 pre {
-  background: #f1f5f9; 
-  color: #334155;      
-  padding: 1.2rem;
-  border-radius: 8px;
-  border: 1px solid #e2e8f0; 
-  overflow-x: auto;
+  background: #f4f1ea !important; 
+  color: #2c3e2f !important;      
+  padding: 1.2rem !important;
+  border-radius: 12px !important;
+  border: 1px solid #e0d6cc !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: 0.9rem !important;
 }
 
 code {
-  background: #f1f5f9;
-  color: #2563eb;      
-  padding: 0.2rem 0.4rem;
-  border-radius: 4px;
+  background: #f4f1ea !important;
+  color: #2d362e !important;      
+  padding: 0.15rem 0.4rem !important;
+  border-radius: 4px !important;
+  font-size: 0.9em !important;
 }
 
-/* Navegação e Listas */
-main ul { list-style: none; padding-left: 0.5rem; }
-main a { text-decoration: none; color: #2563eb; font-weight: 500; }
-main a:hover { text-decoration: underline; }
-
+/* -------- Footer -------- */
 footer {
-  text-align: center;
-  padding: 2rem;
-  color: #94a3b8;
-  font-size: 0.85rem;
-  border-top: 1px solid #e2e8f0;
+  text-align: center !important;
+  padding: 1.5rem !important;
+  color: #8c8375 !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: 0.85rem !important;
+  border-top: 1px solid #e0d6cc !important;
+  margin-top: 2rem !important;
+}
+
+/* -------- Responsividade -------- */
+@media (max-width: 768px) {
+  .col-md-9[role="main"] {
+    padding: 1.5rem !important;
+    border-radius: 16px !important;
+  }
+  
+  .col-md-9[role="main"] h1 {
+    font-size: 1.6rem !important;
+  }
 }

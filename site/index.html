@@ -17,6 +17,7 @@
         <link href="css/base.css" rel="stylesheet">
         <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
         <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="style.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
         <script>hljs.highlightAll();</script> 
     </head>
@@ -37,54 +38,88 @@
                             <li class="nav-item">
                                 <a href="." class="nav-link active" aria-current="page">Início</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="01-motivacao/" class="nav-link">Motivação</a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Visão Geral</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="01-motivacao/" class="dropdown-item">Motivação</a>
+</li>
+                                    
+<li>
+    <a href="02-visao-geral/" class="dropdown-item">Visão geral</a>
+</li>
+                                    
+<li>
+    <a href="03-evolucao-do-projeto/" class="dropdown-item">Evolução</a>
+</li>
+                                    
+<li>
+    <a href="04-arquitetura/" class="dropdown-item">Arquitetura</a>
+</li>
+                                </ul>
                             </li>
-                            <li class="nav-item">
-                                <a href="02-visao-geral/" class="nav-link">Visão Geral</a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Desenvolvimento</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="05-ferramentas/" class="dropdown-item">Ferramentas</a>
+</li>
+                                    
+<li>
+    <a href="06-fluxo-de-trabalho/" class="dropdown-item">Fluxo de trabalho</a>
+</li>
+                                    
+<li>
+    <a href="07-comandos-uteis/" class="dropdown-item">Comandos úteis</a>
+</li>
+                                    
+<li>
+    <a href="08-organizacao-dos-textos/" class="dropdown-item">Organização dos textos</a>
+</li>
+                                </ul>
                             </li>
-                            <li class="nav-item">
-                                <a href="03-evolucao-do-projeto/" class="nav-link">Evolução do Projeto</a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Planejamento</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="09-roadmap/" class="dropdown-item">Roadmap</a>
+</li>
+                                </ul>
                             </li>
-                            <li class="nav-item">
-                                <a href="04-arquitetura/" class="nav-link">Arquitetura</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="05-ferramentas/" class="nav-link">Ferramentas</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="06-fluxo-de-trabalho/" class="nav-link">Fluxo de Trabalho</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="07-comandos-uteis/" class="nav-link">Comandos Úteis</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="08-organizacao-dos-textos/" class="nav-link">Organização dos Textos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="09-roadmap/" class="nav-link">Roadmap</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="10-jornada-de-aprendizado/" class="nav-link">Jornada de Aprendizado</a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Jornada</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="10-jornada-de-aprendizado/" class="dropdown-item">Diário de construção</a>
+</li>
+                                </ul>
                             </li>
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Conceitos</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="conceitos/01-sistemas-operacionais/" class="dropdown-item">Sistemas Operacionais</a>
+    <a href="conceitos/" class="dropdown-item">Introdução</a>
 </li>
                                     
 <li>
-    <a href="conceitos/02-ferramentas-de-desenvolvimento/" class="dropdown-item">Ferramentas de Desenvolvimento</a>
+    <a href="conceitos/01-sistemas-operacionais/" class="dropdown-item">Sistemas operacionais</a>
 </li>
                                     
 <li>
-    <a href="conceitos/03-servidores-e-deploy/" class="dropdown-item">Servidores e Deploy</a>
+    <a href="conceitos/02-ferramentas-de-desenvolvimento/" class="dropdown-item">Ferramentas de desenvolvimento</a>
 </li>
                                     
 <li>
-    <a href="conceitos/04-inteligencia-artificial/" class="dropdown-item">Inteligência Artificial</a>
+    <a href="conceitos/03-servidores-e-deploy/" class="dropdown-item">Servidores e deploy</a>
+</li>
+                                    
+<li>
+    <a href="conceitos/04-inteligencia-artificial/" class="dropdown-item">Inteligência artificial</a>
 </li>
                                     
 <li>
@@ -96,7 +131,7 @@
 </li>
                                     
 <li>
-    <a href="conceitos/07-busca-semantica/" class="dropdown-item">Busca Semântica</a>
+    <a href="conceitos/07-busca-semantica/" class="dropdown-item">Busca semântica</a>
 </li>
                                     
 <li>
@@ -108,11 +143,27 @@
 </li>
                                     
 <li>
-    <a href="conceitos/10-validacao-perguntas/" class="dropdown-item">Validação de Perguntas</a>
+    <a href="conceitos/10-validacao-perguntas/" class="dropdown-item">Validação de perguntas</a>
 </li>
                                     
 <li>
-    <a href="conceitos/11-ajustes/" class="dropdown-item">Ajustes</a>
+    <a href="conceitos/11-ajustes/" class="dropdown-item">Ajustes do sistema</a>
+</li>
+                                    
+<li>
+    <a href="conceitos/12-chunks-e-embeddings/" class="dropdown-item">Chunks e embeddings</a>
+</li>
+                                    
+<li>
+    <a href="conceitos/13-busca-semantica/" class="dropdown-item">Busca semântica no ZenBot</a>
+</li>
+                                    
+<li>
+    <a href="conceitos/14-rag-no-zenbot/" class="dropdown-item">RAG no ZenBot</a>
+</li>
+                                    
+<li>
+    <a href="conceitos/15-pipeline-de-textos/" class="dropdown-item">Pipeline de textos</a>
 </li>
                                 </ul>
                             </li>
@@ -158,11 +209,11 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#navegacao-pela-documentacao" class="nav-link">📚 Navegação pela documentação</a>
+            <li class="nav-item" data-bs-level="2"><a href="#estrutura-da-documentacao" class="nav-link">📚 Estrutura da documentação</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#conceitos-fundamentais" class="nav-link">🧠 Conceitos fundamentais</a>
+            <li class="nav-item" data-bs-level="2"><a href="#conceitos-fundamentais" class="nav-link">🧠 Conceitos Fundamentais</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -199,45 +250,33 @@ Ele foi criado tanto como um laboratório prático de estudo quanto como uma fer
 <li>Embeddings, representações matemáticas do significado dos textos.</li>
 <li>Busca semântica, técnica que encontra informações pelo sentido, não apenas por palavras.</li>
 </ul>
-<hr />
-<h2 id="navegacao-pela-documentacao">📚 Navegação pela documentação</h2>
-<h3 id="visao-geral">🔹 Visão Geral</h3>
+<h2 id="estrutura-da-documentacao">📚 Estrutura da documentação</h2>
+<h3 id="projeto">🔭 Projeto</h3>
 <ul>
 <li>🚀 <a href="01-motivacao/">Motivação</a></li>
 <li>🔭 <a href="02-visao-geral/">Visão geral do projeto</a></li>
 <li>📈 <a href="03-evolucao-do-projeto/">Evolução do projeto</a></li>
 <li>🏛️ <a href="04-arquitetura/">Arquitetura</a></li>
 </ul>
-<h3 id="desenvolvimento">🔹 Desenvolvimento</h3>
+<h3 id="desenvolvimento">🧰 Desenvolvimento</h3>
 <ul>
 <li>🧰 <a href="05-ferramentas/">Ferramentas</a></li>
 <li>🔄 <a href="06-fluxo-de-trabalho/">Fluxo de trabalho</a></li>
 <li>💻 <a href="07-comandos-uteis/">Comandos úteis</a></li>
 <li>📑 <a href="08-organizacao-dos-textos/">Organização dos textos</a></li>
 </ul>
-<h3 id="planejamento">🔹 Planejamento</h3>
+<h3 id="planejamento">🗺️ Planejamento</h3>
 <ul>
 <li>🗺️ <a href="09-roadmap/">Roadmap</a></li>
 </ul>
-<h3 id="jornada">🔹 Jornada</h3>
+<h3 id="jornada">🛤️ Jornada</h3>
 <ul>
-<li>🛤️ <a href="10-jornada-de-aprendizado/">Jornada de Aprendizado — Diário de Construção</a></li>
+<li>🛤️ <a href="10-jornada-de-aprendizado/">Jornada de aprendizado</a></li>
 </ul>
 <hr />
-<h2 id="conceitos-fundamentais">🧠 Conceitos fundamentais</h2>
-<ul>
-<li>🖥️ <a href="conceitos/01-sistemas-operacionais/">Sistemas operacionais</a></li>
-<li>🛠️ <a href="conceitos/02-ferramentas-de-desenvolvimento/">Ferramentas de desenvolvimento</a></li>
-<li>🌐 <a href="conceitos/03-servidores-e-deploy/">Servidores e deploy</a></li>
-<li>🤖 <a href="conceitos/04-inteligencia-artificial/">Inteligência artificial</a></li>
-<li>🧠 <a href="conceitos/05-modelos-e-llms/">Modelos e LLMs</a></li>
-<li>🧬 <a href="conceitos/06-embeddings/">Embeddings</a></li>
-<li>🔍 <a href="conceitos/07-busca-semantica/">Busca semântica</a></li>
-<li>🧩 <a href="conceitos/08-pipeline-do-zenbot/">Pipeline do ZenBot</a></li>
-<li>🛡️ <a href="conceitos/10-validacao-perguntas/">Validação de Perguntas e Controle de Estilo</a></li>
-<li>☯️ <a href="conceitos/09-metafora-zen/">Metáfora Zen — A Arquitetura Mental do ZenBot</a></li>
-</ul>
-<hr />
+<h2 id="conceitos-fundamentais">🧠 Conceitos Fundamentais</h2>
+<p>Os conceitos técnicos usados no ZenBot estão organizados em uma seção própria.</p>
+<p>👉 <a href="conceitos/">Explorar os conceitos</a></p>
 <h2 id="colaboracao">🤝 Colaboração</h2>
 <p>Este projeto foi concebido para ser aberto a ideias, sugestões e melhorias.</p>
 <p>Se você chegou até aqui e deseja contribuir, critique, sugira, questione e proponha.<br />
@@ -324,5 +363,5 @@ O ZenBot é, acima de tudo, um espaço de aprendizado coletivo.</p>
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-03-07 02:40:11.238018+00:00
+Build Date UTC : 2026-03-08 17:15:30.697322+00:00
 -->
