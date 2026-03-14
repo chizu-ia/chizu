@@ -12,8 +12,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 EMBEDDINGS_PATH = BASE_DIR / "data" / "embeddings_bge.json"
 
 # Carrega o modelo local (Mesmo usado na geração)
-# No Render, ele ocupará cerca de 80MB de RAM.
-model = SentenceTransformer('all-MiniLM-L6-v2')
+model = None
+
+def get_model():
+    global model
+    if model is None:
+        model = SentenceTransformer('all-MiniLM-L6-v2')
+    return model
+
 
 def carregar_biblioteca():
     """Lê o arquivo JSON com os 1914 embeddings"""
@@ -27,9 +33,13 @@ def buscar_contexto(pergunta, biblioteca, top_k=3):
     """
     Encontra os ensinamentos e identifica os autores e livros.
     """
+
     if not biblioteca:
         return "Nenhum ensinamento encontrado."
 
+    model = get_model()
+
+    
     # 1. Transforma a pergunta em vetor
     pergunta_vetor = model.encode(pergunta)
 
