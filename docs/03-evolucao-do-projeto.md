@@ -1,6 +1,6 @@
-# Evolução do Projeto ZenBot
+# Evolução do Projeto Chizu
 
-Este documento descreve a evolução do projeto **ZenBot**, desde sua concepção inicial até os estágios atuais de desenvolvimento.
+Este documento descreve a evolução do projeto **Chizu**, desde sua concepção inicial até os estágios atuais de desenvolvimento.
 
 O objetivo é registrar:
 - O raciocínio por trás das decisões técnicas.
@@ -13,7 +13,7 @@ Esse histórico serve tanto para **documentação técnica**, quanto para **onbo
 
 ---
 
-## 1. Motivação Inicial
+## Motivação Inicial
 
 O ZenBot nasceu da necessidade de criar um **assistente inteligente, modular e evolutivo**, capaz de:
 
@@ -32,7 +32,7 @@ A ideia central sempre foi **aprender construindo**, documentando cada passo.
 
 ---
 
-## 2. Primeiras Ideias e Explorações
+## Primeiras Ideias e Explorações
 
 Nos estágios iniciais, o projeto focou em:
 
@@ -49,7 +49,7 @@ Essa fase foi marcada por:
 
 ---
 
-## 3. Definição da Arquitetura Base
+##  Definição da Arquitetura Base
 
 Com a maturação das ideias, surgiu a necessidade de:
 
@@ -69,7 +69,7 @@ Principais decisões:
 
 ---
 
-## 4. Organização do Repositório
+##  Organização do Repositório
 
 Foi criada uma estrutura de pastas clara, visando:
 
@@ -86,7 +86,7 @@ Principais diretórios:
 
 ---
 
-## 5. Introdução da Documentação em Markdown
+##  Introdução da Documentação em Markdown
 
 A documentação passou a ser escrita em **Markdown**, pois:
 
@@ -104,7 +104,7 @@ Com isso, adotou-se o padrão:
 
 ---
 
-## 6. Evolução da Ideia de Base de Conhecimento
+##  Evolução da Ideia de Base de Conhecimento
 
 Surgiu então a necessidade de:
 
@@ -119,7 +119,7 @@ Esse movimento marcou a transição de um simples chatbot para um **sistema inte
 
 ---
 
-## 7. Introdução de Conceitos Avançados
+##  Introdução de Conceitos Avançados
 
 Ao longo da evolução, passaram a ser estudados e integrados conceitos como:
 

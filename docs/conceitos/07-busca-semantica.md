@@ -1,6 +1,6 @@
 # Busca Semântica
 
-Este capítulo explica o que é **busca semântica**, como ela funciona e por que ela transforma completamente a qualidade das respostas do ZenBot.
+Este capítulo explica o que é **busca semântica**, como ela funciona e por que ela transforma completamente a qualidade das respostas do Chizu.
 
 ---
 
@@ -74,9 +74,9 @@ Resultado:
 
 ---
 
-## ⚙️ Como o ZenBot implementa a busca semântica?
+## ⚙️ Como o Chizu implementa a busca semântica?
 
-O ZenBot segue este pipeline:
+O Chizu segue este pipeline:
 Textos → fragmentação → embeddings → armazenamento vetorial
 Pergunta → embedding → busca → seleção → resposta
 
@@ -155,7 +155,7 @@ Juntos:
 
 ## 🔗 Próximo capítulo
 
-👉 **08 — Pipeline do ZenBot**
+👉 **08 — Pipeline do Chizu**
 
 Aqui veremos todo o sistema funcionando como um organismo único.
 
@@ -165,6 +165,6 @@ Aqui veremos todo o sistema funcionando como um organismo único.
 
 Este capítulo apresentou o conceito geral de **busca semântica**.
 
-Para entender como o ZenBot implementa esse mecanismo internamente, veja o capítulo:
+Para entender como o Chizu implementa esse mecanismo internamente, veja o capítulo:
 
-➡ **[Busca Semântica no ZenBot](13-busca-semantica.md)**
+➡ **[Busca Semântica no Chizu](13-busca-semantica.md)**

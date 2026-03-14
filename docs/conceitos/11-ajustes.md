@@ -1,6 +1,6 @@
-# 🎛️ Ajustes Finos — Parâmetros, Rate Limit e Estabilidade do ZenBot
+# 🎛️ Ajustes Finos — Parâmetros, Rate Limit e Estabilidade do Chizu
 
-Esta página documenta os **ajustes técnicos fundamentais** para garantir estabilidade, qualidade de resposta e prevenção de erros **HTTP 429 — Too Many Requests** no ZenBot.
+Esta página documenta os **ajustes técnicos fundamentais** para garantir estabilidade, qualidade de resposta e prevenção de erros **HTTP 429 — Too Many Requests** no Chizu.
 
 O objetivo é permitir **controle fino do comportamento do modelo**, especialmente durante testes, deploy e uso em produção.
 
@@ -54,10 +54,6 @@ frequency_penalty = 0.3
 ```
 
 # 🎛️ Ajustes Finos — Parâmetros e Estabilidade (Multi-IA)
-
-Esta página documenta os **ajustes técnicos fundamentais** para garantir a resiliência, a qualidade de resposta e a prevenção de erros no ecossistema do ZenBot.
-
-O objetivo é manter o **controle fino do comportamento do modelo** e garantir que o "Mestre Chizu" nunca fique sem voz, mesmo sob alta demanda ou falhas de terceiros.
 
 ---
 

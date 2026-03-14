@@ -1,6 +1,6 @@
 # Motivação
 
-O ZenBot nasceu da vontade de explorar novas tecnologias, especialmente inteligência artificial, de forma prática, consciente e com sentido.
+O Chizu nasceu da vontade de explorar novas tecnologias, especialmente inteligência artificial, de forma prática, consciente e com sentido.
 
 Mais do que criar um simples chatbot, a ideia sempre foi construir um **ambiente de aprendizado contínuo**, capaz de unir:
 
@@ -20,7 +20,7 @@ O projeto começou como um experimento pessoal, motivado por algumas perguntas f
 - Como organizar grandes volumes de informação de forma inteligente?
 - Como aprender novas tecnologias de maneira prática e profunda?
 
-A partir dessas inquietações, surgiu o ZenBot: um laboratório vivo de experimentação, estudo e desenvolvimento.
+A partir dessas inquietações, surgiu o Chizu: um laboratório vivo de experimentação, estudo e desenvolvimento.
 
 ---
 
@@ -40,7 +40,7 @@ O projeto foi se tornando, naturalmente, uma **jornada de aprendizado técnico e
 
 ## 🎯 Propósito maior
 
-O ZenBot busca mostrar que tecnologia pode ser:
+O Chizu busca mostrar que tecnologia pode ser:
 
 - Simples
 - Didática

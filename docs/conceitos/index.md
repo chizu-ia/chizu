@@ -1,11 +1,11 @@
-# 🧠 Conceitos Fundamentais — ZenBot
+# 🧠 Conceitos Fundamentais — Chizu
 
 
 ## 🎯 Objetivo desta seção
 
 Oferecer uma **base sólida de entendimento**, permitindo que qualquer pessoa:
 
-- Compreenda o funcionamento interno do ZenBot
+- Compreenda o funcionamento interno do Chizu
 - Aprenda os conceitos técnicos envolvidos
 - Construa seus próprios projetos de IA com clareza
 - Desenvolva pensamento sistêmico em software
@@ -27,7 +27,7 @@ Cada conceito aqui apresentado busca equilibrar:
 
 ---
 
-## Fundamentos de Infraestrutura
+## Fundamentos de Infraestruturas
 
 - 🖥️ [Sistemas operacionais](01-sistemas-operacionais.md)
 - 🛠️ [Ferramentas de desenvolvimento](02-ferramentas-de-desenvolvimento.md)
@@ -42,21 +42,23 @@ Cada conceito aqui apresentado busca equilibrar:
 
 - 🧬 [Embeddings](06-embeddings.md)
 - 🔍 [Busca semântica](07-busca-semantica.md)
-- 🧩 [Pipeline do ZenBot](08-pipeline-do-zenbot.md)
+- 🧩 [Pipeline do Chizu](08-pipeline-do-zenbot.md)
 
-## Conceitos do ZenBot
+## Conceitos do Chizu
 
 - ☯️ [Metáfora Zen](09-metafora-zen.md)
 - 🛡️ [Validação de Perguntas](10-validacao-perguntas.md)
 - 🎛️ [Ajustes do Sistema](11-ajustes.md)
 
-## Arquitetura do ZenBot
+## Arquitetura do Chizu
 
 - 🧩 [Chunks e Embeddings](12-chunks-e-embeddings.md)
-- 🔎 [Busca Semântica no ZenBot](13-busca-semantica.md)
-- 🤖 [RAG no ZenBot](14-rag-no-zenbot.md)
+- 🔎 [Busca Semântica no Chizu](13-busca-semantica.md)
+- 🤖 [RAG no Chizu](14-rag-no-zenbot.md)
 - ⚙️ [Pipeline de Textos](15-pipeline-de-textos.md)
-
+- 🏗️ [Arquitetura e Importações](16-dependencias-importacoes.md)
+- 🎭 [Engenharia de Prompts](17-engenharia-de-prompts.md)
+- 🧪 [Protocolo de Testes e Blindagem](18-documentacao_testes.md)
 ---
 
 ## 🛤️ Conectando teoria e prática
@@ -68,4 +70,4 @@ Para transformar estes conceitos em **aprendizado real**, acompanhe o diário de
 
 ---
 
-📘 *Voltar ao índice geral:* [Documentação ZenBot](../index.md)
+📘 *Voltar ao índice geral:* [Documentação Chizu](../index.md)

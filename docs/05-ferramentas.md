@@ -1,10 +1,10 @@
-# 05 – Ferramentas Utilizadas no Projeto ZenBot
+#  Ferramentas Utilizadas no Projeto Chizu
 
-Este documento apresenta as principais ferramentas utilizadas no desenvolvimento do ZenBot, explicando de forma simples **o que cada uma faz e por que foi escolhida**.
+Este documento apresenta as principais ferramentas utilizadas no desenvolvimento do Chizu, explicando de forma simples **o que cada uma faz e por que foi escolhida**.
 
 ---
 
-## 1. Linguagem de Programação
+## Linguagem de Programação
 
 ### Python
 
@@ -19,11 +19,11 @@ Python é a linguagem principal do projeto.
 
 ---
 
-## 2. Framework Web
+## Framework Web
 
 ### FastAPI (framework para criação de APIs web em Python)
 
-Utilizado para criar a **interface web do ZenBot**.
+Utilizado para criar a **interface web do Chizut**.
 
 **Funções principais:**
 
@@ -39,7 +39,7 @@ Utilizado para criar a **interface web do ZenBot**.
 
 ---
 
-## 3. Inteligência Artificial
+## Inteligência Artificial
 
 ### APIs de IA (interfaces de programação de aplicações)
 
@@ -56,7 +56,7 @@ São utilizadas para:
 
 ---
 
-## 4. Controle de Versão
+## Controle de Versão
 
 ### Git + GitHub
 
@@ -75,11 +75,11 @@ Utilizados para:
 
 ---
 
-## 5. Deploy e Hospedagem
+## Deploy e Hospedagem
 
 ### Render (plataforma de deploy em nuvem)
 
-Utilizado para publicar o ZenBot na internet.
+Utilizado para publicar o Chizu na internet.
 
 **Funções principais:**
 
@@ -89,7 +89,7 @@ Utilizado para publicar o ZenBot na internet.
 
 ---
 
-## 6. Exposição Temporária
+## Exposição Temporária
 
 ### ngrok (túnel seguro para exposição local)
 
@@ -101,7 +101,7 @@ Utilizado durante os testes para:
 
 ---
 
-## 7. Ambiente de Desenvolvimento
+## Ambiente de Desenvolvimento
 
 ### macOS + Terminal
 
@@ -116,7 +116,7 @@ Sistema operacional e ambiente principal de desenvolvimento.
 
 ---
 
-## 8. Editor de Código
+##  Editor de Código
 
 ### VS Code (editor de código)
 
@@ -128,7 +128,7 @@ Utilizado para:
 
 ---
 
-## 9. Gerenciamento de Dependências
+##  Gerenciamento de Dependências
 
 ### venv (ambiente virtual Python)
 
@@ -140,7 +140,7 @@ Utilizado para:
 
 ---
 
-## 10. Organização e Documentação
+## Organização e Documentação
 
 ### Markdown
 
@@ -152,9 +152,9 @@ Utilizado para:
 
 ---
 
-## 11. Conclusão
+## Conclusão
 
-O conjunto dessas ferramentas permite que o ZenBot seja:
+O conjunto dessas ferramentas permite que o Chizu seja:
 
 - Modular
 - Escalável

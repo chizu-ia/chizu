@@ -1,8 +1,8 @@
-# Chizu ZenBot — Documentação Geral
+# Chizu ChatBot — Documentação Geral
 
-Bem-vindo ao Chizu ZenBot.
+Bem-vindo ao Chizu.
 
-O ZenBot é um projeto experimental que une tecnologia, inteligência artificial e aprendizado contínuo.  
+O Chizu é um projeto experimental que une tecnologia, inteligência artificial e aprendizado contínuo.  
 Ele foi criado tanto como um laboratório prático de estudo quanto como uma ferramenta real de consulta e reflexão.
 
 Esta documentação foi pensada para ser:
@@ -55,7 +55,7 @@ Criar um chatbot baseado em inteligência artificial capaz de responder pergunta
 
 ## 🧠 Conceitos Fundamentais
 
-Os conceitos técnicos usados no ZenBot estão organizados em uma seção própria.
+Os conceitos técnicos usados no Chizu estão organizados em uma seção própria.
 
 👉 [Explorar os conceitos](conceitos/index.md)
 
@@ -65,6 +65,6 @@ Os conceitos técnicos usados no ZenBot estão organizados em uma seção própr
 Este projeto foi concebido para ser aberto a ideias, sugestões e melhorias.
 
 Se você chegou até aqui e deseja contribuir, critique, sugira, questione e proponha.  
-O ZenBot é, acima de tudo, um espaço de aprendizado coletivo.
+O Chizu é, acima de tudo, um espaço de aprendizado coletivo.
 
 [Chizu.Zenbot@gmail.com](mailto:Chizu.Zenbot@gmail.com)

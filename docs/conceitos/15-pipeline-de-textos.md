@@ -1,6 +1,6 @@
 # Pipeline de Textos
 
-Este capítulo descreve o **pipeline de processamento de textos** utilizado pelo ZenBot.
+Este capítulo descreve o **pipeline de processamento de textos** utilizado pelo Chizu.
 
 Antes que o sistema consiga responder perguntas sobre um livro ou documento, o conteúdo precisa passar por uma série de etapas de processamento.
 
@@ -10,7 +10,7 @@ Esse fluxo transforma textos brutos em **informações pesquisáveis por signifi
 
 ## 🧭 Visão geral do pipeline
 
-O pipeline do ZenBot segue estas etapas principais:
+O pipeline do Chizu segue estas etapas principais:
 
 1. Entrada do texto
 2. Divisão em chunks
@@ -115,7 +115,7 @@ Exemplo simplificado:
 }
 ```
 
-Esse conjunto forma a **base de conhecimento do ZenBot**.
+Esse conjunto forma a **base de conhecimento do Chizu**.
 
 ---
 
@@ -159,7 +159,7 @@ Podemos imaginar o pipeline como o trabalho de um **bibliotecário**.
 
 ## 📌 Resumo
 
-O pipeline de textos do ZenBot segue esta sequência:
+O pipeline de textos do Chizu segue esta sequência:
 
 - **Entrada de textos**
 - **Divisão em chunks**

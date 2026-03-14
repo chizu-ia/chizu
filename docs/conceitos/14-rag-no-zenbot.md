@@ -1,6 +1,6 @@
-# RAG no ZenBot
+# RAG no Chizu
 
-Este capítulo explica como o ZenBot utiliza a técnica chamada **RAG (Retrieval Augmented Generation)** para gerar respostas baseadas nos textos carregados no sistema.
+Este capítulo explica como o Chizu utiliza a técnica chamada **RAG (Retrieval Augmented Generation)** para gerar respostas baseadas nos textos carregados no sistema.
 
 RAG combina duas capacidades:
 
@@ -39,9 +39,9 @@ Esse processo permite que o modelo responda perguntas sobre conteúdos específi
 
 ---
 
-## ⚙️ Fluxo de funcionamento no ZenBot
+## ⚙️ Fluxo de funcionamento no Chizu
 
-No ZenBot, o fluxo funciona da seguinte forma:
+No Chizu, o fluxo funciona da seguinte forma:
 
 1. O usuário faz uma pergunta
 2. A pergunta é convertida em **embedding**
@@ -77,7 +77,7 @@ Com RAG, o sistema pode responder utilizando:
 - documentos do projeto
 - bases de conhecimento específicas
 
-Isso permite que o ZenBot funcione como um **assistente especializado nos textos fornecidos**.
+Isso permite que o Chizu funcione como um **assistente especializado nos textos fornecidos**.
 
 ---
 
@@ -123,4 +123,4 @@ O modelo de linguagem faz algo semelhante: ele **consulta os textos antes de res
 - O sistema recupera trechos relevantes antes de responder  
 - As respostas passam a ser baseadas nos **textos carregados**
 
-Essa arquitetura permite que o ZenBot funcione como um **assistente capaz de responder perguntas sobre os livros presentes no sistema**.
+Essa arquitetura permite que o Chizu funcione como um **assistente capaz de responder perguntas sobre os livros presentes no sistema**.

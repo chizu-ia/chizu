@@ -1,6 +1,6 @@
 # Embeddings
 
-Este capítulo explica o que são **embeddings**, por que eles são fundamentais para sistemas modernos de inteligência artificial e como são usados no ZenBot para permitir **busca semântica real**.
+Este capítulo explica o que são **embeddings**, por que eles são fundamentais para sistemas modernos de inteligência artificial e como são usados no Chizu para permitir **busca semântica real**.
 
 ---
 
@@ -99,9 +99,9 @@ Resultado:
 
 ---
 
-## ⚙️ Como o ZenBot usa embeddings?
+## ⚙️ Como o Chizu usa embeddings?
 
-O ZenBot:
+O Chizu:
 
 1. Divide os textos em pequenos blocos (chunks)
 2. Gera embeddings para cada bloco
@@ -195,7 +195,7 @@ Aqui veremos como esses vetores são usados para encontrar as respostas certas.
 
 Este capítulo apresentou uma visão geral sobre embeddings.
 
-Se você quiser entender **como o ZenBot utiliza embeddings na prática**, incluindo:
+Se você quiser entender **como o Chizu utiliza embeddings na prática**, incluindo:
 
 - geração de embeddings
 - armazenamento

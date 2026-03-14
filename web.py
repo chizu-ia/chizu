@@ -1,56 +1,68 @@
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse, JSONResponse
-from fastapi.staticfiles import StaticFiles
+import sys
+import os
 import random
 import json
 import base64
-import os
-from web_tuning import router as tuning_router  # importa o router do arquivo de testes
-from zen import responder, verificar_chave, aquecer_modelo
 from uuid import uuid4
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
+from dotenv import load_dotenv
 
-# =============================
-# Avatar
-# =============================
-AVATAR_B64 = ""
-if os.path.exists("avatar.png"):
-    with open("avatar.png", "rb") as img_file:
-        AVATAR_B64 = f"data:image/png;base64,{base64.b64encode(img_file.read()).decode()}"
+# 1. Ajuste de Caminho Absoluto
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
+
+load_dotenv(os.path.join(BASE_DIR, ".env"), override=True)
+
+# --- IMPORTAÇÕES DO NOVO SISTEMA (CORE) ---
+try:
+    from core.ai_provider import FreeAIProvider
+    from core.engine import carregar_biblioteca, buscar_contexto, montar_prompt
+    # Se você removeu o web_tuning.py para o backup, comente a linha abaixo
+    from web_tuning import router as tuning_router
+except ImportError as e:
+    print(f"❌ Erro de importação: {e}. Verifique a pasta 'core'.")
+    sys.exit(1)
+
+# ============================================
+# Inicialização do Sistema
+# ============================================
+app = FastAPI()
+
+# Inicializa o Conselho de IAs e a Sabedoria
+ai_provider = FreeAIProvider()
+biblioteca_chizu = carregar_biblioteca()
 
 # Memória temporária em RAM
 conversation_memory = {}
 
-# ============================================
-# Inicialização
-# ============================================
-verificar_chave()
-aquecer_modelo()
-app = FastAPI()
+# =============================
+# Avatar e Arquivos Estáticos (AJUSTADO)
+# =============================
+AVATAR_B64 = ""
+# Agora buscamos o avatar dentro da pasta /static
+avatar_path = os.path.join(BASE_DIR, "static", "avatar.png")
+
+if os.path.exists(avatar_path):
+    with open(avatar_path, "rb") as img_file:
+        AVATAR_B64 = f"data:image/png;base64,{base64.b64encode(img_file.read()).decode()}"
+
+# Montagem de rotas para CSS, JS e Documentação
+if os.path.exists("site"):
+    app.mount("/docs", StaticFiles(directory="site", html=True), name="docs")
+
+# AJUSTE: Agora servimos a pasta /static corretamente
+app.mount("/static", StaticFiles(directory="static"), name="static")
 app.include_router(tuning_router, prefix="/tuning")
-app.mount("/static", StaticFiles(directory="."), name="static")
 
 # ============================================
-# Mensagens para o Frontend
+# Textos da Interface
 # ============================================
-DESPEDIDA_JS = [
-    "Que o silêncio te acompanhe.",
-    "O caminho se abre diante de ti.",
-    "Vá em paz. O vazio te espera.",
-    "Que a mente de principiante floresça.",
-    "Lembre-se: a montanha também é caminho."
-]
+DESPEDIDA_JS = ["Que o silêncio te acompanhe.", "O caminho se abre diante de ti.", "Vá em paz."]
+AGUARDANDO_JS = ["Chizu medita...", "O mestre contempla...", "O silêncio se aprofunda..."]
 
-AGUARDANDO_JS = [
-    "Chizu medita...",
-    "O mestre contempla sua pergunta...",
-    "O silêncio se aprofunda...",
-    "Chizu respira fundo...",
-    "As folhas balançam ao vento..."
-]
-
-# ============================================
-# Página HTML
-# ============================================
 HTML_PAGE = f"""
 <!DOCTYPE html>
 <html lang="pt">
@@ -58,6 +70,7 @@ HTML_PAGE = f"""
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chizu · Mestre Zen</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
@@ -67,33 +80,23 @@ HTML_PAGE = f"""
                 <h1>Chizu</h1>
                 <div class="sub">mestre zen digital</div>
             </div>
-            
             <div class="header-avatar">
                 <img src="{AVATAR_B64}" alt="Mestre Chizu">
             </div>
-            
             <div class="header-quote">
-                Inspirado em<br>
-                <em>"Mente Zen, Mente de Principiante"</em><br>
-                Shunryu Suzuki
+                Inspirado em<br>Shunryu Suzuki<br>Thich Nhat Hanh<br>Shunmyo Masuno<br>Haemin Sunim
             </div>
         </div>
-
         <div class="input-container">
             <input type="text" id="pergunta" placeholder="Fale com Chizu..." autofocus>
         </div>
-
-        <div class="resposta" id="resposta">
-            <em>O silêncio precede a resposta...</em>
-        </div>
-
+        <div class="resposta" id="resposta"><em>O silêncio precede a resposta...</em></div>
         <div class="footer">
             digite "sair", "ok" ou "gassho" para encerrar<br>
             <a href="https://chizuzen.github.io/Zenbot/" target="_blank" class="doc-link">📖 Documentação do Projeto</a>
-            © 2026 • <a href="mailto:Chizu.Zenbot@gmail.com" style="color: inherit; text-decoration: none;">Chizu.Zenbot@gmail.com</a>
+            © 2026 • Chizu.Zenbot@gmail.com
         </div>
     </div>
-
     <script>
         window.DESPEDIDA_JS = {json.dumps(DESPEDIDA_JS)};
         window.AGUARDANDO_JS = {json.dumps(AGUARDANDO_JS)};
@@ -104,102 +107,48 @@ HTML_PAGE = f"""
 """
 
 # ============================================
-# Carrega Koans Clássicos
-# ============================================
-KOANS = []
-koans_path = "src/styles/koans_classicos.txt"
-if os.path.exists(koans_path):
-    with open(koans_path, "r", encoding="utf-8") as f:
-        KOANS = [k.strip() for k in f.read().split("\n") if k.strip()]
-
-# ============================================
-# Rotas
+# Rotas do Servidor
 # ============================================
 @app.get("/", response_class=HTMLResponse)
 async def get_index():
     return HTML_PAGE
 
-@app.get("/koan")
-async def get_koan():
-    koan = random.choice(KOANS) if KOANS else "O silêncio é profundo."
-    return JSONResponse({"koan": koan})
-
 @app.post("/ask")
 async def ask(request: Request):
-
     try:
-
         data = await request.json()
-
         pergunta = data.get("pergunta", "").strip()
 
         if not pergunta:
             return JSONResponse({"resposta": "O silêncio é a resposta."})
 
-        palavras_saida = ["sair", "exit", "quit", "gassho", "obrigado", "ok"]
-
-        if pergunta.lower() in palavras_saida:
+        if pergunta.lower() in ["sair", "exit", "gassho", "obrigado", "ok", "quit"]:
             return JSONResponse({"resposta": random.choice(DESPEDIDA_JS)})
 
         session_id = request.cookies.get("chizu_session") or str(uuid4())
-
         historico = conversation_memory.setdefault(session_id, [])
 
-        try:
-            # 1. Desempacotamos os dois valores: o texto e o nome da IA
-            resposta_texto, ia_nome = responder(pergunta, historico)
-            print(f"[LOG] Resposta enviada por: {ia_nome}")
-            # 2. Limpamos o texto (agora que ele é uma string pura)
-            resposta_llm = (
-                resposta_texto
-                .replace("(Silêncio)", "")  
-                .replace("(silêncio)", "")
-                .replace("(pausa)", "")
-            )
-            
-            # 3. Definimos a resposta final como a versão limpa
-            resposta_final = resposta_llm
-            
-            # Opcional: Se quiser ver no terminal qual IA respondeu:
-            #print(f"[LOG] Resposta do Mestre via: {ia_nome}")
-        except RuntimeError as e:
+        contexto = buscar_contexto(pergunta, biblioteca_chizu)
+        mensagens_base = montar_prompt(pergunta, contexto)
+        
+        # Injeta o histórico
+        prompt_completo = [mensagens_base[0]] + historico[-8:] + [mensagens_base[-1]]
 
-            if str(e) == "RATE_LIMIT":
+        resposta_raw, ia_nome = ai_provider.chat(prompt_completo)
 
-                koan_fallback = random.choice(KOANS) if KOANS else "O silêncio é profundo."
+        resposta_limpa = resposta_raw.replace("(Silêncio)", "").replace("(pausa)", "").strip()
+        resposta_exibida = f"{resposta_limpa}\n\n— via {ia_nome}"
 
-                aviso = "Estamos recebendo muitas requisições no momento."
-
-                resposta_final = f"{aviso}\n\nKoan para reflexão:\n{koan_fallback}"
-
-                return JSONResponse({"resposta": resposta_final})
-
-            else:
-
-                raise
-
-        # =============================
-        # Memória da conversa
-        # =============================
-        historico.append({
-            "role": "user",
-            "content": pergunta
-        })
-
-        # Usamos a resposta_final, que já é o texto puro e limpo
-        historico.append({
-            "role": "assistant",
-            "content": resposta_final
-        })
-
-        # Mantém apenas as últimas 8 mensagens para não pesar no Render
+        # CORREÇÃO AQUI: Chaves simples apenas!
+        historico.append({"role": "user", "content": pergunta})
+        historico.append({"role": "assistant", "content": resposta_limpa})
         conversation_memory[session_id] = historico[-8:]
 
-        response = JSONResponse({"resposta": resposta_final})
+        response = JSONResponse({"resposta": resposta_exibida})
         response.set_cookie("chizu_session", session_id, max_age=60*60*24*7)
-
         return response
 
-    except Exception:
-
-        return JSONResponse({"resposta": "Tremor na montanha digital."}, status_code=500)
+    except Exception as e:
+        print(f"❌ Erro no processamento: {e}")
+        # CORREÇÃO AQUI: Chaves simples apenas!
+        return JSONResponse({"resposta": "Tremor na montanha digital. O mestre medita no caos."}, status_code=500)

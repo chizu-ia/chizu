@@ -1,4 +1,4 @@
-site_name: Chizu ZenBot
+site_name: Chizu 
 site_description: Documentação do projeto ZenBot e do Mestre Chizu
 site_author: Projeto Chizu
 site_url: https://chizuzen.github.io/Zenbot/
@@ -25,11 +25,7 @@ nav:
       - Fluxo de trabalho: 06-fluxo-de-trabalho.md
       - Comandos úteis: 07-comandos-uteis.md
       - Organização dos textos: 08-organizacao-dos-textos.md
-
-  - Planejamento:
       - Roadmap: 09-roadmap.md
-
-  - Jornada:
       - Diário de construção: 10-jornada-de-aprendizado.md
 
   - Conceitos:
@@ -44,9 +40,11 @@ nav:
       - Pipeline do ZenBot: conceitos/08-pipeline-do-zenbot.md
       - Metáfora Zen: conceitos/09-metafora-zen.md
       - Validação de perguntas: conceitos/10-validacao-perguntas.md
-      - Ajustes do sistema: conceitos/11-ajustes.md
       - Chunks e embeddings: conceitos/12-chunks-e-embeddings.md
       - Busca semântica no ZenBot: conceitos/13-busca-semantica.md
       - RAG no ZenBot: conceitos/14-rag-no-zenbot.md
       - Pipeline de textos: conceitos/15-pipeline-de-textos.md
-      
+      - Ajustes do sistema: conceitos/11-ajustes.md
+      - Arquitetura e Importações: conceitos/16-dependencias-importacoes.md
+      - Engenharia de Prompts: conceitos/17-engenharia-de-prompts.md
+      - Protocolo de Testes e Blindagem: conceitos/18-documentacao_testes.md

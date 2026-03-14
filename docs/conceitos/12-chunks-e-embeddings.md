@@ -1,6 +1,6 @@
 # Chunks e Embeddings
 
-Este capítulo explica dois conceitos fundamentais usados pelo ZenBot:
+Este capítulo explica dois conceitos fundamentais usados pelo Chizu:
 
 - **Chunks**
 - **Embeddings**
@@ -65,7 +65,7 @@ Assim ele consegue encontrar trechos relacionados, mesmo que as palavras utiliza
 
 ---
 
-## ⚙️ Como o ZenBot usa Chunks e Embeddings
+## ⚙️ Como o Chizu usa Chunks e Embeddings
 
 O processo interno funciona da seguinte forma:
 
@@ -82,7 +82,7 @@ Esse processo é conhecido como **busca semântica**.
 
 ## 📦 Como isso aparece no projeto
 
-No ZenBot, os chunks e embeddings são armazenados em arquivos.
+No Chizu, os chunks e embeddings são armazenados em arquivos.
 
 Um exemplo é:
 ```text
@@ -120,4 +120,4 @@ Quando surge uma pergunta, o sistema procura no mapa os trechos **mais próximos
 - **Embedding** → representação numérica do significado do texto  
 - **Busca semântica** → comparação entre embeddings para encontrar trechos relevantes
 
-Esses dois elementos formam a base da **memória e da capacidade de busca do ZenBot**.
+Esses dois elementos formam a base da **memória e da capacidade de busca do Chizu**.

@@ -1,8 +1,8 @@
-# Pipeline do ZenBot
+# Pipeline do Chizu
 
-Este capítulo descreve **todo o fluxo de funcionamento do ZenBot**, desde a preparação dos textos até a geração da resposta final.
+Este capítulo descreve **todo o fluxo de funcionamento do Chizu**, desde a preparação dos textos até a geração da resposta final.
 
-Aqui você verá o ZenBot como um **organismo completo**, e não como partes soltas.
+Aqui você verá o Chizu como um **organismo completo**, e não como partes soltas.
 
 ---
 
@@ -20,7 +20,7 @@ Em sistemas de IA, o pipeline define:
 
 ---
 
-## 🎯 Objetivo do pipeline do ZenBot
+## 🎯 Objetivo do pipeline do Chizu
 
 Transformar:
 
@@ -158,7 +158,7 @@ Exemplo:
 }
 ## 🔹 Etapa 7 — Geração do embedding da pergunta
 
-Quando o usuário envia uma pergunta, o ZenBot **transforma essa pergunta em um vetor numérico**, usando o mesmo modelo de embeddings aplicado aos textos.
+Quando o usuário envia uma pergunta, o Chizu **transforma essa pergunta em um vetor numérico**, usando o mesmo modelo de embeddings aplicado aos textos.
 
 Isso garante que:
 
@@ -205,7 +205,7 @@ Assim, o LLM recebe:
 
 - A pergunta original
 - Os textos mais relevantes
-- O prompt orientador do ZenBot
+- O prompt orientador do Chizu
 
 Isso cria um **ambiente informacional rico e confiável**.
 
@@ -221,7 +221,7 @@ O modelo de linguagem (LLM) recebe:
 
 - Pergunta
 - Contexto recuperado
-- Prompt do ZenBot
+- Prompt do Chizu
 
 E então:
 
@@ -250,7 +250,7 @@ Exemplo:
 
 ## 📚 Aprofundamento técnico
 
-Este capítulo apresentou uma visão geral do pipeline do ZenBot.
+Este capítulo apresentou uma visão geral do pipeline do Chizu.
 
 Para uma explicação completa das etapas de processamento de texto, consulte:
 

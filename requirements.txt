@@ -3,3 +3,6 @@ uvicorn
 requests
 python-multipart
 python-dotenv
+sentence-transformers
+numpy
+torch --index-url https://download.pytorch.org/whl/cpu

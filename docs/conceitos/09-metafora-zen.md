@@ -1,12 +1,12 @@
-# Metáfora Zen — A Arquitetura Mental do ZenBot
+# Metáfora Zen — A Arquitetura Mental do Chizu
 
-Este capítulo traduz a arquitetura técnica do ZenBot em **linguagem simbólica, filosófica e intuitiva**, conectando tecnologia e consciência.
+Este capítulo traduz a arquitetura técnica do Chizu em **linguagem simbólica, filosófica e intuitiva**, conectando tecnologia e consciência.
 
 ---
 
-## 🧠 Arquitetura mental do ZenBot
+## 🧠 Arquitetura mental do Chizu
 
-O funcionamento do ZenBot pode ser resumido como:
+O funcionamento do Chizu pode ser resumido como:
 
 > **Perguntar → Buscar → Refletir → Responder**
 
@@ -14,7 +14,7 @@ Ou, em linguagem simbólica:
 
 > **Antes de falar, ele consulta sua própria biblioteca interior.**
 
-Isso significa que o ZenBot **não responde por impulso**.  
+Isso significa que o Chizu **não responde por impulso**.  
 Ele primeiro busca, organiza, compreende e só então expressa.
 
 ---
@@ -29,7 +29,7 @@ Essa arquitetura oferece benefícios profundos:
 - Profundidade conceitual  
 - Controle total do conteúdo  
 
-O ZenBot não improvisa — ele **dialoga com base em conhecimento real**.
+O Chizu não improvisa — ele **dialoga com base em conhecimento real**.
 
 ---
 
@@ -69,14 +69,14 @@ o chá carregará impurezas.
 > **Inteligência não está apenas no modelo,  
 > mas na arquitetura do fluxo.**
 
-O ZenBot não é inteligente apenas porque usa IA,  
+O Chizu não é inteligente apenas porque usa IA,  
 mas porque organiza **como o pensamento acontece**.
 
 ---
 
 ## 🎯 Conclusão
 
-O ZenBot não é apenas um chatbot.
+O Chizu não é apenas um chatbot.
 
 Ele é:
 

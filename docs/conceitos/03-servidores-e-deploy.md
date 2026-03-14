@@ -106,13 +106,13 @@ Algumas plataformas que simplificam o deploy:
 - AWS
 - Google Cloud
 
-No ZenBot utilizamos:
+No Chizu utilizamos:
 
 👉 **Render**
 
 ---
 
-## 🧩 O papel do Render no ZenBot
+## 🧩 O papel do Render no Chizu
 
 O Render:
 
@@ -126,7 +126,7 @@ Tudo isso **sem necessidade de configurar servidores manualmente**.
 
 ---
 
-## ⚙️ Como funciona o deploy do ZenBot
+## ⚙️ Como funciona o deploy do Chizu
 
 Fluxo real do projeto:
 VS Code → Git → GitHub → Render → Internet
@@ -141,7 +141,7 @@ git push
 3. O GitHub recebe o novo código
 4. O Render detecta automaticamente a mudança
 5. Um novo deploy é feito
-6. O ZenBot entra no ar atualizado
+6. O Chizu entra no ar atualizado
 
 ---
 
@@ -193,7 +193,7 @@ Markdown → Pandoc → HTML → GitHub Pages → Navegador
 
 ---
 
-## 📌 No ZenBot
+## 📌 No Chizu
 
 O uso de Render + GitHub Pages permite:
 
@@ -202,4 +202,4 @@ O uso de Render + GitHub Pages permite:
 - Atualizações automáticas
 - Pipeline profissional real
 
-Isso transforma o ZenBot em um **projeto completo de engenharia de software**, não apenas um experimento local.
+Isso transforma o Chizu em um **projeto completo de engenharia de software**, não apenas um experimento local.

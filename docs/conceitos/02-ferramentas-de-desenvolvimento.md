@@ -49,7 +49,7 @@ Exemplos:
 - Vim
 - Nano
 
-No ZenBot utilizamos principalmente:
+No Chizu utilizamos principalmente:
 
 👉 **VS Code**
 
@@ -71,7 +71,7 @@ Exemplos:
 - Zsh
 - Fish
 
-No ZenBot, usamos:
+No Chizu, usamos:
 
 👉 **Terminal + Zsh (macOS)**
 
@@ -106,7 +106,7 @@ Plataforma de hospedagem:
 
 São os ambientes onde o código realmente roda.
 
-No ZenBot usamos principalmente:
+No Chizu usamos principalmente:
 
 - **Python** — linguagem principal do backend
 - **HTML / CSS** — documentação e portal
@@ -131,12 +131,12 @@ Permitem colocar o sistema no ar.
 
 No projeto:
 
-- **Render** → backend do ZenBot
+- **Render** → backend do Chizu
 - **GitHub Pages** → documentação pública
 
 ---
 
-## 🔗 Ferramentas usadas no ZenBot
+## 🔗 Ferramentas usadas no Chizu
 
 Resumo prático:
 
@@ -171,4 +171,4 @@ Isso cria um **ecossistema completo de desenvolvimento profissional.**
 
 > Ferramentas não substituem o raciocínio, mas **amplificam a capacidade criativa e técnica do desenvolvedor.**
 
-No ZenBot, cada ferramenta foi escolhida para **ensinar, organizar e escalar conhecimento.**
+No Chizu, cada ferramenta foi escolhida para **ensinar, organizar e escalar conhecimento.**

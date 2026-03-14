@@ -40,16 +40,16 @@ Alguns dos sistemas operacionais mais conhecidos:
 - Android
 - iOS
 
-No caso do ZenBot, o desenvolvimento ocorre principalmente sobre:
+No caso do Chizu, o desenvolvimento ocorre principalmente sobre:
 
 - **macOS** (ambiente local)
 - **Linux** (ambiente de produção no Render)
 
 ---
 
-## 🔗 Relação com o ZenBot
+## 🔗 Relação com o Chizu
 
-No projeto ZenBot, o sistema operacional é responsável por:
+No projeto Chizu, o sistema operacional é responsável por:
 
 - Executar o servidor backend
 - Rodar scripts Python
@@ -57,7 +57,7 @@ No projeto ZenBot, o sistema operacional é responsável por:
 - Controlar processos do servidor web
 - Manter serviços ativos em produção
 
-Sem um sistema operacional bem configurado, o ZenBot simplesmente não funcionaria.
+Sem um sistema operacional bem configurado, o Chizu simplesmente não funcionaria.
 
 ---
 

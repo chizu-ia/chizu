@@ -1,14 +1,14 @@
 # Visão Geral
 
-O ZenBot é um chatbot baseado em inteligência artificial capaz de responder perguntas a partir de uma base textual previamente organizada.
+O Chizu é um chatbot baseado em inteligência artificial capaz de responder perguntas a partir de uma base textual previamente organizada.
 
 Ele combina técnicas modernas de processamento de linguagem natural com uma arquitetura simples, modular e escalável.
 
 ---
 
-## 🧩 O que o ZenBot faz?
+## 🧩 O que o Chizu faz?
 
-De forma resumida, o ZenBot:
+De forma resumida, o Chizu:
 
 1. Recebe uma pergunta do usuário.
 2. Analisa semanticamente essa pergunta.
@@ -32,7 +32,7 @@ De forma resumida, o ZenBot:
 ## 🧠 Por que usar embeddings?
 
 Buscas tradicionais trabalham com palavras-chave.  
-O ZenBot trabalha com **significado**.
+O Chizu trabalha com **significado**.
 
 Isso permite que:
 
@@ -47,9 +47,9 @@ Mesmo usando palavras diferentes, o sistema encontra os textos corretos.
 
 ---
 
-## 🌐 Onde o ZenBot roda?
+## 🌐 Onde o Chizu roda?
 
-O ZenBot funciona como uma aplicação web hospedada em um servidor, utilizando:
+O Chizu funciona como uma aplicação web hospedada em um servidor, utilizando:
 
 - FastAPI, framework web moderno em Python.
 - Render, plataforma de hospedagem.

@@ -129,7 +129,7 @@ Ele funciona como:
 
 Pequenas mudanças no prompt geram **grandes diferenças no comportamento**.
 
-No ZenBot, o prompt define:
+No Chizu, o prompt define:
 
 - Tom reflexivo
 - Estilo zen
@@ -139,9 +139,9 @@ No ZenBot, o prompt define:
 
 ---
 
-## 🔗 LLM + Busca Semântica = ZenBot
+## 🔗 LLM + Busca Semântica = Chizu
 
-O ZenBot não depende apenas do LLM.
+O Chizu não depende apenas do LLM.
 
 Ele combina:
 
@@ -170,13 +170,13 @@ Apesar de poderosos, eles:
 - Não possuem consciência
 - Não entendem o mundo real diretamente
 
-Por isso o ZenBot usa:
+Por isso o Chizu usa:
 
 > **Textos confiáveis + busca semântica**
 
 ---
 
-## 🎯 Por que usar LLM no ZenBot?
+## 🎯 Por que usar LLM no Chizu?
 
 Porque permite:
 
@@ -188,7 +188,7 @@ Porque permite:
 
 Sem LLM:
 
-> O ZenBot seria apenas um motor de busca técnico.
+> O Chizu seria apenas um motor de busca técnico.
 
 ---
 
@@ -215,4 +215,4 @@ Mas:
 
 👉 **06 — Embeddings**
 
-Aqui veremos como o ZenBot transforma palavras em números e consegue "entender significado".
+Aqui veremos como o Chizu transforma palavras em números e consegue "entender significado".

@@ -1,12 +1,12 @@
-# 04 – Arquitetura do Projeto ZenBot
+# Arquitetura do Projeto Chizu
 
-Este documento descreve, de forma simples e didática, como o ZenBot está organizado internamente e como seus componentes se conectam.
+Este documento descreve, de forma simples e didática, como o Chizu está organizado internamente e como seus componentes se conectam.
 
 ---
 
-## 1. Visão Geral da Arquitetura
+##  Visão Geral da Arquitetura
 
-O ZenBot segue uma arquitetura modular, organizada em camadas, com o objetivo de:
+O Chizu segue uma arquitetura modular, organizada em camadas, com o objetivo de:
 
 - Facilitar o entendimento do sistema.
 - Tornar o código mais limpo.
@@ -18,11 +18,11 @@ Usuário → API Web → Busca Semântica → Geração de Resposta → Usuário
 
 ---
 
-## 2. Estrutura Geral de Pastas
+##  Estrutura Geral de Pastas
 
 A estrutura principal do projeto é:
 ```text
-zenbot/
+Chizu/
 ├── core/
 ├── data/
 ├── textos/
@@ -37,7 +37,7 @@ Cada pasta possui uma função específica dentro do sistema.
 
 ---
 
-## 3. Camada de Interface (API Web)
+##  Camada de Interface (API Web)
 
 A interface com o usuário ocorre por meio de uma **API Web**, construída com FastAPI (framework web em Python).
 
@@ -53,7 +53,7 @@ Arquivos principais:
 
 ---
 
-## 4. Camada de Processamento Central (core)
+##  Camada de Processamento Central (core)
 
 A pasta `core/` contém o núcleo lógico do ZenBot.
 ```text
@@ -77,7 +77,7 @@ core/
 
 ---
 
-## 5. Camada de Dados e Textos
+##  Camada de Dados e Textos
 
 ### Pasta `textos/`
 
@@ -97,7 +97,7 @@ Armazena:
 
 ---
 
-## 6. Camada de Scripts Auxiliares
+##  Camada de Scripts Auxiliares
 
 A pasta `scripts/` contém ferramentas para:
 
@@ -110,7 +110,7 @@ Esses scripts formam o **pipeline de preparação do conhecimento**.
 
 ---
 
-## 7. Fluxo Simplificado de Funcionamento
+##  Fluxo Simplificado de Funcionamento
 
 1. O usuário faz uma pergunta.
 2. A API recebe a requisição.
@@ -122,7 +122,7 @@ Esses scripts formam o **pipeline de preparação do conhecimento**.
 
 ---
 
-## 8. Princípios de Arquitetura
+## Princípios de Arquitetura
 
 - Simplicidade  
 - Modularidade  
@@ -132,7 +132,7 @@ Esses scripts formam o **pipeline de preparação do conhecimento**.
 
 ---
 
-## 9. Conclusão
+## Conclusão
 
-A arquitetura do ZenBot foi pensada não apenas para funcionar, mas também para **ensinar**, permitindo que qualquer pessoa possa compreender seu funcionamento interno e contribuir com melhorias.
+A arquitetura do Chizu foi pensada não apenas para funcionar, mas também para **ensinar**, permitindo que qualquer pessoa possa compreender seu funcionamento interno e contribuir com melhorias.
 Quando quiser, seguimos no mesmo ritmo calmo com:

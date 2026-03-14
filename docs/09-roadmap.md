@@ -1,22 +1,22 @@
-# 09 – Roadmap do Projeto ZenBot
+#  Roadmap do Projeto Chizu
 
-Este documento apresenta os **próximos passos planejados para a evolução do ZenBot**, servindo como guia de crescimento e espaço para novas ideias.
+Este documento apresenta os **próximos passos planejados para a evolução do Chizu**, servindo como guia de crescimento e espaço para novas ideias.
 
 O roadmap é **flexível**, aberto a contribuições e ajustável conforme o aprendizado e as necessidades do projeto.
 
 ---
 
-## 1. Objetivos Gerais
+## Objetivos Gerais
 
 - Aprimorar a qualidade das respostas.
 - Tornar o projeto mais didático.
 - Facilitar a colaboração.
-- Expandir o alcance do ZenBot.
+- Expandir o alcance do Chizu.
 - Explorar novas possibilidades tecnológicas.
 
 ---
 
-## 2. Curto Prazo
+## Curto Prazo
 
 - Refinar a base textual.
 - Melhorar a organização da documentação.
@@ -26,7 +26,7 @@ O roadmap é **flexível**, aberto a contribuições e ajustável conforme o apr
 
 ---
 
-## 3. Médio Prazo
+## Médio Prazo
 
 - Implementar histórico de conversas.
 - Criar sistema de feedback dos usuários.
@@ -36,9 +36,9 @@ O roadmap é **flexível**, aberto a contribuições e ajustável conforme o apr
 
 ---
 
-## 4. Longo Prazo
+## Longo Prazo
 
-- Criar plataforma educacional baseada no ZenBot.
+- Criar plataforma educacional baseada no Chizu.
 - Transformar o projeto em material de ensino.
 - Desenvolver múltiplos bots temáticos.
 - Integrar com outras plataformas.
@@ -46,7 +46,7 @@ O roadmap é **flexível**, aberto a contribuições e ajustável conforme o apr
 
 ---
 
-## 5. Espaço para Ideias
+## Espaço para Ideias
 
 Este projeto é vivo. Novas ideias, sugestões e contribuições são sempre bem-vindas.
 
@@ -60,7 +60,7 @@ Algumas possibilidades:
 
 ---
 
-## 6. Filosofia do Roadmap
+## Filosofia do Roadmap
 
 Mais importante que atingir metas rígidas é:
 
@@ -71,8 +71,8 @@ Mais importante que atingir metas rígidas é:
 
 ---
 
-## 7. Conclusão
+## Conclusão
 
-O ZenBot não é apenas um projeto técnico, mas uma **jornada de aprendizado, reflexão e construção coletiva**.
+O Chizu não é apenas um projeto técnico, mas uma **jornada de aprendizado, reflexão e construção coletiva**.
 
 Seu futuro é tão amplo quanto a curiosidade e a dedicação de quem participa dele.

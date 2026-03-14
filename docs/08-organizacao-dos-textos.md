@@ -1,4 +1,4 @@
-# 08 – Organização dos Textos no Projeto ZenBot
+# Organização dos Textos no Projeto Chizu
 
 Este documento descreve como os textos são organizados, tratados e preparados para se tornarem a **base de conhecimento do ZenBot**.
 
@@ -6,9 +6,9 @@ O objetivo é transformar conteúdos brutos em **informação estruturada, pesqu
 
 ---
 
-## 1. Visão Geral
+## Visão Geral
 
-O ZenBot utiliza textos como fonte principal de conhecimento. Esses textos passam por um **processo de transformação**, que inclui:
+O Chizu utiliza textos como fonte principal de conhecimento. Esses textos passam por um **processo de transformação**, que inclui:
 
 Texto bruto → Limpeza → Fragmentação → Embeddings → Busca Semântica
 
@@ -16,7 +16,7 @@ Esse fluxo garante que o sistema consiga **entender o significado dos conteúdos
 
 ---
 
-## 2. Tipos de Textos Utilizados
+## Tipos de Textos Utilizados
 
 Os principais formatos são:
 
@@ -30,7 +30,7 @@ textos/
 
 ---
 
-## 3. Limpeza dos Textos
+## Limpeza dos Textos
 
 Após a extração, os textos passam por um processo de **limpeza**, que inclui:
 
@@ -43,7 +43,7 @@ Objetivo: deixar o texto **mais claro, contínuo e semanticamente consistente**.
 
 ---
 
-## 4. Fragmentação (Chunks)
+## Fragmentação (Chunks)
 
 Textos longos são divididos em **pequenos blocos**, chamados de *chunks*.
 
@@ -57,7 +57,7 @@ Cada chunk representa uma **ideia completa ou um pequeno trecho coerente**.
 
 ---
 
-## 5. Geração de Embeddings
+## Geração de Embeddings
 
 Cada fragmento é convertido em um **vetor semântico (embedding)**.
 
@@ -69,7 +69,7 @@ Embeddings são **representações matemáticas do significado dos textos**, per
 
 ---
 
-## 6. Armazenamento dos Dados
+## Armazenamento dos Dados
 
 Os dados gerados são organizados principalmente em:
 data/
@@ -82,7 +82,7 @@ Contendo:
 
 ---
 
-## 7. Pipeline de Preparação dos Textos
+## Pipeline de Preparação dos Textos
 
 O processo completo segue a sequência:
 
@@ -97,7 +97,7 @@ Este conjunto de etapas forma o **pipeline de preparação do conhecimento**.
 
 ---
 
-## 8. Organização dos Arquivos
+## Organização dos Arquivos
 
 A separação clara entre:
 
@@ -114,7 +114,7 @@ permite:
 
 ---
 
-## 9. Princípios da Organização
+##  Princípios da Organização
 
 - Clareza  
 - Simplicidade  
@@ -124,9 +124,9 @@ permite:
 
 ---
 
-## 10. Conclusão
+## Conclusão
 
-A organização dos textos é o **coração do ZenBot**. Um bom preparo dos dados garante:
+A organização dos textos é o **coração do Chizu**. Um bom preparo dos dados garante:
 
 - Respostas melhores.
 - Maior coerência.

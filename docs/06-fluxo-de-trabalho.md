@@ -1,19 +1,19 @@
-# 06 – Fluxo de Trabalho do Projeto ZenBot
+#  Fluxo de Trabalho do Projeto Chizu
 
-Este documento descreve o **passo a passo básico do trabalho diário no projeto ZenBot**, desde o desenvolvimento local até o deploy em produção.
+Este documento descreve o **passo a passo básico do trabalho diário no projeto Chizu**, desde o desenvolvimento local até o deploy em produção.
 
 O objetivo é manter um fluxo simples, previsível e organizado.
 
 ---
 
-## 1. Visão Geral do Fluxo
+## Visão Geral do Fluxo
 
 O ciclo básico de trabalho segue esta sequência:
 Planejar → Codar → Testar Local → Versionar → Publicar → Testar Produção
 
 ---
 
-## 2. Desenvolvimento Local
+## Desenvolvimento Local
 
 Nesta etapa, todo o trabalho acontece na máquina local.
 
@@ -33,7 +33,7 @@ Ferramentas principais:
 
 ---
 
-## 3. Testes Locais
+## Testes Locais
 
 Antes de publicar qualquer alteração, o sistema é testado localmente.
 
@@ -50,7 +50,7 @@ Objetivo:
 
 ---
 
-## 4. Versionamento com Git
+## Versionamento com Git
 
 Após os testes locais:
 
@@ -66,7 +66,7 @@ Objetivo:
 
 ---
 
-## 5. Deploy no Render
+## Deploy no Render
 
 Com o código atualizado no GitHub, o Render:
 
@@ -80,7 +80,7 @@ Objetivo:
 
 ---
 
-## 6. Testes em Produção
+## Testes em Produção
 
 Após o deploy:
 
@@ -90,7 +90,7 @@ Após o deploy:
 
 ---
 
-## 7. Registro das Evoluções
+## Registro das Evoluções
 
 Sempre que possível, as mudanças importantes são:
 
@@ -100,7 +100,7 @@ Sempre que possível, as mudanças importantes são:
 
 ---
 
-## 8. Princípios do Fluxo de Trabalho
+## Princípios do Fluxo de Trabalho
 
 - Simplicidade  
 - Clareza  
@@ -110,6 +110,6 @@ Sempre que possível, as mudanças importantes são:
 
 ---
 
-## 9. Conclusão
+## Conclusão
 
-Este fluxo de trabalho permite que o ZenBot evolua de forma **organizada, segura e didática**, favorecendo tanto o aprendizado quanto a estabilidade do sistema.
+Este fluxo de trabalho permite que o Chizu evoluação de forma **organizada, segura e didática**, favorecendo tanto o aprendizado quanto a estabilidade do sistema.

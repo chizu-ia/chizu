@@ -1,6 +1,6 @@
 # Inteligência Artificial
 
-Este capítulo explica, de forma clara e didática, o que é **Inteligência Artificial (IA)**, como ela funciona na prática e como ela é usada no ZenBot.
+Este capítulo explica, de forma clara e didática, o que é **Inteligência Artificial (IA)**, como ela funciona na prática e como ela é usada no Chizu.
 
 ---
 
@@ -105,9 +105,9 @@ No final, ela não memoriza textos — ela **aprende padrões estatísticos da l
 
 ---
 
-## 🎯 O papel da IA no ZenBot
+## 🎯 O papel da IA no Chizu
 
-No ZenBot, a IA é responsável por:
+No Chizu, a IA é responsável por:
 
 - Interpretar perguntas
 - Entender intenção do usuário
@@ -116,15 +116,15 @@ No ZenBot, a IA é responsável por:
 
 Mas há um ponto essencial:
 
-> O ZenBot **não responde apenas com base no modelo** — ele responde **a partir dos textos que você forneceu.**
+> O Chizu **não responde apenas com base no modelo** — ele responde **a partir dos textos que você forneceu.**
 
 Isso muda tudo.
 
 ---
 
-## 🧠 IA + Base de Conhecimento = ZenBot
+## 🧠 IA + Base de Conhecimento = Chizu
 
-O ZenBot funciona combinando:
+O Chizu funciona combinando:
 
 - Modelo de linguagem (IA)
 - Textos selecionados (sabedoria zen)
@@ -134,7 +134,7 @@ O ZenBot funciona combinando:
 Fluxo simplificado:
 Pergunta → Busca semântica → Textos relevantes → IA → Resposta
 
-Assim, o ZenBot:
+Assim, o Chizu:
 
 - Não "inventa" respostas
 - Não se afasta do conteúdo zen
@@ -154,7 +154,7 @@ Executa tarefas específicas:
 - Reconhecimento de imagem
 - Recomendação de conteúdo
 
-👉 O ZenBot pertence a essa categoria.
+👉 O Chizu pertence a essa categoria.
 
 ---
 
@@ -176,7 +176,7 @@ Uma inteligência geral, capaz de pensar como um humano.
 
 ---
 
-## 🧭 Por que usar IA no ZenBot?
+## 🧭 Por que usar IA no Chizu?
 
 Porque ela permite:
 
@@ -186,7 +186,7 @@ Porque ela permite:
 - Linguagem clara e acessível
 - Interação humana realista
 
-Sem IA, o ZenBot seria apenas:
+Sem IA, o Chizu seria apenas:
 
 > Um mecanismo rígido de busca textual.
 
@@ -194,7 +194,7 @@ Sem IA, o ZenBot seria apenas:
 
 ## 🧘 A metáfora Zen
 
-A IA no ZenBot é como:
+A IA no Chizu é como:
 
 > Um monge muito rápido que leu milhares de livros, mas só fala aquilo que você coloca diante dele.
 

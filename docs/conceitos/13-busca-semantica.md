@@ -1,6 +1,6 @@
 # Busca Semântica
 
-Este capítulo explica o conceito de **busca semântica**, um dos mecanismos centrais utilizados pelo ZenBot para encontrar informações relevantes nos textos.
+Este capítulo explica o conceito de **busca semântica**, um dos mecanismos centrais utilizados pelo Chizu para encontrar informações relevantes nos textos.
 
 Diferente de uma busca tradicional baseada apenas em palavras, a busca semântica tenta encontrar **significados relacionados**.
 
@@ -76,9 +76,9 @@ Seleção dos chunks mais próximos
 ```
 ---
 
-## ⚙️ Fluxo da Busca Semântica no ZenBot
+## ⚙️ Fluxo da Busca Semântica no Chizu
 
-No ZenBot, o fluxo básico funciona assim:
+No Chizu, o fluxo básico funciona assim:
 
 1. O usuário faz uma pergunta
 2. A pergunta é convertida em embedding
@@ -126,4 +126,4 @@ Quando surge uma pergunta, o sistema procura **os pontos mais próximos no mapa*
 - **Embeddings** permitem representar textos como vetores  
 - **Similaridade vetorial** identifica conteúdos relacionados  
 
-A busca semântica é o mecanismo que permite ao ZenBot **encontrar conhecimento relevante dentro dos textos antes de gerar uma resposta**.
+A busca semântica é o mecanismo que permite ao Chizu **encontrar conhecimento relevante dentro dos textos antes de gerar uma resposta**.

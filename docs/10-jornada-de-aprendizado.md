@@ -1,6 +1,6 @@
-# 🛤️ Jornada de Aprendizado — Diário de Construção do ZenBot
+# 🛤️ Jornada de Aprendizado — Diário de Construção do Chizu
 
-Este documento registra a **trajetória real de aprendizado, experimentação, erros, descobertas e evolução** durante a construção do projeto ZenBot.
+Este documento registra a **trajetória real de aprendizado, experimentação, erros, descobertas e evolução** durante a construção do projeto Chizu.
 
 Mais do que um diário técnico, ele é um **mapa da transformação intelectual**, mostrando como ideias abstratas se tornaram sistemas concretos.
 
@@ -8,7 +8,7 @@ Mais do que um diário técnico, ele é um **mapa da transformação intelectual
 
 ## 🌱 O ponto de partida
 
-O ZenBot nasceu de uma inquietação simples:
+O Chizu nasceu de uma inquietação simples:
 
 > Como transformar o estudo de inteligência artificial em algo prático, profundo e realmente compreendido?
 
@@ -53,7 +53,7 @@ Essa etapa redefiniu completamente a arquitetura do projeto.
 
 ## 🏗️ Evolução da arquitetura
 
-O ZenBot deixou de ser um simples gerador de texto e passou a se tornar um **sistema estruturado de conhecimento**, composto por:
+O Chizu deixou de ser um simples gerador de texto e passou a se tornar um **sistema estruturado de conhecimento**, composto por:
 
 - Base textual cuidadosamente selecionada
 - Pipeline de processamento
@@ -62,6 +62,58 @@ O ZenBot deixou de ser um simples gerador de texto e passou a se tornar um **sis
 - Camada de resposta didática
 
 Esse processo consolidou uma visão mais madura de engenharia de software e arquitetura de sistemas.
+
+---
+
+## 🤖 A arquitetura das quatro inteligências
+
+Com a evolução do projeto, o Chizu passou a operar com um sistema de **redundância e cooperação entre múltiplas inteligências artificiais**.
+
+Atualmente o sistema utiliza **quatro provedores de IA**, formando um conselho de modelos que podem responder às consultas.
+
+Essa abordagem traz várias vantagens:
+
+- maior **resiliência contra falhas**
+- redução de problemas de **rate limit**
+- possibilidade de **comparar estilos de resposta**
+- maior **continuidade do serviço**
+
+Se um modelo não responde ou está indisponível, outro assume a tarefa.
+
+Essa arquitetura transforma o Chizu em um sistema **mais robusto e confiável**.
+
+---
+
+## 💻 Execução local do sistema
+
+Outro marco importante foi a capacidade de **executar todo o sistema localmente**.
+
+Isso permitiu:
+
+- testes rápidos
+- depuração mais eficiente
+- experimentação com parâmetros dos modelos
+- evolução da arquitetura sem depender sempre do deploy
+
+Rodar o Chizu localmente tornou o processo de desenvolvimento **muito mais ágil e controlado**.
+
+---
+
+## 📚 Evolução da documentação
+
+Com o crescimento do projeto, a documentação também evoluiu significativamente.
+
+Utilizando **Markdown + MkDocs**, foi possível construir uma base de conhecimento clara e navegável.
+
+Entre as melhorias realizadas:
+
+- reorganização das páginas
+- simplificação do CSS
+- melhoria no layout e na legibilidade
+- geração automática do site de documentação
+- integração com GitHub Pages
+
+A documentação deixou de ser apenas um registro e passou a funcionar como **uma extensão do próprio sistema**.
 
 ---
 
@@ -74,7 +126,7 @@ Durante o desenvolvimento, diversos desafios surgiram:
 - Deploy em ambiente público (Render + GitHub Pages)
 - Exposição segura de APIs
 - Criação de documentação clara e navegável
-- Automação da geração de HTML via Pandoc
+- Automação da geração de HTML e páginas de documentação
 
 Cada obstáculo foi tratado como **oportunidade de aprendizado profundo**, não apenas como algo a ser resolvido rapidamente.
 
@@ -92,7 +144,7 @@ A metáfora Zen passou a guiar decisões importantes:
 - Simplicidade acima de sofisticação excessiva
 - Consistência acima de velocidade
 
-O pipeline do ZenBot passou a representar simbolicamente:
+O pipeline do Chizu passou a representar simbolicamente:
 
 **Perguntar → Buscar → Refletir → Responder**
 
@@ -116,7 +168,7 @@ A criação dessa base documental em Markdown + HTML permitiu:
 - Consolidação do aprendizado
 - Compartilhamento aberto da jornada
 
-Esse processo transformou o ZenBot em um **ambiente vivo de estudo e reflexão técnica**.
+Esse processo transformou o Chizu em um **ambiente vivo de estudo e reflexão técnica**.
 
 ---
 
@@ -136,7 +188,7 @@ Mais do que aprender ferramentas, houve uma **mudança de mentalidade**.
 
 ## 🎯 Propósito maior
 
-O ZenBot não é apenas um chatbot.
+O Chizu não é apenas um chatbot.
 
 Ele é:
 
@@ -155,7 +207,7 @@ Esta jornada mostra que:
 
 > Aprender tecnologia é, no fundo, aprender a pensar.
 
-O ZenBot é um espelho desse processo.
+O Chizu é um espelho desse processo.
 
 Ele não busca respostas rápidas, mas **compreensão profunda**.
 
