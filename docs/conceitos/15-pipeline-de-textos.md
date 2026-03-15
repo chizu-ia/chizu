@@ -157,6 +157,41 @@ Podemos imaginar o pipeline como o trabalho de um **bibliotecário**.
 
 ---
 
+# TF-IDF
+
+TF-IDF é uma técnica matemática para medir o quanto uma palavra é importante num texto.
+
+## TF — Term Frequency
+Quantas vezes a palavra aparece no texto.
+"silêncio" aparece 5 vezes → tem peso alto.
+
+## IDF — Inverse Document Frequency
+O quanto a palavra é rara no conjunto de todos os textos.
+"o", "a", "de" aparecem em todo lugar → peso baixo.
+"zazen" aparece em poucos textos → peso alto.
+
+## Como funciona
+
+A multiplicação **TF × IDF** dá um score para cada palavra. Com isso o sistema transforma
+a pergunta do usuário e todos os textos zen em vetores numéricos, e depois calcula qual
+texto é mais parecido com a pergunta.
+
+## No Chizu
+
+Quando o usuário pergunta *"como lidar com a ansiedade?"*, o TF-IDF procura nos 1914
+ensinamentos quais têm palavras mais próximas — "ansiedade", "mente", "preocupação",
+"paz" — e retorna os 3 mais relevantes como contexto para a IA responder.
+
+## Limitação
+
+A diferença em relação ao sistema antigo com `sentence-transformers` é que aquele
+entendia **semântica** — sabia que "angústia" e "ansiedade" são parecidas mesmo sem
+as mesmas letras. O TF-IDF só vê **palavras exatas**, por isso às vezes não encontra
+contexto e o mestre manda meditar.
+
+> Se isso estiver acontecendo muito, podemos ajustar o `top_k` ou adicionar sinônimos.
+
+
 ## 📌 Resumo
 
 O pipeline de textos do Chizu segue esta sequência:
