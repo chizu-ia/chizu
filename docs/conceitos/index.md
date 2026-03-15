@@ -59,6 +59,8 @@ Cada conceito aqui apresentado busca equilibrar:
 - 🏗️ [Arquitetura e Importações](16-dependencias-importacoes.md)
 - 🎭 [Engenharia de Prompts](17-engenharia-de-prompts.md)
 - 🧪 [Protocolo de Testes e Blindagem](18-documentacao_testes.md)
+- 🌐 [Verificação de DNS](19-verificacao_dns.md)
+- 📊 [Monitoramento do Sistema](20-monitoramento.md)
 ---
 
 ## 🛤️ Conectando teoria e prática
