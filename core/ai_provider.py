@@ -13,7 +13,7 @@ class FreeAIProvider:
 
         }
 
-    def chat(self, messages, temperature=0.45, max_tokens=500, top_p=0.9, frequency_penalty=0.45, presence_penalty=0.25):
+    def chat(self, messages, temperature=0.45, max_tokens=200, top_p=0.9, frequency_penalty=0.45, presence_penalty=0.25):
         providers = [
             ("Gemini", self._gemini_chat),
             ("Groq", self._groq_chat),

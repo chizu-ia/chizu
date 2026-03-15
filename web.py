@@ -37,19 +37,6 @@ biblioteca_chizu = carregar_biblioteca()
 # Memória temporária em RAM
 conversation_memory = {}
 
-# ============================================
-# Embedding via Groq (sem modelo local)     # ← bloco novo aqui
-# ============================================
-async def embed_pergunta(texto: str) -> list:
-    async with httpx.AsyncClient(timeout=10) as client:
-        r = await client.post(
-            "https://api.groq.com/openai/v1/embeddings",
-            headers={"Authorization": f"Bearer {os.getenv('GROQ_API_KEY')}"},
-            json={"model": "llama3-embed-1024-float", "input": texto}
-        )
-        r.raise_for_status()
-        return r.json()["data"][0]["embedding"]
-    
 
 # =============================
 # Avatar e Arquivos Estáticos (AJUSTADO)
