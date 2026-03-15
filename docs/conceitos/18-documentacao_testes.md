@@ -74,7 +74,11 @@ curl -X POST http://localhost:8001/ask \
   -H "Content-Type: application/json" \
   -d '{"pergunta": "o que é impermanência?"}'
 ```
-
+```bash
+curl -X POST https://zenbot-6ot0.onrender.com/ask \
+  -H "Content-Type: application/json" \
+  -d '{"pergunta": "impermanência?"}'
+```  
 ---
 
 ## 🎯 Critérios de Aceitação para Deploy

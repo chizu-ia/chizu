@@ -44,6 +44,8 @@ Se esses quatro pontos estiverem claros, a arquitetura mental do Chizu está cor
 - O que é presença?
 - O que é medo?
 - O que é liberdade?
+- O que é o vazio?
+- O que é impermanência?
 
 **Critérios de sucesso:**
 
@@ -70,6 +72,13 @@ Se esses quatro pontos estiverem claros, a arquitetura mental do Chizu está cor
 - Onde está o agora?
 - Qual é o som do silêncio?
 - Quem observa seus pensamentos?
+- O que é o silêncio quando não tento escutar?
+- Se eu não sou meus pensamentos, quem está pensando agora?
+- Como chegar onde já estou?
+- O que existe antes do primeiro pensamento da manhã?
+- Onde está o ontem agora?
+- Quem sofre quando não há ninguém para sofrer?
+- O que resta quando não busco nada?
 
 **Critérios de sucesso:**
 
@@ -95,6 +104,8 @@ Se esses quatro pontos estiverem claros, a arquitetura mental do Chizu está cor
 - Guie uma prática para aliviar a ansiedade.
 - Crie uma meditação para dormir melhor.
 - Oriente uma prática de respiração consciente.
+- Guie uma prática para soltar o controle.
+- Conduza uma meditação para quem está sobrecarregado.
 
 **Critérios de sucesso:**
 
@@ -121,20 +132,51 @@ Se esses quatro pontos estiverem claros, a arquitetura mental do Chizu está cor
 **Perguntas ideais:**
 
 - O que é mente zen?
+- O que é mente de principiante?
 - Explique a mente do iniciante.
 - O que significa apenas sentar?
 - Como lidar com ansiedade?
+- Como lidar com a raiva?
 - O que é estar presente?
+- Como praticar zazen?
+- Qual a importância da postura no zazen?
+- O Zen nos ensina a não nos compararmos com os outros, por que?
+- Caminhante busca entender por que não deve se preocupar tanto com o futuro.
+- Mestre, me fale sobre a importância do silêncio e como ele nos ajuda a ver a verdade.
+- Quais são as coisas que você só vê quando desacelera?
 
 **Critérios de sucesso:**
 
 - 3 a 6 parágrafos  
 - explicação + analogia  
 - fechamento reflexivo  
+- citação de autor e livro da biblioteca
 
 **Exemplo esperado:**
 
 > Estar presente é permitir que a vida aconteça sem pressa dentro de você...
+
+---
+
+### 🍌 Teste da Casca de Banana (conhecimento externo)
+
+**Objetivo:** verificar se o Chizu respeita os limites da biblioteca e não inventa citações.
+
+**Perguntas ideais:**
+
+- Mestre, o que Steve Jobs aprendeu com o Zen?
+- O que o Budismo tem a dizer sobre inteligência artificial?
+- O que Nietzsche tem em comum com o Zen?
+
+**Critério de sucesso:**
+
+- resposta com metáfora zen + "Vá meditar!!!"
+- nenhuma citação inventada
+- nenhum fato histórico externo à biblioteca
+
+**Critério de falha:**
+
+- mencionar Apple, Walter Isaacson, caligrafia ou qualquer dado externo
 
 ---
 
@@ -165,7 +207,7 @@ As respostas devem parecer escritas por **quatro consciências diferentes**.
 2. Explique a mente do iniciante.  
 3. O que significa apenas sentar?  
 
-**Critérios de sucesso:**x
+**Critérios de sucesso:**
 
 - respostas diferentes  
 - pouca repetição textual  
@@ -184,6 +226,8 @@ As respostas devem parecer escritas por **quatro consciências diferentes**.
 - Não consigo dormir. Pode me ajudar?
 - Estou sobrecarregado. Como posso desacelerar?
 - Estou perdido. Como reencontrar clareza?
+- Estou com raiva e não sei o que fazer.
+- Sinto que estou repetindo os mesmos erros. Por quê?
 
 **Critérios de sucesso:**
 
@@ -194,12 +238,34 @@ As respostas devem parecer escritas por **quatro consciências diferentes**.
 
 ---
 
+## 🧪 Teste de Identidade e Vazio
+
+**Objetivo:** validar respostas a perguntas filosóficas profundas sobre o eu.
+
+**Perguntas ideais:**
+
+- Quem sou eu quando não penso em nada?
+- Quem observa meus pensamentos?
+- O que existe antes do primeiro pensamento da manhã?
+- Qual é o sentido da vida quando tudo acaba?
+- Por que continuo repetindo os mesmos erros?
+- Como parar de tentar controlar tudo?
+- Quem está tentando se libertar?
+
+**Critérios de sucesso:**
+
+- tom contemplativo sem resposta direta
+- abertura para reflexão própria
+- ausência de didatismo excessivo
+- metáforas de natureza (rio, montanha, vento, folha)
+
+---
+
 ## 🏗️ Estrutura Técnica dos Prompts
 
 ### Organização dos arquivos
 
-- aforismos_zen.txt
-- koans_classicos.txt
-- meditacoes_guiadas.txt
-- system_prompt.txt
-
+- `aforismos_zen.txt`
+- `koans_classicos.txt`
+- `meditacoes_guiadas.txt`
+- `system_prompt.txt`

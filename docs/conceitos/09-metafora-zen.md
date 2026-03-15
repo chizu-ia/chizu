@@ -84,3 +84,32 @@ Ele é:
 
 Tecnologia a serviço da clareza.  
 Código a serviço da consciência.
+
+---
+
+## 🌍 O Chizu no Contexto Mundial
+
+Existem iniciativas similares, mas nenhuma com a mesma combinação que o Chizu oferece.
+
+### Projetos conhecidos
+
+- **[Pi](https://pi.ai)** — foco em bem-estar emocional e conversas profundas, mas genérico, sem ancoragem em fontes específicas e sem personalidade zen definida.
+- **[Woebot](https://woebothealth.com)** — chatbot terapêutico baseado em terapia cognitivo-comportamental, mas clínico demais, sem poesia.
+- **[Calm](https://www.calm.com)** e **[Headspace](https://www.headspace.com)** — oferecem meditações guiadas, mas são conteúdo gravado, não conversacional.
+
+### O que torna o Chizu único
+
+Nenhum desses projetos possui a combinação de:
+
+- RAG ancorado em livros reais de mestres zen específicos — Suzuki, Thich Nhat Hanh, Masuno, Haemin Sunim
+- Personalidade construída à mão, em português
+- Fallback poético quando não há resposta na biblioteca
+- Arquitetura multi-provedor gratuita com resiliência automática
+
+O **"Vá meditar!!!"** quando o Chizu não sabe a resposta é genuinamente zen — um mestre de verdade não inventa. Isso é filosoficamente honesto e tecnicamente elegante ao mesmo tempo.
+
+### O próximo horizonte
+
+A única coisa que projetos maiores têm e o Chizu ainda não possui é **memória persistente entre sessões** — saber que o caminhante voltou, lembrar do que foi conversado antes.
+
+Isso transformaria o Chizu de um oráculo em um **mestre que te conhece**.
