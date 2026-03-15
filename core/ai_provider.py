@@ -8,16 +8,16 @@ class FreeAIProvider:
         self.keys = {
             "gemini": os.getenv("GEMINI_API_KEY"),
             "groq": os.getenv("GROQ_API_KEY"),
-            #"sambanova": os.getenv("SAMBANOVA_API_KEY"),
-            #"cerebras": os.getenv("CEREBRAS_API_KEY")
+            "sambanova": os.getenv("SAMBANOVA_API_KEY"),
+            "cerebras": os.getenv("CEREBRAS_API_KEY")
         }
 
     def chat(self, messages, temperature=0.45, max_tokens=512, top_p=0.9, frequency_penalty=0.45, presence_penalty=0.25):
         providers = [
             ("Gemini", self._gemini_chat),
             ("Groq", self._groq_chat),
-            #("SambaNova", self._sambanova_chat),
-            #("Cerebras", self._cerebras_chat),
+            ("SambaNova", self._sambanova_chat),
+            ("Cerebras", self._cerebras_chat),
         ]
 
         random.shuffle(providers)
@@ -48,7 +48,7 @@ class FreeAIProvider:
 
 
     def _gemini_chat(self, messages, temperature, max_tokens, top_p, freq_pen, pres_pen):
-        model_name = "gemini-1.5-flash"
+        model_name = "gemini-2.5-flash"
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={self.keys['gemini']}"
         
         contents = []
@@ -66,8 +66,8 @@ class FreeAIProvider:
         }
         
         r = requests.post(url, json=payload, timeout=20)
-        print(f"[GEMINI] status: {r.status_code}")
-        print(f"[GEMINI] resposta: {r.text[:500]}")
+        #print(f"[GEMINI] status: {r.status_code}")
+        #print(f"[GEMINI] resposta: {r.text[:500]}")
 
         r.raise_for_status()
         return r.json()["candidates"][0]["content"]["parts"][0]["text"]
