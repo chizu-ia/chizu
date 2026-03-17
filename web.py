@@ -93,9 +93,10 @@ HTML_PAGE = f"""
         <div class="resposta" id="resposta"><em>O silêncio precede a resposta...</em></div>
         
         <div class="footer" style="font-size: 0.7rem; opacity: 0.6; display: flex; justify-content: center; align-items: baseline; gap: 4px; white-space: nowrap;">
-            <a href="https://chizuzen.github.io/Zenbot/" target="_blank" class="doc-link" style="vertical-align: middle;">Documentação</a>•<a href="https://chizuzen.github.io/Zenbot/25-apoio/" target="_blank" class="doc-link" style="vertical-align: middle;">Apoiar Iniciativa</a>•<span style="vertical-align: middle;">PIX/E-mail: <strong style="font-weight: 600; vertical-align: middle;">Mestre@Chizu.ia.br</strong></span>
+            <a href="https://chizuzen.github.io/Zenbot/" target="_blank" class="doc-link" style="vertical-align: middle;">Documentação</a>•<a href="https://chizuzen.github.io/Zenbot/conceitos/25-apoio/" target="_blank" class="doc-link" style="vertical-align: middle;">Apoiar Iniciativa</a>•<span style="vertical-align: middle;">PIX/E-mail: <strong style="font-weight: 600; vertical-align: middle;">Mestre@Chizu.ia.br</strong></span>
         </div>
 
+        
     </div>
     <script>
         window.DESPEDIDA_JS = {json.dumps(DESPEDIDA_JS)};
