@@ -26,7 +26,7 @@ Qualquer contribuição é fundamental para que o site permaneça no ar e contin
 
 ---
 
-*Desde já, profundo obrigado por qualquer forma de apoio e por caminhar junto com o Chizu nesta jornada de conhecimento e tecnologia.*
+*Desde já, nossa profunda gratidão por qualquer forma de apoio e por caminhar junto com o Chizu nesta jornada de conhecimento e tecnologia.*
 
 Gassho 🙏
 
