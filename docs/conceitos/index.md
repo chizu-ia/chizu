@@ -63,9 +63,11 @@ Cada conceito aqui apresentado busca equilibrar:
 - [Monitoramento do Sistema](20-monitoramento.md)
 - [Firewall e Resiliência](21-firewall.md)
 - [Web Application Firewall](22-cloudflare.md)
+- [Alexa](26-alexa.md)
 - [Copyright](23-copyright.md)
 - [Aviso Legal](24-aviso-legal.md)
--  [Apoie o Projeto](25-apoio.md)
+- [Apoie o Projeto](25-apoio.md)
+
 ---
 
 ##  Conectando teoria e prática

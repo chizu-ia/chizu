@@ -50,6 +50,7 @@ nav:
       - Monitoramento do Sistema: conceitos/20-monitoramento.md
       - Firewall e Resiliência: conceitos/21-firewall.md  
       - Web Application Firewall: conceitos/22-cloudflare.md
+      - Alexa: conceitos/26-alexa.md
       - Copyright: conceitos/23-copyright.md
       - Aviso Legal: conceitos/24-aviso-legal.md
       - Apoie o Projeto: conceitos/25-apoio.md
