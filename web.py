@@ -83,9 +83,6 @@ HTML_PAGE = f"""
             <div class="header-avatar">
                 <img src="{AVATAR_B64}" alt="Mestre Chizu">
             </div>
-            <div class="header-quote">
-               Baseado em ensinamentos Mestres Zen. Chizu é um guia para refletir, perguntar e descobrir o que habita além das palavras
-            </div>
         </div>
         <div class="input-container">
             <input type="text" id="pergunta" placeholder="Fale com Chizu..." autofocus autocomplete="off" spellcheck="false">
