@@ -7,7 +7,6 @@ function randomMsg(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
-// Mensagem inicial ao carregar a página
 window.addEventListener('DOMContentLoaded', () => {
     respostaDiv.innerHTML = `<em>O silêncio precede a resposta...</em>`;
 });
@@ -16,7 +15,6 @@ async function fazerPergunta() {
     const pergunta = input.value.trim();
     if (!pergunta) return;
 
-    // Lógica de encerramento
     if (PALAVRAS_SAIDA.includes(pergunta.toLowerCase())) {
         respostaDiv.innerHTML = ` ${randomMsg(window.DESPEDIDA_JS)}`;
         input.value = '';
@@ -29,24 +27,33 @@ async function fazerPergunta() {
     respostaDiv.innerHTML = `<em>${randomMsg(window.AGUARDANDO_JS)}</em>`;
 
     try {
-        const response = await fetch('/ask', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ pergunta })
-        });
-        const data = await response.json();
+            const response = await fetch('/ask', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ pergunta })
+            });
+            const data = await response.json();
+            const resposta = data.resposta;
 
+            const respostaHTML = resposta
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/^\* (.+)/gm, '<li>$1</li>')
+                .replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>')
+                .replace(/\n\n/g, '</p><p>')
+                .replace(/\n/g, '<br>')
+                .replace(/\. ([A-ZÁÉÍÓÚÂÊÎÔÛÃÕÀÇ])/g, '.</p><p>$1');
 
-        const resposta = data.resposta;
-        const respostaEscapada = resposta.replace(/'/g, "\\'").replace(/\n/g, "\\n");
-        respostaDiv.innerHTML = `
-            <p>${resposta}</p>
-            <div class="share-buttons">
-                <button onclick="compartilharWhatsApp('${respostaEscapada}')">WhatsApp</button>
-                <button onclick="compartilharEmail('${respostaEscapada}')">Email</button>
-            </div>
-        `;
+            respostaDiv.innerHTML = `
+                <p>${respostaHTML}</p>
+                <div class="share-buttons">
+                    <button id="btn-whatsapp">WhatsApp</button>
+                    <button id="btn-email">Email</button>
+                </div>
+            `;
 
+            document.getElementById('btn-whatsapp').addEventListener('click', () => compartilharWhatsApp(resposta));
+            document.getElementById('btn-email').addEventListener('click', () => compartilharEmail(resposta));
 
     } catch (error) {
         respostaDiv.innerHTML = '<em>(o vento levou sua pergunta...)</em>';
@@ -58,7 +65,6 @@ async function fazerPergunta() {
     }
 }
 
-// Escuta a tecla Enter
 input.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') fazerPergunta();
 });
