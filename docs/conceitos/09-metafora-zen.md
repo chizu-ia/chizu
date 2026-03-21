@@ -4,7 +4,7 @@ Este capítulo traduz a arquitetura técnica do Chizu em **linguagem simbólica,
 
 ---
 
-## 🧠 Arquitetura mental do Chizu
+##  Arquitetura mental do Chizu
 
 O funcionamento do Chizu pode ser resumido como:
 
@@ -19,7 +19,7 @@ Ele primeiro busca, organiza, compreende e só então expressa.
 
 ---
 
-## 🧩 Vantagens desse pipeline
+## Vantagens desse pipeline
 
 Essa arquitetura oferece benefícios profundos:
 
@@ -33,7 +33,7 @@ O Chizu não improvisa — ele **dialoga com base em conhecimento real**.
 
 ---
 
-## ⚠️ Pontos críticos do pipeline
+##  Pontos críticos do pipeline
 
 A qualidade final depende diretamente de:
 
@@ -50,7 +50,7 @@ Em termos simples:
 
 ---
 
-## 🧘 Metáfora Zen
+##  Metáfora Zen
 
 O pipeline é como:
 
@@ -64,7 +64,7 @@ o chá carregará impurezas.
 
 ---
 
-## 📌 Conceito-chave
+##  Conceito-chave
 
 > **Inteligência não está apenas no modelo,  
 > mas na arquitetura do fluxo.**
@@ -74,7 +74,7 @@ mas porque organiza **como o pensamento acontece**.
 
 ---
 
-## 🎯 Conclusão
+##  Conclusão
 
 O Chizu não é apenas um chatbot.
 
@@ -87,7 +87,7 @@ Código a serviço da consciência.
 
 ---
 
-## 🌍 O Chizu no Contexto Mundial
+##  O Chizu no Contexto Mundial
 
 Existem iniciativas similares, mas nenhuma com a mesma combinação que o Chizu oferece.
 

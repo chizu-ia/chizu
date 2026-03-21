@@ -1,7 +1,7 @@
-# 🧠 Conceitos Fundamentais — Chizu
+#  Conceitos Fundamentais — Chizu
 
 
-## 🎯 Objetivo desta seção
+##  Objetivo desta seção
 
 Oferecer uma **base sólida de entendimento**, permitindo que qualquer pessoa:
 
@@ -12,7 +12,7 @@ Oferecer uma **base sólida de entendimento**, permitindo que qualquer pessoa:
 
 ---
 
-## ☯️ Filosofia
+##  Filosofia
 
 Não se trata apenas de tecnologia.
 
@@ -29,50 +29,50 @@ Cada conceito aqui apresentado busca equilibrar:
 
 ## Fundamentos de Infraestruturas
 
-- 🖥️ [Sistemas operacionais](01-sistemas-operacionais.md)
-- 🛠️ [Ferramentas de desenvolvimento](02-ferramentas-de-desenvolvimento.md)
-- 🌐 [Servidores e deploy](03-servidores-e-deploy.md)
+- [Sistemas operacionais](01-sistemas-operacionais.md)
+- [Ferramentas de desenvolvimento](02-ferramentas-de-desenvolvimento.md)
+- [Servidores e deploy](03-servidores-e-deploy.md)
 
 ## Fundamentos de Inteligência Artificial
 
-- 🤖 [Inteligência artificial](04-inteligencia-artificial.md)
-- 🧠 [Modelos e LLMs](05-modelos-e-llms.md)
+- [Inteligência artificial](04-inteligencia-artificial.md)
+- [Modelos e LLMs](05-modelos-e-llms.md)
 
 ## Conceitos de Busca Semântica
 
-- 🧬 [Embeddings](06-embeddings.md)
-- 🔍 [Busca semântica](07-busca-semantica.md)
-- 🧩 [Pipeline do Chizu](08-pipeline-do-zenbot.md)
+- [Embeddings](06-embeddings.md)
+- [Busca semântica](07-busca-semantica.md)
+- [Pipeline do Chizu](08-pipeline-do-zenbot.md)
 
 ## Conceitos do Chizu
 
-- ☯️ [Metáfora Zen](09-metafora-zen.md)
-- 🛡️ [Validação de Perguntas](10-validacao-perguntas.md)
-- 🎛️ [Ajustes do Sistema](11-ajustes.md)
+- [Metáfora Zen](09-metafora-zen.md)
+- [Validação de Perguntas](10-validacao-perguntas.md)
+- [Ajustes do Sistema](11-ajustes.md)
 
 ## Arquitetura do Chizu
 
-- 🧩 [Chunks e Embeddings](12-chunks-e-embeddings.md)
-- 🔎 [Busca Semântica no Chizu](13-busca-semantica.md)
-- 🤖 [RAG no Chizu](14-rag-no-zenbot.md)
-- ⚙️ [Pipeline de Textos](15-pipeline-de-textos.md)
-- 🏗️ [Arquitetura e Importações](16-dependencias-importacoes.md)
-- 🎭 [Engenharia de Prompts](17-engenharia-de-prompts.md)
-- 🧪 [Protocolo de Testes e Blindagem](18-documentacao_testes.md)
-- 🌐 [Verificação de DNS](19-verificacao_dns.md)
-- 📊 [Monitoramento do Sistema](20-monitoramento.md)
-- 🛡️ [Firewall e Resiliência](21-firewall.md)
-- 🚧 [Web Application Firewall](22-cloudflare.md)
-- ⚠️ [Copyright](23-copyright.md)
-- ⚖️ [Aviso Legal](24-aviso-legal.md)
-- 🙏 [Apoie o Projeto](25-apoio.md)
+- [Chunks e Embeddings](12-chunks-e-embeddings.md)
+- [Busca Semântica no Chizu](13-busca-semantica.md)
+- [RAG no Chizu](14-rag-no-zenbot.md)
+- [Pipeline de Textos](15-pipeline-de-textos.md)
+- [Arquitetura e Importações](16-dependencias-importacoes.md)
+- [Engenharia de Prompts](17-engenharia-de-prompts.md)
+- [Protocolo de Testes e Blindagem](18-documentacao_testes.md)
+- [Verificação de DNS](19-verificacao_dns.md)
+- [Monitoramento do Sistema](20-monitoramento.md)
+- [Firewall e Resiliência](21-firewall.md)
+- [Web Application Firewall](22-cloudflare.md)
+- [Copyright](23-copyright.md)
+- [Aviso Legal](24-aviso-legal.md)
+-  [Apoie o Projeto](25-apoio.md)
 ---
 
-## 🛤️ Conectando teoria e prática
+##  Conectando teoria e prática
 
 Para transformar estes conceitos em **aprendizado real**, acompanhe o diário de construção do projeto, com decisões técnicas, erros, ajustes e descobertas ao longo do caminho:
 
-- 🛤️ [Jornada de Aprendizado — Diário de Construção](../10-jornada-de-aprendizado.md)
+-  [Jornada de Aprendizado — Diário de Construção](../10-jornada-de-aprendizado.md)
 
 
 ---

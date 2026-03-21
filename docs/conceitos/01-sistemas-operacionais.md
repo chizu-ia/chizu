@@ -6,7 +6,7 @@ Ele é responsável por gerenciar todos os recursos da máquina, permitindo que 
 
 ---
 
-## 🎯 Funções principais
+##  Funções principais
 
 As principais responsabilidades de um sistema operacional são:
 
@@ -21,7 +21,7 @@ Sem um sistema operacional, o computador seria apenas um conjunto de circuitos e
 
 ---
 
-## 🧠 Analogia simples
+## Analogia simples
 
 Pense no sistema operacional como o **maestro de uma orquestra**.
 
@@ -30,7 +30,7 @@ O sistema operacional coordena tudo para que a música (os programas) aconteça 
 
 ---
 
-## 💻 Exemplos populares
+##  Exemplos populares
 
 Alguns dos sistemas operacionais mais conhecidos:
 
@@ -47,7 +47,7 @@ No caso do Chizu, o desenvolvimento ocorre principalmente sobre:
 
 ---
 
-## 🔗 Relação com o Chizu
+##  Relação com o Chizu
 
 No projeto Chizu, o sistema operacional é responsável por:
 
@@ -61,6 +61,6 @@ Sem um sistema operacional bem configurado, o Chizu simplesmente não funcionari
 
 ---
 
-## 📌 Conceito-chave
+##  Conceito-chave
 
 > O sistema operacional não é apenas um detalhe técnico — ele é a **base invisível** que sustenta toda a aplicação.

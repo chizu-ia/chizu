@@ -4,7 +4,7 @@ Configurar o Cloudflare é a solução mais **"Zen"** e eficiente. Como o bloque
 
 ---
 
-### 1. Configuração Inicial (DNS)
+### Configuração Inicial (DNS)
 Se você ainda não utiliza o Cloudflare:
 * **Conta:** Crie uma conta gratuita em [cloudflare.com](https://www.cloudflare.com).
 * **Domínio:** Adicione seu domínio (ex: `seudominio.com.br`).
@@ -13,7 +13,7 @@ Se você ainda não utiliza o Cloudflare:
 
 ---
 
-### 2. Criando a Regra de Bloqueio (WAF)
+###  Criando a Regra de Bloqueio (WAF)
 O plano gratuito permite até 5 regras. Vamos configurar uma específica para scanners:
 
 1. Vá em **Security > WAF > Custom Rules**.
@@ -28,7 +28,7 @@ O plano gratuito permite até 5 regras. Vamos configurar uma específica para sc
 
 ---
 
-### 3. Ativando o "Bot Fight Mode"
+###  Ativando o "Bot Fight Mode"
 Para barrar robôs automáticos de forma global:
 1. Vá em **Security > Bots**.
 2. Ative o **Bot Fight Mode**.

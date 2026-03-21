@@ -1,4 +1,4 @@
-# 🛤️ Jornada de Aprendizado — Diário de Construção do Chizu
+# Jornada de Aprendizado — Diário de Construção do Chizu
 
 Este documento registra a **trajetória real de aprendizado, experimentação, erros, descobertas e evolução** durante a construção do projeto Chizu.
 
@@ -6,7 +6,7 @@ Mais do que um diário técnico, ele é um **mapa da transformação intelectual
 
 ---
 
-## 🌱 O ponto de partida
+##  O ponto de partida
 
 O Chizu nasceu de uma inquietação simples:
 
@@ -19,7 +19,7 @@ Ela representa a busca por **clareza, simplicidade, atenção e consciência** t
 
 ---
 
-## 🔎 Primeiros passos
+##  Primeiros passos
 
 A jornada começou com:
 
@@ -34,7 +34,7 @@ Cada erro era tratado como parte essencial do processo.
 
 ---
 
-## 🧠 Descoberta dos embeddings e da busca semântica
+##  Descoberta dos embeddings e da busca semântica
 
 Um dos grandes saltos conceituais aconteceu ao compreender que:
 
@@ -51,7 +51,7 @@ Essa etapa redefiniu completamente a arquitetura do projeto.
 
 ---
 
-## 🏗️ Evolução da arquitetura
+##  Evolução da arquitetura
 
 O Chizu deixou de ser um simples gerador de texto e passou a se tornar um **sistema estruturado de conhecimento**, composto por:
 
@@ -65,7 +65,7 @@ Esse processo consolidou uma visão mais madura de engenharia de software e arqu
 
 ---
 
-## 🤖 A arquitetura das quatro inteligências
+##  A arquitetura das quatro inteligências
 
 Com a evolução do projeto, o Chizu passou a operar com um sistema de **redundância e cooperação entre múltiplas inteligências artificiais**.
 
@@ -84,7 +84,7 @@ Essa arquitetura transforma o Chizu em um sistema **mais robusto e confiável**.
 
 ---
 
-## 💻 Execução local do sistema
+##  Execução local do sistema
 
 Outro marco importante foi a capacidade de **executar todo o sistema localmente**.
 
@@ -99,7 +99,7 @@ Rodar o Chizu localmente tornou o processo de desenvolvimento **muito mais ágil
 
 ---
 
-## 📚 Evolução da documentação
+##  Evolução da documentação
 
 Com o crescimento do projeto, a documentação também evoluiu significativamente.
 
@@ -117,7 +117,7 @@ A documentação deixou de ser apenas um registro e passou a funcionar como **um
 
 ---
 
-## 🔧 Desafios técnicos enfrentados
+##  Desafios técnicos enfrentados
 
 Durante o desenvolvimento, diversos desafios surgiram:
 
@@ -132,7 +132,7 @@ Cada obstáculo foi tratado como **oportunidade de aprendizado profundo**, não 
 
 ---
 
-## 🧘 A integração da metáfora Zen
+##  A integração da metáfora Zen
 
 Com o amadurecimento do projeto, ficou claro que:
 
@@ -155,7 +155,7 @@ Assim como no Zen:
 
 ---
 
-## 🌍 A documentação como parte do sistema
+## A documentação como parte do sistema
 
 Outro marco importante foi compreender que:
 
@@ -172,7 +172,7 @@ Esse processo transformou o Chizu em um **ambiente vivo de estudo e reflexão t�
 
 ---
 
-## 📈 Transformações percebidas
+##  Transformações percebidas
 
 Ao longo dessa jornada, algumas mudanças tornaram-se evidentes:
 
@@ -186,7 +186,7 @@ Mais do que aprender ferramentas, houve uma **mudança de mentalidade**.
 
 ---
 
-## 🎯 Propósito maior
+##  Propósito maior
 
 O Chizu não é apenas um chatbot.
 
@@ -201,7 +201,7 @@ Seu verdadeiro valor está no **processo**, não apenas no resultado.
 
 ---
 
-## ☯️ Conclusão
+##  Conclusão
 
 Esta jornada mostra que:
 

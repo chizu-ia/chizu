@@ -43,7 +43,7 @@ conversation_memory = {}
 # =============================
 AVATAR_B64 = ""
 # Agora buscamos o avatar dentro da pasta /static
-avatar_path = os.path.join(BASE_DIR, "static", "avatar.png")
+avatar_path = os.path.join(BASE_DIR, "static", "img", "avatar.png")
 
 if os.path.exists(avatar_path):
     with open(avatar_path, "rb") as img_file:
@@ -55,7 +55,7 @@ if os.path.exists("site"):
 
 # AJUSTE: Agora servimos a pasta /static corretamente
 app.mount("/static", StaticFiles(directory="static"), name="static")
-
+app.mount("/legal", StaticFiles(directory="legal", html=True), name="legal")
 
 # ============================================
 # Textos da Interface
@@ -70,8 +70,8 @@ HTML_PAGE = f"""
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chizu · Mestre Zen</title>
-    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+    <link rel="stylesheet" href="/static/style.css?v=1">
 </head>
 <body>
     <div class="container">
@@ -84,18 +84,25 @@ HTML_PAGE = f"""
                 <img src="{AVATAR_B64}" alt="Mestre Chizu">
             </div>
             <div class="header-quote">
-               Baseado em ensinamentos e textos dos Mestres Zen. Chizu é um guia para meditar, perguntar e descobrir o que habita além das palavras
+               Baseado em ensinamentos Mestres Zen. Chizu é um guia para refletir, perguntar e descobrir o que habita além das palavras
             </div>
         </div>
         <div class="input-container">
-            <input type="text" id="pergunta" placeholder="Fale com Chizu..." autofocus>
-        </div>
-        <div class="resposta" id="resposta"><em>O silêncio precede a resposta...</em></div>
-        
-        <div class="footer" style="font-size: 0.7rem; opacity: 0.6; display: flex; justify-content: center; align-items: baseline; gap: 4px; white-space: nowrap;">
-            <a href="https://chizuzen.github.io/Zenbot/" target="_blank" class="doc-link" style="vertical-align: middle;">Documentação</a>•<a href="https://chizuzen.github.io/Zenbot/conceitos/25-apoio/" target="_blank" class="doc-link" style="vertical-align: middle;">Apoiar Iniciativa</a>•<span style="vertical-align: middle;">PIX/E-mail: <strong style="font-weight: 600; vertical-align: middle;">Mestre@Chizu.ia.br</strong></span>
+            <input type="text" id="pergunta" placeholder="Fale com Chizu..." autofocus autocomplete="off" spellcheck="false">
         </div>
 
+        <div class="resposta" id="resposta"><em>O silêncio precede a resposta...</em></div>
+        
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="/legal" class="doc-link">Legal</a>
+                <span class="separator">•</span>
+                <a href="https://chizuzen.github.io/Zenbot/conceitos/" target="_blank" class="doc-link">Documentação</a>
+                <span class="separator">•</span>
+                <span class="email-info">mestre@chizu.ia.br</span>
+            </div>
+            <p class="gassho-quote">Gassho 🙏 | Que todos os seres se beneficiem.</p>
+        </footer>
         
     </div>
     <script>

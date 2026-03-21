@@ -9,7 +9,7 @@ Esses elementos formam a base da **busca semântica**, permitindo que o sistema 
 
 ---
 
-## 🧩 O que é um Chunk
+## O que é um Chunk
 
 Um **chunk** é um pequeno pedaço de texto retirado de um livro.
 
@@ -28,7 +28,7 @@ Cada um desses fragmentos passa a ser uma **unidade de conhecimento** dentro do 
 
 ---
 
-## 🔢 O que é um Embedding
+##  O que é um Embedding
 
 Um **embedding** é a representação numérica de um texto.
 
@@ -49,7 +49,7 @@ Esses números formam um **vetor**, que descreve o significado do texto.
 
 ---
 
-## 🔎 Por que Embeddings são importantes
+## Por que Embeddings são importantes
 
 Com embeddings, o sistema consegue comparar **significados**, não apenas palavras.
 
@@ -65,7 +65,7 @@ Assim ele consegue encontrar trechos relacionados, mesmo que as palavras utiliza
 
 ---
 
-## ⚙️ Como o Chizu usa Chunks e Embeddings
+##  Como o Chizu usa Chunks e Embeddings
 
 O processo interno funciona da seguinte forma:
 
@@ -80,7 +80,7 @@ Esse processo é conhecido como **busca semântica**.
 
 ---
 
-## 📦 Como isso aparece no projeto
+##  Como isso aparece no projeto
 
 No Chizu, os chunks e embeddings são armazenados em arquivos.
 
@@ -103,7 +103,7 @@ Exemplo simplificado:
 }
 ```
 
-## 🧘 Analogia simples
+##  Analogia simples
 
 Podemos imaginar o sistema como uma biblioteca.
 
@@ -114,7 +114,7 @@ Quando surge uma pergunta, o sistema procura no mapa os trechos **mais próximos
 
 ---
 
-## 📌 Resumo
+##  Resumo
 
 - **Chunk** → pequeno pedaço de texto  
 - **Embedding** → representação numérica do significado do texto  

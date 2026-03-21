@@ -4,7 +4,7 @@ Este capítulo explica o que são **embeddings**, por que eles são fundamentais
 
 ---
 
-## 🧠 O que são embeddings?
+##  O que são embeddings?
 
 Embeddings são **representações matemáticas do significado dos textos**.
 
@@ -18,7 +18,7 @@ Esses vetores capturam o **sentido**, não apenas as palavras.
 
 ---
 
-## 🔢 O que é um vetor?
+## O que é um vetor?
 
 Um vetor é uma lista de números, por exemplo:
 [0.023, -0.91, 0.44, 0.002, 0.78, ...]
@@ -34,7 +34,7 @@ Modelos modernos usam vetores com:
 
 ---
 
-## 🌍 O que significa “representar o significado”?
+##  O que significa “representar o significado”?
 
 Palavras diferentes podem ter **significado parecido**:
 
@@ -53,7 +53,7 @@ ficam **muito afastadas matematicamente**.
 
 ---
 
-## 🗺️ Espaço vetorial
+## Espaço vetorial
 
 Imagine um espaço com milhares de dimensões.
 
@@ -70,7 +70,7 @@ Isso permite **medir similaridade matemática**.
 
 ---
 
-## 📐 Como se mede essa proximidade?
+##  Como se mede essa proximidade?
 
 A métrica mais comum é:
 
@@ -88,7 +88,7 @@ Resultado:
 
 ---
 
-## 🔍 Para que embeddings são usados?
+##  Para que embeddings são usados?
 
 - Busca semântica
 - Recomendação de conteúdo
@@ -99,7 +99,7 @@ Resultado:
 
 ---
 
-## ⚙️ Como o Chizu usa embeddings?
+##  Como o Chizu usa embeddings?
 
 O Chizu:
 
@@ -115,13 +115,13 @@ O Chizu:
 
 ---
 
-## 🔁 Fluxo resumido
+##  Fluxo resumido
 Texto → Embeddings → Vetores armazenados
 Pergunta → Embedding → Comparação → Textos relevantes → Resposta
 
 ---
 
-## 🧩 Por que isso é tão poderoso?
+##  Por que isso é tão poderoso?
 
 Porque o sistema:
 
@@ -143,7 +143,7 @@ Mesmo sem essa frase literal nos textos, o sistema pode encontrar:
 
 ---
 
-## 🛑 Diferença entre busca tradicional e semântica
+##  Diferença entre busca tradicional e semântica
 
 ### Busca tradicional:
 
@@ -155,7 +155,7 @@ Mesmo sem essa frase literal nos textos, o sistema pode encontrar:
 
 ---
 
-## 🧘 Metáfora Zen
+##  Metáfora Zen
 
 Embeddings são como:
 
@@ -165,7 +165,7 @@ Eles não veem letras, veem **intenções**.
 
 ---
 
-## 🧠 Embeddings não pensam
+##  Embeddings não pensam
 
 Eles não entendem de verdade.
 
@@ -177,15 +177,15 @@ Mas isso já é suficiente para criar **sistemas incrivelmente inteligentes**.
 
 ---
 
-## 📌 Conceito-chave
+##  Conceito-chave
 
 > Embeddings são a ponte entre linguagem humana e matemática.
 
 ---
 
-## 🔗 Próximo capítulo
+##  Próximo capítulo
 
-👉 **07 — Busca Semântica**
+ **07 — Busca Semântica**
 
 Aqui veremos como esses vetores são usados para encontrar as respostas certas.
 

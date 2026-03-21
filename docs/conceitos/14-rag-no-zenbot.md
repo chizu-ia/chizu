@@ -11,7 +11,7 @@ Essa combinação permite que o modelo responda perguntas utilizando **conteúdo
 
 ---
 
-## 🧠 O que é RAG
+##  O que é RAG
 
 **RAG** significa *Retrieval Augmented Generation*, que pode ser traduzido como:
 
@@ -27,7 +27,7 @@ Isso torna as respostas:
 
 ---
 
-## 🔎 Como o RAG funciona
+##  Como o RAG funciona
 
 O processo geral do RAG segue três etapas principais:
 
@@ -39,7 +39,7 @@ Esse processo permite que o modelo responda perguntas sobre conteúdos específi
 
 ---
 
-## ⚙️ Fluxo de funcionamento no Chizu
+##  Fluxo de funcionamento no Chizu
 
 No Chizu, o fluxo funciona da seguinte forma:
 
@@ -64,10 +64,10 @@ Chunks relevantes
 Modelo de linguagem
         ↓
 Resposta final
-````
+```
 ---
 
-## 📚 Por que usar RAG
+##  Por que usar RAG
 
 Sem RAG, o modelo responde apenas com base no **conhecimento aprendido durante o treinamento**.
 
@@ -81,7 +81,7 @@ Isso permite que o Chizu funcione como um **assistente especializado nos textos 
 
 ---
 
-## 📦 Exemplo simplificado
+##  Exemplo simplificado
 
 Usuário pergunta:
 
@@ -100,10 +100,10 @@ Exemplo de contexto enviado ao modelo:
 A atenção plena consiste em observar o momento presente sem julgamento.
 
 Respirar conscientemente é uma das formas mais simples de retornar ao presente.
-````
+```
 ---
 
-## 🧘 Analogia simples
+##  Analogia simples
 
 Podemos imaginar o RAG como um **professor consultando um livro antes de responder uma pergunta**.
 
@@ -116,7 +116,7 @@ O modelo de linguagem faz algo semelhante: ele **consulta os textos antes de res
 
 ---
 
-## 📌 Resumo
+##  Resumo
 
 - **RAG** significa *Retrieval Augmented Generation*  
 - Combina **busca de informação** com **geração de texto**  

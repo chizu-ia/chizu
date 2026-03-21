@@ -8,7 +8,7 @@ Esse fluxo transforma textos brutos em **informações pesquisáveis por signifi
 
 ---
 
-## 🧭 Visão geral do pipeline
+##  Visão geral do pipeline
 
 O pipeline do Chizu segue estas etapas principais:
 
@@ -38,7 +38,7 @@ Resposta ao usuário
 
 ---
 
-## 📥 1. Entrada do texto
+##   Entrada do texto
 
 O processo começa com um **livro ou documento** que será utilizado como fonte de conhecimento.
 
@@ -53,7 +53,7 @@ O objetivo dessa etapa é disponibilizar o conteúdo que será processado pelo s
 
 ---
 
-## 🧩 2. Divisão em Chunks
+##  Divisão em Chunks
 
 O texto completo é dividido em **pequenos fragmentos**, chamados de **chunks**.
 
@@ -77,7 +77,7 @@ Cada chunk passa a ser tratado como uma **unidade independente de conhecimento**
 
 ---
 
-## 🔢 3. Geração de Embeddings
+##  Geração de Embeddings
 
 Depois que os chunks são criados, cada um deles é convertido em um **embedding**.
 
@@ -97,7 +97,7 @@ Esses vetores permitem que o sistema compare **significados entre textos**.
 
 ---
 
-## 💾 4. Armazenamento
+##  Armazenamento
 
 Após a geração dos embeddings, os dados são armazenados para consulta futura.
 
@@ -119,7 +119,7 @@ Esse conjunto forma a **base de conhecimento do Chizu**.
 
 ---
 
-## 🔎 5. Busca durante perguntas
+##  Busca durante perguntas
 
 Quando um usuário faz uma pergunta, ocorre o seguinte processo:
 
@@ -132,7 +132,7 @@ Esse mecanismo utiliza **busca semântica**.
 
 ---
 
-## 🤖 6. Geração da resposta (RAG)
+##  Geração da resposta (RAG)
 
 Após recuperar os trechos relevantes, o sistema utiliza a técnica **RAG (Retrieval Augmented Generation)**.
 
@@ -145,7 +145,7 @@ E então gera uma resposta baseada nesse contexto.
 
 ---
 
-## 🧘 Analogia simples
+##  Analogia simples
 
 Podemos imaginar o pipeline como o trabalho de um **bibliotecário**.
 
@@ -192,7 +192,7 @@ contexto e o mestre manda meditar.
 > Se isso estiver acontecendo muito, podemos ajustar o `top_k` ou adicionar sinônimos.
 
 
-## 📌 Resumo
+##  Resumo
 
 O pipeline de textos do Chizu segue esta sequência:
 

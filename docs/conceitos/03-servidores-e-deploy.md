@@ -9,7 +9,7 @@ Esse processo envolve dois conceitos fundamentais:
 
 ---
 
-## 🌍 O que é um servidor?
+##  O que é um servidor?
 
 Um servidor é um computador que fica **ligado 24 horas por dia**, conectado à internet, esperando requisições de outros computadores.
 
@@ -29,7 +29,7 @@ Um servidor:
 
 ---
 
-## 🧠 Analogia simples
+##  Analogia simples
 
 Imagine um restaurante.
 
@@ -44,7 +44,7 @@ Esse local é o **servidor**.
 
 ---
 
-## 🌐 O que é deploy?
+##  O que é deploy?
 
 Deploy é o processo de:
 
@@ -60,7 +60,7 @@ Em termos práticos, deploy significa:
 
 ---
 
-## 🔁 Fluxo clássico de deploy
+##  Fluxo clássico de deploy
 
 1. Desenvolver localmente
 2. Testar localmente
@@ -70,9 +70,9 @@ Em termos práticos, deploy significa:
 
 ---
 
-## 🏗️ Tipos de servidores
+##  Tipos de servidores
 
-### 1. Servidor físico
+###  Servidor físico
 
 Um computador real dedicado.
 
@@ -82,7 +82,7 @@ Um computador real dedicado.
 
 ---
 
-### 2. Servidor virtual (VPS / Cloud)
+###  Servidor virtual (VPS / Cloud)
 
 Um computador virtual rodando em data centers.
 
@@ -90,11 +90,11 @@ Um computador virtual rodando em data centers.
 - Escala automática
 - Alta disponibilidade
 
-👉 É o modelo mais usado atualmente.
+ É o modelo mais usado atualmente.
 
 ---
 
-## ☁️ Plataformas modernas de deploy
+## Plataformas modernas de deploy
 
 Algumas plataformas que simplificam o deploy:
 
@@ -108,11 +108,11 @@ Algumas plataformas que simplificam o deploy:
 
 No Chizu utilizamos:
 
-👉 **Render**
+ **Render**
 
 ---
 
-## 🧩 O papel do Render no Chizu
+## O papel do Render no Chizu
 
 O Render:
 
@@ -126,7 +126,7 @@ Tudo isso **sem necessidade de configurar servidores manualmente**.
 
 ---
 
-## ⚙️ Como funciona o deploy do Chizu
+##  Como funciona o deploy do Chizu
 
 Fluxo real do projeto:
 VS Code → Git → GitHub → Render → Internet
@@ -145,7 +145,7 @@ git push
 
 ---
 
-## 🧪 Teste local x produção
+##  Teste local x produção
 
 Durante o desenvolvimento:
 uvicorn web:app --reload
@@ -157,7 +157,7 @@ Durante produção (Render):
 
 ---
 
-## 🔐 Segurança básica em deploy
+##  Segurança básica em deploy
 
 Alguns cuidados importantes:
 
@@ -168,11 +168,11 @@ Alguns cuidados importantes:
 
 ---
 
-## 🌎 GitHub Pages — Servidor da documentação
+##  GitHub Pages — Servidor da documentação
 
 Além do backend, o projeto possui **documentação pública** hospedada em:
 
-👉 **GitHub Pages**
+ **GitHub Pages**
 
 Ele funciona como:
 
@@ -185,7 +185,7 @@ Markdown → Pandoc → HTML → GitHub Pages → Navegador
 
 ---
 
-## 🧠 Conceito-chave
+##  Conceito-chave
 
 > Deploy é o ritual que transforma um projeto pessoal em um serviço público.
 
@@ -193,7 +193,7 @@ Markdown → Pandoc → HTML → GitHub Pages → Navegador
 
 ---
 
-## 📌 No Chizu
+##  No Chizu
 
 O uso de Render + GitHub Pages permite:
 

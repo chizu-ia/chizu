@@ -4,7 +4,7 @@ Este capítulo explica o que são **modelos de linguagem**, o que significa **LL
 
 ---
 
-## 🧠 O que é um modelo?
+##  O que é um modelo?
 
 Em inteligência artificial, um **modelo** é uma estrutura matemática treinada para reconhecer padrões.
 
@@ -22,7 +22,7 @@ Em termos simples:
 
 ---
 
-## 📚 O que é um modelo de linguagem?
+##  O que é um modelo de linguagem?
 
 Um **modelo de linguagem** é treinado especificamente com **textos**.
 
@@ -43,7 +43,7 @@ Isso permite que ele:
 
 ---
 
-## 🌍 O que significa LLM?
+##  O que significa LLM?
 
 **LLM** = **Large Language Model**  
 (Modelo de Linguagem de Grande Escala)
@@ -64,7 +64,7 @@ Exemplos famosos:
 
 ---
 
-## 🧬 O que são parâmetros?
+##  O que são parâmetros?
 
 Parâmetros são os **números internos** que o modelo ajusta durante o aprendizado.
 
@@ -87,7 +87,7 @@ Modelos modernos possuem:
 
 ---
 
-## ⚙️ Como um LLM funciona por dentro?
+##  Como um LLM funciona por dentro?
 
 De forma simplificada:
 
@@ -102,7 +102,7 @@ Isso acontece **em milissegundos**.
 
 ---
 
-## 🔮 Como um LLM gera texto?
+##  Como um LLM gera texto?
 
 Ele responde sempre a uma pergunta fundamental:
 
@@ -119,7 +119,7 @@ Por isso os textos parecem humanos.
 
 ---
 
-## 🧩 O papel do prompt
+##  O papel do prompt
 
 O **prompt** é a instrução que você dá ao modelo.
 
@@ -139,7 +139,7 @@ No Chizu, o prompt define:
 
 ---
 
-## 🔗 LLM + Busca Semântica = Chizu
+##  LLM + Busca Semântica = Chizu
 
 O Chizu não depende apenas do LLM.
 
@@ -161,7 +161,7 @@ Assim:
 
 ---
 
-## 🛑 Limitações dos LLMs
+##  Limitações dos LLMs
 
 Apesar de poderosos, eles:
 
@@ -176,7 +176,7 @@ Por isso o Chizu usa:
 
 ---
 
-## 🎯 Por que usar LLM no Chizu?
+##  Por que usar LLM no Chizu?
 
 Porque permite:
 
@@ -192,7 +192,7 @@ Sem LLM:
 
 ---
 
-## 🧘 Metáfora Zen
+##  Metáfora Zen
 
 O LLM é como:
 
@@ -204,15 +204,15 @@ Mas:
 
 ---
 
-## 📌 Conceito-chave
+##  Conceito-chave
 
 > O LLM não é o sábio.  
 > Ele é apenas o instrumento que expressa a sabedoria.
 
 ---
 
-## 🔗 Próximo capítulo
+##  Próximo capítulo
 
-👉 **06 — Embeddings**
+ **06 — Embeddings**
 
 Aqui veremos como o Chizu transforma palavras em números e consegue "entender significado".

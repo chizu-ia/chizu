@@ -6,7 +6,7 @@ Diferente de uma busca tradicional baseada apenas em palavras, a busca semântic
 
 ---
 
-## 🔎 O que é Busca Semântica
+##  O que é Busca Semântica
 
 A **busca semântica** é uma técnica que permite encontrar conteúdos com **significado semelhante**, mesmo que as palavras utilizadas sejam diferentes.
 
@@ -36,7 +36,7 @@ Mesmo sem repetir as mesmas palavras.
 
 ---
 
-## 🧠 Como a Busca Semântica Funciona
+##  Como a Busca Semântica Funciona
 
 A busca semântica funciona usando **embeddings**, que são representações numéricas do significado dos textos.
 
@@ -52,7 +52,7 @@ Essa proximidade normalmente é calculada usando **similaridade vetorial**.
 
 ---
 
-## 📏 Similaridade entre Vetores
+##  Similaridade entre Vetores
 
 Embeddings podem ser comparados matematicamente.
 
@@ -76,7 +76,7 @@ Seleção dos chunks mais próximos
 ```
 ---
 
-## ⚙️ Fluxo da Busca Semântica no Chizu
+##  Fluxo da Busca Semântica no Chizu
 
 No Chizu, o fluxo básico funciona assim:
 
@@ -91,7 +91,7 @@ Esse processo permite que o sistema responda usando **informações presentes no
 
 ---
 
-## 📚 Exemplo Prático
+##  Exemplo Prático
 
 Suponha que exista um chunk no sistema:
 
@@ -107,7 +107,7 @@ A busca semântica identifica essa proximidade e recupera esse trecho como conte
 
 ---
 
-## 🧘 Analogia simples
+##  Analogia simples
 
 Podemos imaginar a busca semântica como um **mapa de significados**.
 
@@ -119,7 +119,7 @@ Quando surge uma pergunta, o sistema procura **os pontos mais próximos no mapa*
 
 ---
 
-## 📌 Resumo
+##  Resumo
 
 - **Busca tradicional** → procura palavras exatas  
 - **Busca semântica** → procura significados semelhantes  

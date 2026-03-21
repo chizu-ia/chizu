@@ -1,4 +1,4 @@
-# 🎛️ Ajustes Finos — Parâmetros, Rate Limit e Estabilidade do Chizu
+#  Ajustes Finos — Parâmetros, Rate Limit e Estabilidade do Chizu
 
 Esta página documenta os **ajustes técnicos fundamentais** para garantir estabilidade, qualidade de resposta e prevenção de erros **HTTP 429 — Too Many Requests** no Chizu.
 
@@ -6,7 +6,7 @@ O objetivo é permitir **controle fino do comportamento do modelo**, especialmen
 
 ---
 
-# ⚠️ O que é o erro 429?
+#  O que é o erro 429?
 
 O erro **HTTP 429** indica que **o limite de requisições permitido pela API foi excedido**.
 
@@ -23,7 +23,7 @@ Isso causa:
 
 ---
 
-# 🎯 Estratégia geral para evitar 429
+#  Estratégia geral para evitar 429
 
 1. **Reduzir tokens**
 2. **Reduzir tamanho do prompt**
@@ -33,7 +33,7 @@ Isso causa:
 
 ---
 
-# ⚙️ Parâmetros recomendados do payload
+#  Parâmetros recomendados do payload
 
 ### Valores seguros para produção
 
@@ -53,11 +53,11 @@ frequency_penalty = 0.3
 | frequency_penalty | Evitar repetição textual  | Reduz loops                                     |
 ```
 
-# 🎛️ Ajustes Finos — Parâmetros e Estabilidade (Multi-IA)
+#  Ajustes Finos — Parâmetros e Estabilidade (Multi-IA)
 
 ---
 
-## 🛡️ Estratégia de Alta Disponibilidade (Multi-IA)
+##  Estratégia de Alta Disponibilidade (Multi-IA)
 
 Para mitigar erros de cota (**HTTP 429**) ou modelos descontinuados (**HTTP 404**), o sistema implementa um **Fallback Dinâmico** (rodízio automático) entre 4 provedores de última geração:
 
@@ -68,7 +68,7 @@ Para mitigar erros de cota (**HTTP 429**) ou modelos descontinuados (**HTTP 404*
 
 ---
 
-## ⚙️ Parâmetros Calibrados (Março/2026)
+##  Parâmetros Calibrados (Março/2026)
 
 Os parâmetros abaixo foram refinados para equilibrar a serenidade do Mestre Chizu com a necessidade de respostas fluidas e não repetitivas.
 
@@ -84,7 +84,7 @@ Os parâmetros abaixo foram refinados para equilibrar a serenidade do Mestre Chi
 
 ---
 
-## 📊 Monitoramento e Logs de Auditoria
+##  Monitoramento e Logs de Auditoria
 
 Para garantir a transparência do sistema, cada requisição gera um log unificado no console do servidor (Render/Terminal). Isso permite identificar qual "cérebro" foi utilizado para cada resposta:
 

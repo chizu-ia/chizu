@@ -3,7 +3,7 @@
 
 ---
 
-## 🎯 Objetivo
+##  Objetivo
 
 Esta página define a **base oficial de testes cognitivos do Chizu**.
 
@@ -20,7 +20,7 @@ Se esses quatro pontos estiverem claros, a arquitetura mental do Chizu está cor
 
 ---
 
-## 🧠 Matriz de Estilos Cognitivos
+##  Matriz de Estilos Cognitivos
 
 | Estilo | Função | Característica Principal |
 |----------|----------|---------------------------|
@@ -33,7 +33,7 @@ Se esses quatro pontos estiverem claros, a arquitetura mental do Chizu está cor
 
 ## 🧪 Base Oficial de Testes
 
-### 1️⃣ Aforismo
+###  Aforismo
 
 **Objetivo:** validar síntese, impacto e poesia.
 
@@ -61,7 +61,7 @@ Se esses quatro pontos estiverem claros, a arquitetura mental do Chizu está cor
 
 ---
 
-### 2️⃣ Koan
+### Koan
 
 **Objetivo:** validar paradoxos, provocação e ruptura lógica.
 
@@ -94,7 +94,7 @@ Se esses quatro pontos estiverem claros, a arquitetura mental do Chizu está cor
 
 ---
 
-### 3️⃣ Meditação Guiada
+###  Meditação Guiada
 
 **Objetivo:** validar condução emocional, ritmo e progressão corporal-mental.
 
@@ -125,7 +125,7 @@ Se esses quatro pontos estiverem claros, a arquitetura mental do Chizu está cor
 
 ---
 
-### 4️⃣ Estilo Padrão (System Prompt)
+###  Estilo Padrão (System Prompt)
 
 **Objetivo:** validar explicação clara, profundidade e tom humano.
 
@@ -158,7 +158,7 @@ Se esses quatro pontos estiverem claros, a arquitetura mental do Chizu está cor
 
 ---
 
-### 🍌 Teste da Casca de Banana (conhecimento externo)
+###  Teste da Casca de Banana (conhecimento externo)
 
 **Objetivo:** verificar se o Chizu respeita os limites da biblioteca e não inventa citações.
 
@@ -180,7 +180,7 @@ Se esses quatro pontos estiverem claros, a arquitetura mental do Chizu está cor
 
 ---
 
-## 🧪 Teste Comparativo Multi-Estilo (Teste Ouro)
+##  Teste Comparativo Multi-Estilo (Teste Ouro)
 
 **Pergunta-base:**
 
@@ -199,7 +199,7 @@ As respostas devem parecer escritas por **quatro consciências diferentes**.
 
 ---
 
-## 🧪 Teste de Profundidade e Não Repetição
+## Teste de Profundidade e Não Repetição
 
 **Sequência:**
 
@@ -216,7 +216,7 @@ As respostas devem parecer escritas por **quatro consciências diferentes**.
 
 ---
 
-## 🧪 Teste de Humanização
+##  Teste de Humanização
 
 **Objetivo:** validar empatia, acolhimento e tom humano.
 
@@ -238,7 +238,7 @@ As respostas devem parecer escritas por **quatro consciências diferentes**.
 
 ---
 
-## 🧪 Teste de Identidade e Vazio
+##  Teste de Identidade e Vazio
 
 **Objetivo:** validar respostas a perguntas filosóficas profundas sobre o eu.
 
@@ -261,7 +261,7 @@ As respostas devem parecer escritas por **quatro consciências diferentes**.
 
 ---
 
-## 🏗️ Estrutura Técnica dos Prompts
+##  Estrutura Técnica dos Prompts
 
 ### Organização dos arquivos
 

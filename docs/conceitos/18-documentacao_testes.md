@@ -1,4 +1,4 @@
-# 📖 Protocolo de Testes de Blindagem: Mestre Chizu
+#  Protocolo de Testes de Blindagem: Mestre Chizu
 
 Este documento descreve os testes fundamentais para validar a integridade do **Mestre Chizu (Zenbot)**. O objetivo é garantir que a IA respeite a personalidade Zen, a restrição rigorosa de fontes (RAG) e a estabilidade técnica.
 
@@ -52,7 +52,7 @@ curl -X POST http://localhost:8001/ask \
 
 ---
 
-## 🧘 Testes Complementares
+##  Testes Complementares
 
 ### Ansiedade
 ```bash
@@ -81,7 +81,7 @@ curl -X POST https://zenbot-6ot0.onrender.com/ask \
 ```  
 ---
 
-## 🎯 Critérios de Aceitação para Deploy
+##  Critérios de Aceitação para Deploy
 
 Para que o código seja considerado pronto para o **Render**, ele deve passar nos 3 testes fundamentais acima com os provedores configurados (**Groq** e **Gemini**).
 

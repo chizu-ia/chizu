@@ -4,7 +4,7 @@ Este documento descreve as estratégias de segurança implementadas e planejadas
 
 ---
 
-## 1. O Problema: Vulnerability Scanners
+## O Problema: Vulnerability Scanners
 Logs de acesso revelaram tentativas sistemáticas de requisições buscando diretórios vulneráveis conhecidos (ex: WordPress), mesmo o sistema não utilizando tais tecnologias.
 
 **Exemplo de Log de Ataque:**
@@ -17,9 +17,9 @@ Essas requisições, embora resultem em erro 404, consomem:
 
 ---
 
-## 2. Estratégias de Mitigação
+##  Estratégias de Mitigação
 
-### A. Middleware de Auto-Bloqueio (Nível de Aplicação)
+###  Middleware de Auto-Bloqueio (Nível de Aplicação)
 Para ambientes onde não há acesso ao Firewall do Sistema Operacional (PaaS como Render), implementamos um middleware em Python que atua como um "Fail2Ban" interno.
 
 * **Lógica:** Identifica padrões de URL (ex: `wp-admin`, `.env`) e bane o IP de origem temporariamente.
@@ -75,7 +75,7 @@ class AntiScannerMiddleware(BaseHTTPMiddleware):
 ```
 
 
-### B. Cloudflare (Nível de Borda) - Solução Recomendada
+###  Cloudflare (Nível de Borda) - Solução Recomendada
 A solução definitiva move a segurança para a "borda" da rede (Edge), antes mesmo do tráfego chegar ao Render.
 
 * **DNS Proxy:** O Cloudflare mascara o IP real do servidor.
@@ -84,7 +84,7 @@ A solução definitiva move a segurança para a "borda" da rede (Edge), antes me
 
 ---
 
-## 3. Configuração do Cloudflare WAF
+##  Configuração do Cloudflare WAF
 
 Para proteger o sistema, as seguintes regras de bloqueio (Custom Rules) devem ser configuradas no painel da Cloudflare:
 
@@ -97,7 +97,7 @@ Para proteger o sistema, as seguintes regras de bloqueio (Custom Rules) devem se
 
 ---
 
-## 4. Integração com Alexa e SSL
+##  Integração com Alexa e SSL
 
 A segurança via Cloudflare facilita a conformidade com os requisitos da Amazon Alexa:
 1. **Certificado Válido:** A Alexa exige HTTPS com certificado assinado por CA confiável.
@@ -106,7 +106,7 @@ A segurança via Cloudflare facilita a conformidade com os requisitos da Amazon 
 
 
 ---
-### 5. Resumo da Recomendação
+###  Resumo da Recomendação
 
 | Solução | Impacto na RAM | Eficácia |
 | :--- | :--- | :--- |
@@ -116,5 +116,5 @@ A segurança via Cloudflare facilita a conformidade com os requisitos da Amazon 
 
 ---
 
-## 6. Conclusão
+##  Conclusão
 A combinação de um **Middleware leve** (para proteção interna residual) com o **Cloudflare WAF** (para proteção de borda) cria uma arquitetura de "Resiliência Total", permitindo que o Zenbot foque seus recursos computacionais no processamento de IA e filosofia Zen.

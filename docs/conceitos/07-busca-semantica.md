@@ -4,7 +4,7 @@ Este capítulo explica o que é **busca semântica**, como ela funciona e por qu
 
 ---
 
-## 🔍 O que é busca semântica?
+##  O que é busca semântica?
 
 Busca semântica é uma técnica que encontra informações **pelo significado**, não apenas pelas palavras.
 
@@ -14,7 +14,7 @@ Ela responde à pergunta:
 
 ---
 
-## 📚 Diferença entre busca tradicional e semântica
+##  Diferença entre busca tradicional e semântica
 
 ### Busca tradicional (por palavras-chave)
 
@@ -46,7 +46,7 @@ Ela pode encontrar textos sobre:
 
 ---
 
-## 🧠 Como a busca semântica funciona?
+##  Como a busca semântica funciona?
 
 Ela se baseia em **embeddings**.
 
@@ -59,7 +59,7 @@ Fluxo básico:
 
 ---
 
-## 📐 Medindo similaridade
+##  Medindo similaridade
 
 A métrica mais comum é:
 
@@ -74,7 +74,7 @@ Resultado:
 
 ---
 
-## ⚙️ Como o Chizu implementa a busca semântica?
+##  Como o Chizu implementa a busca semântica?
 
 O Chizu segue este pipeline:
 Textos → fragmentação → embeddings → armazenamento vetorial
@@ -93,7 +93,7 @@ Ou, em palavras:
 
 ---
 
-## 🧩 Por que isso melhora tanto as respostas?
+##  Por que isso melhora tanto as respostas?
 
 Porque o modelo **não precisa inventar**.
 
@@ -108,7 +108,7 @@ Isso garante:
 
 ---
 
-## 🛑 Limitações da busca semântica
+##  Limitações da busca semântica
 
 Ela ainda depende:
 
@@ -121,7 +121,7 @@ Se os textos forem pobres, a resposta será pobre.
 
 ---
 
-## 🧘 Metáfora Zen
+##  Metáfora Zen
 
 Busca semântica é como:
 
@@ -131,7 +131,7 @@ Ele percebe a **intenção silenciosa por trás da frase**.
 
 ---
 
-## 🧠 Busca semântica + LLM = Inteligência prática
+##  Busca semântica + LLM = Inteligência prática
 
 Sem busca semântica:
 
@@ -147,21 +147,21 @@ Juntos:
 
 ---
 
-## 📌 Conceito-chave
+##  Conceito-chave
 
 > Busca semântica é o elo entre significado humano e recuperação inteligente da informação.
 
 ---
 
-## 🔗 Próximo capítulo
+##  Próximo capítulo
 
-👉 **08 — Pipeline do Chizu**
+ **08 — Pipeline do Chizu**
 
 Aqui veremos todo o sistema funcionando como um organismo único.
 
 ---
 
-## 📚 Aprofundamento técnico
+##  Aprofundamento técnico
 
 Este capítulo apresentou o conceito geral de **busca semântica**.
 

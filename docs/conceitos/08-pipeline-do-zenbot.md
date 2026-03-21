@@ -6,7 +6,7 @@ Aqui você verá o Chizu como um **organismo completo**, e não como partes solt
 
 ---
 
-## 🧠 O que é um pipeline?
+##  O que é um pipeline?
 
 Pipeline é uma **cadeia organizada de etapas**, onde:
 
@@ -20,7 +20,7 @@ Em sistemas de IA, o pipeline define:
 
 ---
 
-## 🎯 Objetivo do pipeline do Chizu
+##  Objetivo do pipeline do Chizu
 
 Transformar:
 
@@ -32,7 +32,7 @@ em:
 
 ---
 
-## 🧩 Visão geral do pipeline
+##  Visão geral do pipeline
 Textos → Limpeza → Fragmentação → Embeddings → Armazenamento
 Pergunta → Embedding → Busca Semântica → Seleção → LLM → Resposta
 
@@ -54,7 +54,7 @@ Resposta Final
 
 ---
 
-## 🔹 Etapa 1 — Coleta dos textos
+##   Coleta dos textos
 
 Fontes:
 
@@ -69,7 +69,7 @@ Objetivo:
 
 ---
 
-## 🔹 Etapa 2 — Limpeza dos textos
+##   Limpeza dos textos
 
 Scripts utilizados:
 
@@ -89,7 +89,7 @@ Resultado:
 
 ---
 
-## 🔹 Etapa 3 — Fragmentação (chunking)
+##  Fragmentação (chunking)
 
 Script:
 
@@ -109,7 +109,7 @@ Tamanho típico:
 
 ---
 
-## 🔹 Etapa 4 — Geração de embeddings
+##  Geração de embeddings
 
 Script:
 
@@ -124,7 +124,7 @@ Esses vetores representam o **significado matemático** do conteúdo.
 
 ---
 
-## 🔹 Etapa 5 — Armazenamento vetorial
+##   Armazenamento vetorial
 
 Os embeddings são armazenados em:
 
@@ -142,7 +142,7 @@ Função:
 
 ---
 
-## 🔹 Etapa 6 — Recebimento da pergunta
+##   Recebimento da pergunta
 
 Via:
 
@@ -156,7 +156,9 @@ Exemplo:
 {
   "question": "O que é mente zen?"
 }
-## 🔹 Etapa 7 — Geração do embedding da pergunta
+```
+
+##   Geração do embedding da pergunta
 
 Quando o usuário envia uma pergunta, o Chizu **transforma essa pergunta em um vetor numérico**, usando o mesmo modelo de embeddings aplicado aos textos.
 
@@ -171,7 +173,7 @@ Esse vetor representa o **significado da pergunta**, não apenas suas palavras.
 
 ---
 
-## 🔹 Etapa 8 — Busca semântica
+##   Busca semântica
 
 Script principal:
 
@@ -191,7 +193,7 @@ Isso garante que a resposta seja baseada **em conteúdo real**, e não em improv
 
 ---
 
-## 🔹 Etapa 9 — Montagem do contexto
+##  Montagem do contexto
 
 Os trechos encontrados são:
 
@@ -211,7 +213,7 @@ Isso cria um **ambiente informacional rico e confiável**.
 
 ---
 
-## 🔹 Etapa 10 — Geração da resposta
+##  Geração da resposta
 
 Script principal:
 
@@ -231,7 +233,7 @@ Essa etapa transforma **informação bruta em linguagem humana compreensível**.
 
 ---
 
-## 🔹 Etapa 11 — Retorno da resposta ao usuário
+##  Retorno da resposta ao usuário
 
 A resposta final é entregue por meio de:
 
@@ -245,10 +247,10 @@ Exemplo:
 {
   "answer": "A mente zen é o estado de atenção plena..."
 }
-````
+```
 ---
 
-## 📚 Aprofundamento técnico
+##  Aprofundamento técnico
 
 Este capítulo apresentou uma visão geral do pipeline do Chizu.
 

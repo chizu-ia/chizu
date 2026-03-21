@@ -6,7 +6,7 @@ Elas formam o **ambiente de trabalho do desenvolvedor** — assim como um conjun
 
 ---
 
-## 🎯 Por que elas são tão importantes?
+##  Por que elas são tão importantes?
 
 Boas ferramentas:
 
@@ -20,7 +20,7 @@ Sem ferramentas adequadas, até tarefas simples se tornam lentas, confusas e pro
 
 ---
 
-## 🧠 Analogia simples
+##  Analogia simples
 
 Imagine tentar construir uma casa apenas com as mãos.
 
@@ -36,9 +36,9 @@ As ferramentas **não constroem sozinhas**, mas **multiplicam sua capacidade**.
 
 ---
 
-## 🧰 Principais categorias de ferramentas
+##  Principais categorias de ferramentas
 
-### 1. Editores de código
+###  Editores de código
 
 Permitem escrever, organizar e navegar pelo código.
 
@@ -51,7 +51,7 @@ Exemplos:
 
 No Chizu utilizamos principalmente:
 
-👉 **VS Code**
+ **VS Code**
 
 Por oferecer:
 - Autocompletar inteligente
@@ -62,7 +62,7 @@ Por oferecer:
 
 ---
 
-### 2. Terminal e Shell
+###  Terminal e Shell
 
 O terminal permite controlar o computador por meio de comandos de texto.
 
@@ -73,7 +73,7 @@ Exemplos:
 
 No Chizu, usamos:
 
-👉 **Terminal + Zsh (macOS)**
+ **Terminal + Zsh (macOS)**
 
 Ele é essencial para:
 - Rodar scripts
@@ -83,7 +83,7 @@ Ele é essencial para:
 
 ---
 
-### 3. Controle de versão
+###  Controle de versão
 
 Permite registrar todas as alterações do projeto, possibilitando:
 
@@ -94,15 +94,15 @@ Permite registrar todas as alterações do projeto, possibilitando:
 
 Ferramenta padrão:
 
-👉 **Git**
+ **Git**
 
 Plataforma de hospedagem:
 
-👉 **GitHub**
+ **GitHub**
 
 ---
 
-### 4. Linguagens e runtimes
+###  Linguagens e runtimes
 
 São os ambientes onde o código realmente roda.
 
@@ -115,17 +115,17 @@ No Chizu usamos principalmente:
 
 ---
 
-### 5. Gerenciadores de dependências
+###  Gerenciadores de dependências
 
 Servem para instalar bibliotecas externas.
 
 No Python usamos:
 
-👉 **pip + requirements.txt**
+ **pip + requirements.txt**
 
 ---
 
-### 6. Ferramentas de publicação (deploy)
+###  Ferramentas de publicação (deploy)
 
 Permitem colocar o sistema no ar.
 
@@ -136,7 +136,7 @@ No projeto:
 
 ---
 
-## 🔗 Ferramentas usadas no Chizu
+##  Ferramentas usadas no Chizu
 
 Resumo prático:
 
@@ -151,7 +151,7 @@ Resumo prático:
 
 ---
 
-## 🧩 Como tudo se conecta
+##  Como tudo se conecta
 
 O fluxo típico é:
 
@@ -167,7 +167,7 @@ Isso cria um **ecossistema completo de desenvolvimento profissional.**
 
 ---
 
-## 📌 Conceito-chave
+##  Conceito-chave
 
 > Ferramentas não substituem o raciocínio, mas **amplificam a capacidade criativa e técnica do desenvolvedor.**
 

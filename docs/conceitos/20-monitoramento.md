@@ -1,11 +1,11 @@
-# 🟢 Monitoramento e Alta Disponibilidade — Chizu no Render
+#  Monitoramento e Alta Disponibilidade — Chizu no Render
 
 Este documento registra a configuração de monitoramento do Chizu em produção,
 garantindo que o servidor nunca hiberne e que falhas sejam detectadas imediatamente.
 
 ---
 
-## 🧩 O Problema — Hibernação no Render Free
+##  O Problema — Hibernação no Render Free
 
 O Render no plano gratuito hiberna o servidor após **15 minutos de inatividade**.
 
@@ -18,7 +18,7 @@ Consequências:
 
 ---
 
-## 🛠️ Solução — UptimeRobot
+##  Solução — UptimeRobot
 
 O [UptimeRobot](https://uptimerobot.com) é um serviço gratuito que:
 
@@ -29,13 +29,13 @@ O [UptimeRobot](https://uptimerobot.com) é um serviço gratuito que:
 
 ---
 
-## ⚙️ Configuração do Monitor
+##  Configuração do Monitor
 
-### Passo 1 — Criar conta gratuita
+###  Criar conta gratuita
 
 Acesse [uptimerobot.com](https://uptimerobot.com) e crie sua conta.
 
-### Passo 2 — Adicionar monitor
+###  Adicionar monitor
 
 Clique em **+ Add New Monitor** e preencha:
 
@@ -48,14 +48,14 @@ Clique em **+ Add New Monitor** e preencha:
 
 Clique em **Create Monitor**.
 
-### Passo 3 — Configurar alerta por email
+###  Configurar alerta por email
 
 Em **Alert Contacts**, adicione seu email para receber notificações imediatas
 caso o Chizu fique fora do ar.
 
 ---
 
-## 🔄 Como funciona
+##  Como funciona
 ```
 UptimeRobot → https://chizu.ia.br (a cada 5 min)
                     ↓
@@ -69,7 +69,7 @@ e a hibernação nunca ocorre.
 
 ---
 
-## 🐛 Problema detectado — HEAD 405
+## Problema detectado — HEAD 405
 
 Durante os primeiros testes, os logs do Render mostraram:
 ```
@@ -91,7 +91,7 @@ UptimeRobot, eliminando os falsos alarmes.
 
 ---
 
-## 📊 Primeiro incidente registrado
+##  Primeiro incidente registrado
 
 | Campo | Valor |
 |---|---|
@@ -107,7 +107,7 @@ ativo, esse cenário não se repetirá.
 
 ---
 
-## 🌐 Domínio e DNS
+##  Domínio e DNS
 
 | Tipo | Nome | Valor |
 |---|---|---|
@@ -119,7 +119,7 @@ via Cloudflare. Tempo de propagação observado: **menos de 30 minutos**.
 
 ---
 
-## ✅ Status atual
+##  Status atual
 
 | Serviço | Status |
 |---|---|
@@ -131,7 +131,7 @@ via Cloudflare. Tempo de propagação observado: **menos de 30 minutos**.
 
 ---
 
-## 💡 Lição aprendida
+##  Lição aprendida
 
 > O servidor não precisa ser pago para ser confiável.  
 > Basta um monitor gratuito e um ping a cada 5 minutos.

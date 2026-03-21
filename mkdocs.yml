@@ -1,4 +1,4 @@
-site_name: Chizu 
+site_name: Chizu Mestre Zen
 site_description: Documentação do projeto ZenBot e do Mestre Chizu
 site_author: Projeto Chizu
 site_url: https://chizuzen.github.io/Zenbot/
@@ -11,8 +11,6 @@ extra_css:
   - style.css
 
 nav:
-
-  - Início: index.md
 
   - Visão Geral:
       - Motivação: 01-motivacao.md

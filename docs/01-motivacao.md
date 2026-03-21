@@ -11,7 +11,7 @@ Mais do que criar um simples chatbot, a ideia sempre foi construir um **ambiente
 
 ---
 
-## 🌱 Origem da ideia
+## Origem da ideia
 
 O projeto começou como um experimento pessoal, motivado por algumas perguntas fundamentais:
 
@@ -24,7 +24,7 @@ A partir dessas inquietações, surgiu o Chizu: um laboratório vivo de experime
 
 ---
 
-## 🧠 Aprendizado como eixo central
+## Aprendizado como eixo central
 
 Cada etapa do projeto foi pensada não apenas para "fazer funcionar", mas para **entender profundamente**:
 
@@ -38,7 +38,7 @@ O projeto foi se tornando, naturalmente, uma **jornada de aprendizado técnico e
 
 ---
 
-## 🎯 Propósito maior
+## Propósito maior
 
 O Chizu busca mostrar que tecnologia pode ser:
 

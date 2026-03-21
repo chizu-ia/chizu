@@ -6,7 +6,7 @@ Ele combina técnicas modernas de processamento de linguagem natural com uma arq
 
 ---
 
-## 🧩 O que o Chizu faz?
+## O que o Chizu faz?
 
 De forma resumida, o Chizu:
 
@@ -19,7 +19,7 @@ De forma resumida, o Chizu:
 
 ---
 
-## ⚙️ Componentes principais
+## Componentes principais
 
 - **Backend**, parte do sistema que roda no servidor e controla toda a lógica.
 - **API**, interface que permite que aplicações externas façam perguntas.
@@ -29,7 +29,7 @@ De forma resumida, o Chizu:
 
 ---
 
-## 🧠 Por que usar embeddings?
+## Por que usar embeddings?
 
 Buscas tradicionais trabalham com palavras-chave.  
 O Chizu trabalha com **significado**.
@@ -47,7 +47,7 @@ Mesmo usando palavras diferentes, o sistema encontra os textos corretos.
 
 ---
 
-## 🌐 Onde o Chizu roda?
+## Onde o Chizu roda?
 
 O Chizu funciona como uma aplicação web hospedada em um servidor, utilizando:
 

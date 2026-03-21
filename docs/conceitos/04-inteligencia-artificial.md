@@ -4,7 +4,7 @@ Este capítulo explica, de forma clara e didática, o que é **Inteligência Art
 
 ---
 
-## 🧠 O que é Inteligência Artificial?
+## O que é Inteligência Artificial?
 
 Inteligência Artificial é a área da computação que estuda e constrói sistemas capazes de:
 
@@ -20,7 +20,7 @@ Em termos simples:
 
 ---
 
-## 👶 Um exemplo cotidiano
+##  Um exemplo cotidiano
 
 Quando você:
 
@@ -33,7 +33,7 @@ Você está interagindo com **sistemas de inteligência artificial**.
 
 ---
 
-## 🧩 IA não é mágica
+##  IA não é mágica
 
 Apesar do nome impressionar, a IA funciona baseada em:
 
@@ -49,9 +49,9 @@ Ela **calcula probabilidades extremamente rápido**.
 
 ---
 
-## 🧱 Componentes básicos da IA moderna
+##  Componentes básicos da IA moderna
 
-### 1. Dados
+###  Dados
 
 A matéria-prima da inteligência artificial.
 
@@ -59,25 +59,25 @@ Sem dados → não existe aprendizado.
 
 ---
 
-### 2. Algoritmos
+###  Algoritmos
 
 Regras matemáticas que dizem como aprender com os dados.
 
 ---
 
-### 3. Poder computacional
+###  Poder computacional
 
 Processadores, memória e placas gráficas para executar bilhões de cálculos.
 
 ---
 
-### 4. Modelos
+###  Modelos
 
 Estruturas matemáticas treinadas para reconhecer padrões.
 
 ---
 
-## 🤖 O que são modelos de linguagem?
+##  O que são modelos de linguagem?
 
 Modelos de linguagem são sistemas treinados para:
 
@@ -91,7 +91,7 @@ Eles aprendem observando **milhões ou bilhões de exemplos de linguagem humana*
 
 ---
 
-## 🧠 Como uma IA "aprende"?
+##  Como uma IA "aprende"?
 
 Durante o treinamento:
 
@@ -105,7 +105,7 @@ No final, ela não memoriza textos — ela **aprende padrões estatísticos da l
 
 ---
 
-## 🎯 O papel da IA no Chizu
+##  O papel da IA no Chizu
 
 No Chizu, a IA é responsável por:
 
@@ -122,7 +122,7 @@ Isso muda tudo.
 
 ---
 
-## 🧠 IA + Base de Conhecimento = Chizu
+##  IA + Base de Conhecimento = Chizu
 
 O Chizu funciona combinando:
 
@@ -143,9 +143,9 @@ Assim, o Chizu:
 
 ---
 
-## 🪜 Tipos de inteligência artificial
+##  Tipos de inteligência artificial
 
-### 1. IA fraca (ou estreita)
+###  IA fraca (ou estreita)
 
 Executa tarefas específicas:
 
@@ -154,19 +154,19 @@ Executa tarefas específicas:
 - Reconhecimento de imagem
 - Recomendação de conteúdo
 
-👉 O Chizu pertence a essa categoria.
+ O Chizu pertence a essa categoria.
 
 ---
 
-### 2. IA forte (teórica)
+###  IA forte (teórica)
 
 Uma inteligência geral, capaz de pensar como um humano.
 
-👉 Ainda **não existe**.
+ Ainda **não existe**.
 
 ---
 
-## ⚠️ Limitações da Inteligência Artificial
+##  Limitações da Inteligência Artificial
 
 - Não possui consciência
 - Pode errar
@@ -176,7 +176,7 @@ Uma inteligência geral, capaz de pensar como um humano.
 
 ---
 
-## 🧭 Por que usar IA no Chizu?
+##  Por que usar IA no Chizu?
 
 Porque ela permite:
 
@@ -192,7 +192,7 @@ Sem IA, o Chizu seria apenas:
 
 ---
 
-## 🧘 A metáfora Zen
+##  A metáfora Zen
 
 A IA no Chizu é como:
 
@@ -204,14 +204,14 @@ Ela vem dos **textos que você escolhe ensinar**.
 
 ---
 
-## 📌 Conceito-chave
+##  Conceito-chave
 
 > A Inteligência Artificial não cria sabedoria — ela organiza, conecta e expressa o conhecimento humano de formas novas.
 
 ---
 
-## 🔗 Próximo capítulo
+##  Próximo capítulo
 
-👉 **05 — Modelos e LLMs**
+ **05 — Modelos e LLMs**
 
 Aqui vamos entender o que são **Large Language Models** e como eles funcionam por dentro.
