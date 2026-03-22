@@ -64,6 +64,7 @@ Cada conceito aqui apresentado busca equilibrar:
 - [Firewall e Resiliência](21-firewall.md)
 - [Web Application Firewall](22-cloudflare.md)
 - [Alexa](26-alexa.md)
+- [Whatsapp](27-whatsapp.md)
 - [Copyright](23-copyright.md)
 - [Aviso Legal](24-aviso-legal.md)
 - [Apoie o Projeto](25-apoio.md)
@@ -79,4 +80,4 @@ Para transformar estes conceitos em **aprendizado real**, acompanhe o diário de
 
 ---
 
-📘 *Voltar ao índice geral:* [Documentação Chizu](../index.md)
+*Voltar ao índice geral:* [Documentação Chizu](../index.md)

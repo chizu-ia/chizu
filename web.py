@@ -141,6 +141,8 @@ async def whatsapp(request: Request):
             prompt_completo = [mensagens_base[0]] + historico[-8:] + [mensagens_base[-1]]
             resposta_raw, ia_nome = ai_provider.chat(prompt_completo)
             resposta_limpa = resposta_raw.replace("(Silêncio)", "").replace("(pausa)", "").strip()
+            resposta_limpa = resposta_limpa.lstrip("#").strip()
+            resposta_limpa = resposta_limpa[:1500]
             historico.append({"role": "user", "content": pergunta})
             historico.append({"role": "assistant", "content": resposta_limpa})
             conversation_memory[telefone] = historico[-8:]
