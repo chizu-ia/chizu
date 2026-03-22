@@ -104,45 +104,6 @@ HTML_PAGE = f"""
 async def get_index():
     return HTML_PAGE
 
-
-@app.post("/whatsapp")
-async def whatsapp(request: Request):
-    try:
-        form = await request.form()
-        pergunta = form.get("Body", "").strip()
-        telefone = form.get("From", "")
-
-        if not pergunta:
-            resposta_limpa = "O silêncio é a resposta."
-        elif pergunta.lower() in ["sair", "tchau", "parar", "encerrar", "até logo", "gassho", "obrigado"]:
-            resposta_limpa = "Vá em paz. Gasshô! Que todos os seres possam se beneficiar."
-        else:
-            historico = conversation_memory.setdefault(telefone, [])
-            contexto = buscar_contexto(pergunta, biblioteca_chizu)
-            mensagens_base = montar_prompt(pergunta, contexto)
-            prompt_completo = [mensagens_base[0]] + historico[-8:] + [mensagens_base[-1]]
-            resposta_raw, ia_nome = ai_provider.chat(prompt_completo)
-            resposta_limpa = resposta_raw.replace("(Silêncio)", "").replace("(pausa)", "").strip()
-            historico.append({"role": "user", "content": pergunta})
-            historico.append({"role": "assistant", "content": resposta_limpa})
-            conversation_memory[telefone] = historico[-8:]
-
-        twiml = f"""<?xml version="1.0" encoding="UTF-8"?>
-<Response>
-    <Message>{resposta_limpa}</Message>
-</Response>"""
-
-        return Response(content=twiml, media_type="application/xml")
-
-    except Exception as e:
-        print(f"❌ Erro WhatsApp: {e}")
-        twiml = """<?xml version="1.0" encoding="UTF-8"?>
-<Response>
-    <Message>Caminhante, o vento não sopra hoje. Vá Meditar!</Message>
-</Response>"""
-        return Response(content=twiml, media_type="application/xml")
-    
-
 @app.post("/ask")
 async def ask(request: Request):
     try:
