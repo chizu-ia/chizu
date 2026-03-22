@@ -119,10 +119,11 @@ async def ask(request: Request):
         session_id = request.cookies.get("chizu_session") or str(uuid4())
         historico  = conversation_memory.setdefault(session_id, [])
 
-        # Busca contexto diretamente por TF-IDF (sem modelo local, sem API externa)
-        contexto = buscar_contexto(pergunta, biblioteca_chizu)
+        # Filtro por autor opcional (ex: {"pergunta": "...", "autor": "Eihei Dogen"})
+        autor_filtro = data.get("autor", None)
+        contexto = buscar_contexto(pergunta, biblioteca_chizu, autor_filtro=autor_filtro)
 
-        mensagens_base  = montar_prompt(pergunta, contexto)
+        mensagens_base = montar_prompt(pergunta, contexto, autor_filtro=autor_filtro)
         prompt_completo = [mensagens_base[0]] + historico[-8:] + [mensagens_base[-1]]
 
         resposta_raw, ia_nome = ai_provider.chat(prompt_completo)

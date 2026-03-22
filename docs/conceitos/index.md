@@ -65,6 +65,7 @@ Cada conceito aqui apresentado busca equilibrar:
 - [Web Application Firewall](22-cloudflare.md)
 - [Alexa](26-alexa.md)
 - [Whatsapp](27-whatsapp.md)
+- [Outros Mestres](28-expansao-acervo-e-filtro-autor)
 - [Copyright](23-copyright.md)
 - [Aviso Legal](24-aviso-legal.md)
 - [Apoie o Projeto](25-apoio.md)
