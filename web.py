@@ -75,7 +75,26 @@ app.mount("/legal", StaticFiles(directory="legal", html=True), name="legal")
 # Textos da Interface
 # ============================================
 DESPEDIDA_JS = ["Que o silêncio te acompanhe.", "O caminho se abre diante de ti.", "Vá em paz."]
-AGUARDANDO_JS = ["Chizu medita...", "O mestre contempla...", "O silêncio se aprofunda..."]
+AGUARDANDO_JS = [
+    "Chizu medita...",
+    "O mestre contempla...",
+    "O silêncio se aprofunda...",
+    "Chizu respira fundo...",
+    "Os pensamentos se dissolvem...",
+    "O vazio fala...",
+    "Chizu ouve o invisível...",
+    "A mente se aquieta...",
+    "O caminho se revela...",
+    "Chizu aguarda o momento...",
+    "As palavras tomam forma...",
+    "O mestre fecha os olhos...",
+    "A sabedoria emerge...",
+    "Chizu alinha os chakras...",
+    "O universo processa...",
+    "A névoa se dissipa...",
+    "Chizu consulta os ventos...",
+    "O eco ressoa...",
+]
 
 HTML_PAGE = f"""
 <!DOCTYPE html>
