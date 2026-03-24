@@ -159,7 +159,7 @@ async def whatsapp(request: Request):
             resposta_limpa = resposta_limpa.lstrip("#").strip()
 
             # Substitui bloqueio fixo por frase zen aleatória
-            if "esse caminho não leva ao Zen" in resposta_limpa or resposta_limpa == "VAZIO":
+            if "esse caminho não leva ao Zen" in resposta_limpa or "BLOQUEADO" in resposta_limpa or resposta_limpa == "VAZIO":
                 resposta_limpa = resposta_bloqueio()
 
             resposta_limpa = resposta_limpa[:1500] + f"\n\n— via {ia_nome}"
@@ -208,7 +208,7 @@ async def ask(request: Request):
         resposta_limpa   = resposta_raw.replace("(Silêncio)", "").replace("(pausa)", "").strip()
 
         # Substitui bloqueio fixo por frase zen aleatória
-        if "esse caminho não leva ao Zen" in resposta_limpa or resposta_limpa == "VAZIO":
+        if "esse caminho não leva ao Zen" in resposta_limpa or "BLOQUEADO" in resposta_limpa or resposta_limpa == "VAZIO":
             resposta_limpa = resposta_bloqueio()
 
         resposta_exibida = f"{resposta_limpa}\n\n— via {ia_nome}"
