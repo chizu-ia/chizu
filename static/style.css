@@ -22,7 +22,7 @@ body {
     border: 1px solid #e0d6cc;
 }
 
-/* --- CABEÇALHO (CHIZU À ESQUERDA, MESTRE NO MEIO, FRASE À DIREITA) --- */
+/* --- CABEÇALHO --- */
 .header-card {
     display: flex;
     align-items: center;
@@ -60,32 +60,64 @@ body {
     line-height: 1.5;
 }
 
-/* --- INPUT (LIMPO E SEM AUTOFILL AZUL) --- */
-input { 
-    width: 100%;
-    box-sizing: border-box;
-    padding: 1.2rem 1.6rem;
+/* --- INPUT CONTAINER COM BOTÃO INTEGRADO --- */
+.input-container {
+    display: flex;
+    align-items: center;
     border: 1px solid #e0d6cc;
+    border-radius: 25px;
+    background: white;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    padding-right: 0.4rem;
+}
+
+.input-container:focus-within {
+    border-color: #8c6d46;
+    box-shadow: 0 0 8px rgba(140, 109, 70, 0.2);
+    background-color: #fdfcfb;
+}
+
+.input-container:hover {
+    border-color: #c4b6a9;
+}
+
+.input-container input {
+    flex: 1;
+    padding: 1.2rem 1.6rem;
+    border: none;
     border-radius: 25px;
     font-size: 1.1rem;
     outline: none;
-    background-color: white !important;
+    background: transparent;
     font-family: inherit;
+    color: #2c3e2f;
 }
 
-/* Mata o fundo azul/amarelo que o Chrome tenta forçar */
-input:-webkit-autofill {
+.input-container input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset !important;
     -webkit-text-fill-color: #2c3e2f !important;
 }
 
-input:focus {
-    border: 1px solid #8c6d46; 
-    box-shadow: 0 0 8px rgba(140, 109, 70, 0.2); 
-    background-color: #fdfcfb !important;
+#btn-enviar {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: #8c6d46;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.1s;
+    padding: 0;
+    line-height: 1;
 }
 
-input:hover { border-color: #c4b6a9; }
+#btn-enviar:hover  { background: #6b5234; }
+#btn-enviar:active { transform: scale(0.93); }
 
 /* --- RESPOSTA E LINKS --- */
 .resposta {

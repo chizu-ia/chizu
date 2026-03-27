@@ -116,7 +116,7 @@ HTML_PAGE = f"""
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chizu · Mestre Zen</title>
     <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
-    <link rel="stylesheet" href="/static/style.css?v=1">
+    <link rel="stylesheet" href="/static/style.css?v=2">
 </head>
 <body>
     <div class="container">
@@ -131,6 +131,7 @@ HTML_PAGE = f"""
         </div>
         <div class="input-container">
             <input type="text" id="pergunta" placeholder="Fale com Chizu..." autofocus autocomplete="off" spellcheck="false">
+            <button id="btn-enviar" onclick="fazerPergunta()">&#10148;</button>
         </div>
 
         <div class="resposta" id="resposta"><em>O silêncio precede a resposta...</em></div>
@@ -155,7 +156,6 @@ HTML_PAGE = f"""
 </body>
 </html>
 """
-
 
 # ============================================
 # Rotas do Servidor
