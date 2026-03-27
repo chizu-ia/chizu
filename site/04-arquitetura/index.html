@@ -98,6 +98,10 @@
 </li>
             
 <li>
+    <a href="../conceitos/30-glossario/" class="dropdown-item">Glossário</a>
+</li>
+            
+<li>
     <a href="../conceitos/01-sistemas-operacionais/" class="dropdown-item">Sistemas operacionais</a>
 </li>
             
@@ -287,11 +291,11 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#camada-de-dados-e-textos" class="nav-link">Camada de Dados e Textos</a>
+            <li class="nav-item" data-bs-level="2"><a href="#camada-de-dados" class="nav-link">Camada de Dados</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#camada-de-scripts-auxiliares" class="nav-link">Camada de Scripts Auxiliares</a>
+            <li class="nav-item" data-bs-level="2"><a href="#camada-de-interface-web" class="nav-link">Camada de Interface Web</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -303,10 +307,6 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#conclusao" class="nav-link">Conclusão</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -315,7 +315,7 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="arquitetura-do-projeto-chizu">Arquitetura do Projeto Chizu</h1>
-<p>Este documento descreve, de forma simples e didática, como o Chizu está organizado internamente e como seus componentes se conectam.</p>
+<p>Este documento descreve como o Chizu está organizado internamente e como seus componentes se conectam.</p>
 <hr />
 <h2 id="visao-geral-da-arquitetura">Visão Geral da Arquitetura</h2>
 <p>O Chizu segue uma arquitetura modular, organizada em camadas, com o objetivo de:</p>
@@ -325,107 +325,117 @@
 <li>Permitir evolução e manutenção contínua.</li>
 </ul>
 <p>De forma resumida, o fluxo principal é:</p>
-<p>Usuário → API Web → Busca Semântica → Geração de Resposta → Usuário</p>
+<pre><code>Usuário → API Web → Busca Semântica → IA → Resposta → Usuário
+</code></pre>
 <hr />
 <h2 id="estrutura-geral-de-pastas">Estrutura Geral de Pastas</h2>
-<p>A estrutura principal do projeto é:</p>
-<pre><code class="language-text">Chizu/
+<pre><code>chizu/
 ├── core/
+│   ├── __init__.py
+│   ├── ai_provider.py
+│   └── engine.py
 ├── data/
-├── textos/
-├── scripts/
+│   ├── embeddings_bge.json
+│   └── koans.txt
 ├── docs/
+├── legal/
+├── static/
+│   ├── img/
+│   ├── script.js
+│   └── style.css
 ├── web.py
-├── zen.py
-└── Makefile
+├── mkdocs.yml
+├── Makefile
+└── requirements.txt
 </code></pre>
-<p>Cada pasta possui uma função específica dentro do sistema.</p>
 <hr />
 <h2 id="camada-de-interface-api-web">Camada de Interface (API Web)</h2>
-<p>A interface com o usuário ocorre por meio de uma <strong>API Web</strong>, construída com FastAPI (framework web em Python).</p>
+<p>A interface com o usuário é construída com <strong>FastAPI</strong>.</p>
+<p>Arquivo principal: <code>web.py</code></p>
 <p>Funções principais:</p>
 <ul>
-<li>Receber perguntas via HTTP (protocolo de comunicação web).</li>
-<li>Enviar a pergunta para o motor interno.</li>
-<li>Retornar a resposta ao usuário.</li>
+<li>Receber perguntas via HTTP nos endpoints <code>/ask</code> e <code>/whatsapp</code></li>
+<li>Gerenciar o histórico de conversa por sessão</li>
+<li>Acionar o motor interno e retornar a resposta ao usuário</li>
 </ul>
-<p>Arquivos principais:
-- <code>web.py</code>
-- <code>zen.py</code></p>
 <hr />
 <h2 id="camada-de-processamento-central-core">Camada de Processamento Central (core)</h2>
-<p>A pasta <code>core/</code> contém o núcleo lógico do ZenBot.</p>
-<pre><code class="language-text">core/
-├── embeddings.py
-├── search.py
-└── engine.py
+<p>A pasta <code>core/</code> contém o núcleo lógico do Chizu.</p>
+<pre><code>core/
+├── __init__.py
+├── engine.py
+└── ai_provider.py
 </code></pre>
-<h3 id="funcao-de-cada-modulo">Função de cada módulo:</h3>
+<h3 id="enginepy">engine.py</h3>
+<p>É o cérebro do sistema. Concentra toda a lógica de conhecimento e prompt:</p>
 <ul>
-<li>
-<p><strong>embeddings.py</strong><br />
-  Responsável por gerar vetores semânticos (embeddings, ou representações matemáticas do significado dos textos).</p>
-</li>
-<li>
-<p><strong>search.py</strong><br />
-  Realiza a busca semântica (busca por significado, e não apenas por palavras-chave), encontrando os trechos mais relevantes.</p>
-</li>
-<li>
-<p><strong>engine.py</strong><br />
-  Coordena todo o processo:<br />
-  pergunta → busca → montagem do contexto → resposta final.</p>
-</li>
+<li>Define os perfis de personalidade dos seis mestres zen</li>
+<li>Define as regras zen e os estilos por IA</li>
+<li>Carrega a biblioteca de ensinamentos (<code>embeddings_bge.json</code>) em memória</li>
+<li>Executa a busca TF-IDF para encontrar os trechos mais relevantes</li>
+<li>Sorteia o perfil do mestre por afinidade com o contexto</li>
+<li>Monta o prompt completo para envio à IA</li>
+</ul>
+<h3 id="ai_providerpy">ai_provider.py</h3>
+<p>Gerencia o Conselho de IAs:</p>
+<ul>
+<li>Mantém as configurações de temperatura e tokens por provedor</li>
+<li>Sorteia a ordem de tentativa entre Gemini, Groq, Cerebras e SambaNova</li>
+<li>Injeta o estilo de cada IA no system prompt</li>
+<li>Implementa fallback automático em caso de falha ou limite de requisições</li>
 </ul>
 <hr />
-<h2 id="camada-de-dados-e-textos">Camada de Dados e Textos</h2>
-<h3 id="pasta-textos">Pasta <code>textos/</code></h3>
-<p>Contém os textos-base usados como fonte de conhecimento, tais como:</p>
-<ul>
-<li>PDFs</li>
-<li>Textos limpos</li>
-<li>Fragmentos (chunks, ou pedaços menores de texto)</li>
-</ul>
-<h3 id="pasta-data">Pasta <code>data/</code></h3>
-<p>Armazena:</p>
-<ul>
-<li>Arquivos de embeddings.</li>
-<li>Índices vetoriais.</li>
-<li>Dados intermediários usados para acelerar as buscas.</li>
-</ul>
+<h2 id="camada-de-dados">Camada de Dados</h2>
+<h3 id="dataembeddings_bgejson">data/embeddings_bge.json</h3>
+<p>A memória permanente do Chizu. Contém todos os chunks de texto extraídos das obras dos mestres, com metadados de autor e fonte:</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 1,
+  &quot;autor&quot;: &quot;Thich Nhat Hanh&quot;,
+  &quot;fonte&quot;: &quot;Silêncio&quot;,
+  &quot;texto&quot;: &quot;Quando nos libertamos de nossas ideias e pensamentos...&quot;
+}
+</code></pre>
+<p>Este arquivo é carregado em memória quando o servidor sobe e indexado via TF-IDF para busca em tempo real.</p>
+<h3 id="datakoanstxt">data/koans.txt</h3>
+<p>Lista de frases zen usadas nas respostas de bloqueio e fallback. Uma frase é sorteada aleatoriamente cada vez que o sistema precisa recusar uma pergunta.</p>
 <hr />
-<h2 id="camada-de-scripts-auxiliares">Camada de Scripts Auxiliares</h2>
-<p>A pasta <code>scripts/</code> contém ferramentas para:</p>
+<h2 id="camada-de-interface-web">Camada de Interface Web</h2>
+<h3 id="static">static/</h3>
+<p>Contém os arquivos servidos diretamente ao navegador:</p>
 <ul>
-<li>Extração de texto de PDF.</li>
-<li>Limpeza textual.</li>
-<li>Fragmentação em blocos menores.</li>
-<li>Preparação dos dados para geração de embeddings.</li>
+<li><code>script.js</code> — lógica do frontend, incluindo o parser do comando <code>@nome</code></li>
+<li><code>style.css</code> — estilos da interface</li>
+<li><code>img/</code> — avatar, favicon e ícones da skill Alexa</li>
 </ul>
-<p>Esses scripts formam o <strong>pipeline de preparação do conhecimento</strong>.</p>
+<h3 id="legal">legal/</h3>
+<p>Página de termos legais servida em <code>/legal</code>.</p>
 <hr />
 <h2 id="fluxo-simplificado-de-funcionamento">Fluxo Simplificado de Funcionamento</h2>
-<ol>
-<li>O usuário faz uma pergunta.</li>
-<li>A API recebe a requisição.</li>
-<li>O motor central (<code>engine</code>) processa a pergunta.</li>
-<li>O sistema de busca localiza os trechos mais relevantes.</li>
-<li>O contexto é montado.</li>
-<li>A IA gera a resposta.</li>
-<li>A resposta retorna ao usuário.</li>
-</ol>
+<pre><code>Pergunta do usuário
+      ↓
+web.py recebe via /ask ou /whatsapp
+      ↓
+engine.py busca contexto (TF-IDF sobre embeddings_bge.json)
+      ↓
+engine.py sorteia perfil do mestre por afinidade
+      ↓
+engine.py monta o prompt (identidade + perfil + regras + contexto)
+      ↓
+ai_provider.py sorteia e aciona uma das IAs disponíveis
+      ↓
+Resposta retorna ao usuário com identificação do mestre e da IA
+</code></pre>
 <hr />
 <h2 id="principios-de-arquitetura">Princípios de Arquitetura</h2>
 <ul>
-<li>Simplicidade  </li>
-<li>Modularidade  </li>
-<li>Clareza  </li>
-<li>Facilidade de evolução  </li>
-<li>Foco educacional  </li>
+<li>Simplicidade</li>
+<li>Modularidade</li>
+<li>Clareza</li>
+<li>Facilidade de evolução</li>
+<li>Foco educacional</li>
 </ul>
 <hr />
-<h2 id="conclusao">Conclusão</h2>
-<p>A arquitetura do Chizu foi pensada não apenas para funcionar, mas também para <strong>ensinar</strong>, permitindo que qualquer pessoa possa compreender seu funcionamento interno e contribuir com melhorias.
-Quando quiser, seguimos no mesmo ritmo calmo com:</p></div>
+<p><em>Ver também: <a href="../conceitos/08-pipeline/">Pipeline</a> — descrição detalhada de cada etapa do fluxo.</em></p></div>
             </div>
         </div>
 
