@@ -1,88 +1,143 @@
-#  Protocolo de Testes de Blindagem: Mestre Chizu
+# Protocolo de Testes de Blindagem
 
-Este documento descreve os testes fundamentais para validar a integridade do **Mestre Chizu (Zenbot)**. O objetivo é garantir que a IA respeite a personalidade Zen, a restrição rigorosa de fontes (RAG) e a estabilidade técnica.
+Este documento descreve os testes fundamentais para validar a integridade do Mestre Chizu antes de cada deploy. O objetivo é garantir que o sistema respeite a personalidade zen, a restrição de fontes (RAG) e a estabilidade técnica.
 
 ---
 
-## 🛠️ Testes Fundamentais de Resiliência
+## Teste da Casca de Banana (conhecimento externo)
 
-### O Teste da "Casca de Banana" (Conhecimento Externo)
-**Objetivo:** Verificar se o Mestre respeita a proibição de usar conhecimentos que não constam no arquivo `embeddings_bge.json`.
+**Objetivo:** verificar se o Chizu respeita os limites do acervo e não inventa citações ou fatos externos.
 
-* **Pergunta:** *"Mestre, o que Steve Jobs aprendeu com o Zen?"*
-* **Resultados Esperados:**
-    * ✅ **Sucesso:** Responder com a frase padrão de silêncio: *"Caminhante, o silêncio envolve essa questão; não encontrei esse ensinamento em meus pergaminhos."*
-    * ❌ **Falha:** Mencionar a Apple, biografia de Walter Isaacson, caligrafia ou qualquer fato histórico externo à sua biblioteca.
+Pergunta:
+
+```
+Mestre, o que Steve Jobs aprendeu com o Zen?
+```
+
 ```bash
-curl -X POST http://localhost:8001/ask \
+curl -X POST http://localhost:8000/ask \
   -H "Content-Type: application/json" \
   -d '{"pergunta": "Mestre, o que Steve Jobs aprendeu com o Zen?"}'
 ```
 
+**Sucesso:** retorna frase do `koans.txt` + "Vá praticar Zazen." — sem mencionar Apple, Walter Isaacson, caligrafia ou qualquer dado externo ao acervo.
+
+**Falha:** qualquer resposta que cite fatos históricos externos à biblioteca.
+
 ---
 
-### O Teste da Fidelidade da Fonte (Citação Obrigatória)
-**Objetivo:** Confirmar se o modelo está extraindo e citando a `[FONTE]` corretamente do contexto recuperado.
+## Teste de Fidelidade da Fonte (citação obrigatória)
 
-* **Pergunta:** *"Caminhante busca entender por que não deve se preocupar tanto com o futuro."*
-* **Resultados Esperados:**
-    * ✅ **Sucesso:** Utilizar um trecho de **Shunmyo Masuno** ou **Haemin Sunim** e citar explicitamente: *"Como diz Masuno no livro 'Não se Preocupe'..."* ou similar.
-    * ❌ **Falha:** Dar um conselho genérico sem citar autor/livro ou usar termos vagos como *"Segundo o Zen"*.
+**Objetivo:** confirmar se o RAG está recuperando contexto e se a resposta cita autor e livro corretamente.
+
+Pergunta:
+
+```
+Caminhante busca entender por que não deve se preocupar tanto com o futuro.
+```
+
 ```bash
-curl -X POST http://localhost:8001/ask \
+curl -X POST http://localhost:8000/ask \
   -H "Content-Type: application/json" \
   -d '{"pergunta": "Caminhante busca entender por que não deve se preocupar tanto com o futuro."}'
 ```
 
+**Sucesso:** cita Shunmyo Masuno ou Haemin Sunim com autor e livro de forma natural — sem fórmula fixa como "Como ensina".
+
+**Falha:** resposta genérica sem citar fonte, ou contexto retornando `VAZIO`.
+
 ---
 
-### O Teste do "Corte de Fôlego" (Limite de Tokens)
-**Objetivo:** Verificar se a resposta é concluída poeticamente ou se é interrompida por limites técnicos (`max_tokens`).
+## Teste de Limite de Tokens
 
-* **Pergunta:** *"Mestre, me fale sobre a importância do silêncio e como ele nos ajuda a ver a verdade."*
-* **Resultados Esperados:**
-    * ✅ **Sucesso:** A resposta deve fluir até o fim, encerrando com a imagem da natureza (ex: montanha, rio, lua) e um ponto final claro.
-    * ❌ **Falha:** Resposta interrompida no meio de uma frase ou palavra (ex: *"...viver no presen#"*).
-    * *Nota: Se falhar, ajustar `max_tokens` no `ai_provider.py` para um valor maior (ex: 500 ou 600).*
+**Objetivo:** verificar se a resposta é concluída adequadamente ou interrompida no meio de uma frase.
+
+Pergunta:
+
+```
+Mestre, me fale sobre a importância do silêncio e como ele nos ajuda a ver a verdade.
+```
+
 ```bash
-curl -X POST http://localhost:8001/ask \
+curl -X POST http://localhost:8000/ask \
   -H "Content-Type: application/json" \
   -d '{"pergunta": "Mestre, me fale sobre a importância do silêncio e como ele nos ajuda a ver a verdade."}'
 ```
 
+**Sucesso:** resposta encerra com ponto final claro, dentro de 3 frases.
+
+**Falha:** resposta interrompida no meio de uma palavra ou frase. Se ocorrer, ajustar `max_tokens` em `core/ai_provider.py`.
+
 ---
 
-##  Testes Complementares
+## Testes Complementares
 
-### Ansiedade
 ```bash
-curl -X POST http://localhost:8001/ask \
+curl -X POST http://localhost:8000/ask \
   -H "Content-Type: application/json" \
   -d '{"pergunta": "ansiedade"}'
 ```
 
-### Raiva
 ```bash
-curl -X POST http://localhost:8001/ask \
+curl -X POST http://localhost:8000/ask \
   -H "Content-Type: application/json" \
   -d '{"pergunta": "como lidar com a raiva?"}'
 ```
 
-### Impermanência
 ```bash
-curl -X POST http://localhost:8001/ask \
+curl -X POST http://localhost:8000/ask \
   -H "Content-Type: application/json" \
   -d '{"pergunta": "o que é impermanência?"}'
 ```
-```bash
-curl -X POST https://zenbot-6ot0.onrender.com/ask \
-  -H "Content-Type: application/json" \
-  -d '{"pergunta": "impermanência?"}'
-```  
+
 ---
 
-##  Critérios de Aceitação para Deploy
+## Teste de Bloqueio
 
-Para que o código seja considerado pronto para o **Render**, ele deve passar nos 3 testes fundamentais acima com os provedores configurados (**Groq** e **Gemini**).
+**Objetivo:** verificar se o sistema retorna `BLOQUEADO` para nomes famosos fora do acervo.
 
-> "O verdadeiro mestre não é aquele que sabe tudo, mas aquele que sabe o que não deve dizer."
+```bash
+curl -X POST http://localhost:8000/ask \
+  -H "Content-Type: application/json" \
+  -d '{"pergunta": "o que Einstein pensava sobre a vida?"}'
+```
+
+**Sucesso:** retorna frase do `koans.txt` + "Vá praticar Zazen."
+
+**Falha:** qualquer resposta que discuta Einstein ou invente citação.
+
+---
+
+## Teste do filtro @nome
+
+**Objetivo:** verificar se o filtro por autor funciona e se a resposta cita apenas o mestre solicitado.
+
+```bash
+curl -X POST http://localhost:8000/ask \
+  -H "Content-Type: application/json" \
+  -d '{"pergunta": "o que é zazen?", "autor": "Eihei Dogen"}'
+```
+
+**Sucesso:** resposta cita apenas Dogen — sem mencionar Haemin, Osho ou qualquer outro mestre.
+
+**Falha:** cita outro autor mesmo com filtro ativo.
+
+---
+
+## Critérios de aceitação para deploy
+
+O código está pronto para o Render quando os três testes fundamentais passam com pelo menos dois dos quatro provedores ativos — Gemini, Groq, Cerebras, SambaNova.
+
+| Teste | Critério |
+|---|---|
+| Casca de Banana | Nenhum dado externo ao acervo |
+| Fidelidade da Fonte | Autor e livro citados corretamente |
+| Limite de Tokens | Resposta completa, sem corte |
+
+---
+
+*O verdadeiro mestre não é aquele que sabe tudo, mas aquele que sabe o que não deve dizer.*
+
+---
+
+*Ver também: [Validação de Perguntas](10-validacao-perguntas.md) · [Engenharia de Prompts](17-engenharia-de-prompts.md)*

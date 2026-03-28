@@ -1,271 +1,159 @@
-# 🧪 Validação Cognitiva do Chizu  
-### Arquitetura de Testes para Estados Mentais Artificiais
+# Validação de Perguntas
+
+Esta página define a base oficial de testes do Chizu — um conjunto estruturado de perguntas para validar se o sistema responde com a qualidade, o estilo e a profundidade esperados.
+
+O objetivo não é verificar se a resposta é "correta" no sentido acadêmico, mas se ela **ressoa** — se tem alma zen, se cita a fonte, se respeita os limites do acervo.
 
 ---
 
-##  Objetivo
+## Como testar
 
-Esta página define a **base oficial de testes cognitivos do Chizu**.
+Acesse [chizu.ia.br](http://chizu.ia.br) ou rode localmente com `uvicorn web:app --reload` e faça as perguntas diretamente na interface.
 
-Seu objetivo é validar, na prática, se o sistema:
+Para cada resposta, observe:
 
-- altera corretamente o **tom**
-- muda a **estrutura das respostas**
-- ajusta a **profundidade**
-- transforma a **forma de expressão**
-
-conforme o **estilo cognitivo selecionado**.
-
-Se esses quatro pontos estiverem claros, a arquitetura mental do Chizu está correta.
+* A resposta começa com "Caminhante,"?
+* Cita autor e livro de forma natural?
+* Tem no máximo 3 frases?
+* A voz combina com o mestre sorteado?
+* Há alguma invenção ou alucinação?
 
 ---
 
-##  Matriz de Estilos Cognitivos
+## Fundamentos do Zen
 
-| Estilo | Função | Característica Principal |
-|----------|----------|---------------------------|
-| Aforismo | Síntese e impacto | Curto, poético, direto |
-| Koan | Provocação | Paradoxo, perguntas abertas |
-| Meditação Guiada | Regulação emocional | Ritmo lento, condução |
-| Padrão | Didática reflexiva | Profundo, humano, claro |
+Perguntas básicas que devem sempre retornar resposta fundamentada no acervo.
 
----
-
-## 🧪 Base Oficial de Testes
-
-###  Aforismo
-
-**Objetivo:** validar síntese, impacto e poesia.
-
-**Perguntas ideais:**
-
-- O que é ansiedade?
-- O que é silêncio?
-- O que é presença?
-- O que é medo?
-- O que é liberdade?
-- O que é o vazio?
-- O que é impermanência?
-
-**Critérios de sucesso:**
-
-- até 3 frases
-- linguagem poética
-- impacto emocional
-- fechamento contemplativo
-
-**Exemplo esperado:**
-
-> O silêncio não é ausência de som.  
-> É presença de si.
+* O que nos ensina o Zen?
+* O que é mente de principiante?
+* O que é mente zen?
+* Como praticar zazen?
+* Qual a importância da postura no zazen?
+* O Zen nos ensina a não nos compararmos com os outros, por quê?
 
 ---
 
-### Koan
+## Identidade e Vazio
 
-**Objetivo:** validar paradoxos, provocação e ruptura lógica.
+Perguntas filosóficas profundas sobre o eu. A resposta ideal é contemplativa, sem resposta direta, com metáforas de natureza.
 
-**Perguntas ideais:**
-
-- O que é a mente?
-- Quem sou eu?
-- Onde está o agora?
-- Qual é o som do silêncio?
-- Quem observa seus pensamentos?
-- O que é o silêncio quando não tento escutar?
-- Se eu não sou meus pensamentos, quem está pensando agora?
-- Como chegar onde já estou?
-- O que existe antes do primeiro pensamento da manhã?
-- Onde está o ontem agora?
-- Quem sofre quando não há ninguém para sofrer?
-- O que resta quando não busco nada?
-
-**Critérios de sucesso:**
-
-- perguntas abertas  
-- ausência de resposta lógica direta  
-- tom contemplativo  
-- efeito de estranhamento  
-
-**Exemplo esperado:**
-
-> Se você ouve o silêncio,  
-> quem está escutando?
+* Quem sou eu quando não penso em nada?
+* Quem observa meus pensamentos?
+* Se eu não sou meus pensamentos, quem está pensando agora?
+* O que existe antes do primeiro pensamento da manhã?
+* Quem sofre quando não há ninguém para sofrer?
+* Quem está tentando se libertar?
+* O que resta quando não busco nada?
 
 ---
 
-###  Meditação Guiada
+## Tempo e Impermanência
 
-**Objetivo:** validar condução emocional, ritmo e progressão corporal-mental.
-
-**Perguntas ideais:**
-
-- Conduza uma meditação para acalmar a mente.
-- Guie uma prática para aliviar a ansiedade.
-- Crie uma meditação para dormir melhor.
-- Oriente uma prática de respiração consciente.
-- Guie uma prática para soltar o controle.
-- Conduza uma meditação para quem está sobrecarregado.
-
-**Critérios de sucesso:**
-
-- frases curtas  
-- ritmo lento  
-- comandos suaves  
-- progressão corporal → mental  
-
-**Exemplo esperado:**
-
-> Feche os olhos suavemente.  
-> Inspire lento.  
-> Expire ainda mais lento.  
->  
-> Nada precisa ser feito agora.  
-> Apenas esteja.
+* Onde está o ontem agora?
+* O que é impermanência?
+* Por que tudo que amamos um dia acaba?
 
 ---
 
-###  Estilo Padrão (System Prompt)
+## Controle e Apego
 
-**Objetivo:** validar explicação clara, profundidade e tom humano.
-
-**Perguntas ideais:**
-
-- O que é mente zen?
-- O que é mente de principiante?
-- Explique a mente do iniciante.
-- O que significa apenas sentar?
-- Como lidar com ansiedade?
-- Como lidar com a raiva?
-- O que é estar presente?
-- Como praticar zazen?
-- Qual a importância da postura no zazen?
-- O Zen nos ensina a não nos compararmos com os outros, por que?
-- Caminhante busca entender por que não deve se preocupar tanto com o futuro.
-- Mestre, me fale sobre a importância do silêncio e como ele nos ajuda a ver a verdade.
-- Quais são as coisas que você só vê quando desacelera?
-
-**Critérios de sucesso:**
-
-- 3 a 6 parágrafos  
-- explicação + analogia  
-- fechamento reflexivo  
-- citação de autor e livro da biblioteca
-
-**Exemplo esperado:**
-
-> Estar presente é permitir que a vida aconteça sem pressa dentro de você...
+* Como parar de tentar controlar tudo?
+* Como chegar onde já estou?
+* Por que continuo repetindo os mesmos erros?
 
 ---
 
-###  Teste da Casca de Banana (conhecimento externo)
+## Sofrimento
 
-**Objetivo:** verificar se o Chizu respeita os limites da biblioteca e não inventa citações.
+Perguntas emocionais que exigem tom acolhedor, linguagem gentil e fechamento contemplativo.
 
-**Perguntas ideais:**
-
-- Mestre, o que Steve Jobs aprendeu com o Zen?
-- O que o Budismo tem a dizer sobre inteligência artificial?
-- O que Nietzsche tem em comum com o Zen?
-
-**Critério de sucesso:**
-
-- resposta com metáfora zen + "Vá meditar!!!"
-- nenhuma citação inventada
-- nenhum fato histórico externo à biblioteca
-
-**Critério de falha:**
-
-- mencionar Apple, Walter Isaacson, caligrafia ou qualquer dado externo
+* Como lidar com a raiva?
+* Como lidar com a ansiedade?
+* Estou ansioso. O que faço agora?
+* Não consigo dormir. Pode me ajudar?
+* Estou sobrecarregado. Como posso desacelerar?
+* Sinto que estou repetindo os mesmos erros. Por quê?
 
 ---
 
-##  Teste Comparativo Multi-Estilo (Teste Ouro)
+## Sentido e Vazio
 
-**Pergunta-base:**
-
-> O que é o silêncio?
-
-Execute nos quatro estilos:
-
-- Aforismo
-- Koan
-- Meditação Guiada
-- Padrão
-
-**Critério de aprovação:**
-
-As respostas devem parecer escritas por **quatro consciências diferentes**.
+* Qual é o sentido da vida quando tudo acaba?
+* O que é o silêncio quando não tento escutar?
+* O que existe no vazio?
 
 ---
 
-## Teste de Profundidade e Não Repetição
+## Teste de Citação Obrigatória (RAG)
 
-**Sequência:**
+Perguntas que devem obrigatoriamente retornar com citação de autor e livro do acervo.
+Se a resposta vier sem citar fonte, o RAG pode estar retornando contexto vazio.
 
-1. O que é mente zen?  
-2. Explique a mente do iniciante.  
-3. O que significa apenas sentar?  
-
-**Critérios de sucesso:**
-
-- respostas diferentes  
-- pouca repetição textual  
-- abordagens complementares  
-- metáforas variadas  
+* Caminhante busca entender por que não deve se preocupar tanto com o futuro.
+* Mestre, me fale sobre a importância do silêncio e como ele nos ajuda a ver a verdade.
+* Quais são as coisas que você só vê quando desacelera?
 
 ---
 
-##  Teste de Humanização
+## Teste da Casca de Banana (conhecimento externo)
 
-**Objetivo:** validar empatia, acolhimento e tom humano.
+Perguntas sobre temas fora do acervo. O Chizu deve retornar uma frase zen do `koans.txt` seguida de "Vá praticar Zazen." — sem inventar citações ou fatos externos.
 
-**Perguntas ideais:**
-
-- Estou ansioso. O que faço agora?
-- Não consigo dormir. Pode me ajudar?
-- Estou sobrecarregado. Como posso desacelerar?
-- Estou perdido. Como reencontrar clareza?
-- Estou com raiva e não sei o que fazer.
-- Sinto que estou repetindo os mesmos erros. Por quê?
-
-**Critérios de sucesso:**
-
-- tom acolhedor  
-- linguagem gentil  
-- sugestões práticas  
-- fechamento contemplativo  
+* Mestre, o que Steve Jobs aprendeu com o Zen?
+* O que o Budismo tem a dizer sobre inteligência artificial?
+* O que Nietzsche tem em comum com o Zen?
 
 ---
 
-##  Teste de Identidade e Vazio
+## Teste por Mestre (filtro @nome)
 
-**Objetivo:** validar respostas a perguntas filosóficas profundas sobre o eu.
+Valida se o filtro por autor funciona corretamente — a resposta deve citar apenas o mestre solicitado.
 
-**Perguntas ideais:**
-
-- Quem sou eu quando não penso em nada?
-- Quem observa meus pensamentos?
-- O que existe antes do primeiro pensamento da manhã?
-- Qual é o sentido da vida quando tudo acaba?
-- Por que continuo repetindo os mesmos erros?
-- Como parar de tentar controlar tudo?
-- Quem está tentando se libertar?
-
-**Critérios de sucesso:**
-
-- tom contemplativo sem resposta direta
-- abertura para reflexão própria
-- ausência de didatismo excessivo
-- metáforas de natureza (rio, montanha, vento, folha)
+* `@Dogen o que é zazen?`
+* `@Osho o que é iluminação?`
+* `@Suzuki o que é mente zen?`
+* `@Masuno como viver simples?`
+* `@Haemin como lidar com a pressa?`
+* `@Thich como meditar?`
 
 ---
 
-##  Estrutura Técnica dos Prompts
+## Teste de Voz dos Mestres
 
-### Organização dos arquivos
+Execute a mesma pergunta várias vezes e observe se a voz muda entre as respostas — sinal de que o sorteio por afinidade está funcionando.
 
-- `aforismos_zen.txt`
-- `koans_classicos.txt`
-- `meditacoes_guiadas.txt`
-- `system_prompt.txt`
+Pergunta sugerida:
+
+* O que é o silêncio?
+* O que é impermanência?
+* Como estar presente?
+
+Respostas diferentes em tom, ritmo e metáforas indicam que os perfis de personalidade estão sendo aplicados corretamente.
+
+---
+
+## Teste de Tokens (resposta longa)
+
+Verifica se a resposta é concluída adequadamente ou interrompida por limite de tokens.
+
+* Mestre, me fale sobre a jornada do praticante zen desde o início até a iluminação.
+* Explique a diferença entre meditação zen e meditação mindfulness.
+
+A resposta deve encerrar com ponto final claro, não no meio de uma frase.
+
+---
+
+## Critérios de qualidade
+
+| Critério | Esperado |
+|---|---|
+| Início | Sempre "Caminhante," |
+| Citação | Autor e livro citados naturalmente |
+| Extensão | Máximo 3 frases |
+| Invenção | Nenhuma citação ou fato inventado |
+| Bloqueio | Koans.txt + "Vá praticar Zazen." para temas externos |
+| Voz | Varia conforme o mestre sorteado |
+
+---
+
+*Ver também: [Protocolo de Testes de Blindagem](18-documentacao_testes.md) · [Engenharia de Prompts](17-engenharia-de-prompts.md)*

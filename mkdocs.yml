@@ -9,6 +9,7 @@ extra_css:
   - style.css
 nav:
   - Projeto:
+    - Por que Chizu?: 00-por-que-chizu.md
     - Motivação: 01-motivacao.md
     - Visão geral: 02-visao-geral.md
     - Evolução: 03-evolucao-do-projeto.md
@@ -23,7 +24,7 @@ nav:
   - Conceitos:
       - Fundamentos:
           - Introdução: conceitos/index.md
-          - Glossário: conceitos/30-glossario.md  
+          - Glossário: conceitos/30-glossario.md
           - Sistemas operacionais: conceitos/01-sistemas-operacionais.md
           - Ferramentas de desenvolvimento: conceitos/02-ferramentas-de-desenvolvimento.md
           - Servidores e deploy: conceitos/03-servidores-e-deploy.md
@@ -41,6 +42,7 @@ nav:
           - Validação de Perguntas: conceitos/10-validacao-perguntas.md
           - Ajustes do Sistema: conceitos/11-ajustes.md
           - Protocolo de Teste: conceitos/18-documentacao_testes.md
+          - Outros Mestres: conceitos/28-expansao-acervo-e-filtro-autor.md          
       - Infraestrutura e Deploy:
           - Verificação de DNS: conceitos/19-verificacao_dns.md
           - Monitoramento do Sistema: conceitos/20-monitoramento.md
@@ -48,9 +50,10 @@ nav:
           - Web Application Firewall: conceitos/22-cloudflare.md
           - Caixa Postal: conceitos/29-caixa-postal.md
       - Canais e Integrações:
+          - Voz: conceitos/31-voz.md
           - Alexa: conceitos/26-alexa.md
           - Whatsapp: conceitos/27-whatsapp.md
-          - Outros Mestres: conceitos/28-expansao-acervo-e-filtro-autor.md
+
   - Sobre:
     - Copyright: conceitos/23-copyright.md
     - Aviso Legal: conceitos/24-aviso-legal.md

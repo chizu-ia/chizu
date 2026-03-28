@@ -1,54 +1,101 @@
-## Implementação do Cloudflare WAF (Web Application Firewall)
+# Cloudflare — DNS, Proxy e Firewall
 
-Configurar o Cloudflare é a solução mais **"Zen"** e eficiente. Como o bloqueio acontece na rede deles (na borda), as requisições maliciosas nem chegam ao Render, economizando 100% da banda, CPU e, principalmente, a memória que o **Chizu** precisa para processar IA.
-
----
-
-### Configuração Inicial (DNS)
-Se você ainda não utiliza o Cloudflare:
-* **Conta:** Crie uma conta gratuita em [cloudflare.com](https://www.cloudflare.com).
-* **Domínio:** Adicione seu domínio (ex: `seudominio.com.br`).
-* **Nameservers:** No **Registro.br**, altere os Nameservers para os indicados pelo Cloudflare.
-* **Proxy Status:** Na aba **DNS**, certifique-se de que a nuvem na coluna "Proxy status" esteja **laranja (Proxied)**. Isso garante que o tráfego seja filtrado antes de chegar ao Render.
+O Cloudflare é a camada de infraestrutura que protege e conecta o Chizu à internet.
+Todo o tráfego passa pelo Cloudflare antes de chegar ao servidor no Render.
 
 ---
 
-###  Criando a Regra de Bloqueio (WAF)
-O plano gratuito permite até 5 regras. Vamos configurar uma específica para scanners:
+## Por que o Cloudflare
 
-1. Vá em **Security > WAF > Custom Rules**.
-2. Clique em **Create rule**.
-3. **Nome da regra:** `Bloqueio de Scanners WP`.
-4. **Field:** Selecione `URI Path`.
-5. **Operator:** Selecione `contains`.
-6. **Value:** Digite `wp-`.
-7. Clique em **OR** para adicionar outros padrões: `xmlrpc`, `.env`, `wlwmanifest`.
-8. **Action:** Selecione **Block**.
-9. Clique em **Deploy**.
+O domínio `chizu.ia.br` já estava na rede Cloudflare de forma transparente — o IP `216.24.57.1` pertence à infraestrutura deles. Ao tentar acessar esse IP diretamente, o navegador retornava o erro 1003 (*Direct IP access not allowed*).
 
----
+A migração para uma conta própria no Cloudflare centralizou em um único lugar:
 
-###  Ativando o "Bot Fight Mode"
-Para barrar robôs automáticos de forma global:
-1. Vá em **Security > Bots**.
-2. Ative o **Bot Fight Mode**.
-   > Isso desafia bots conhecidos com um "JavaScript Challenge" antes mesmo de acessarem qualquer página.
+* Gerenciamento de DNS
+* Proxy reverso — esconde o IP real do servidor
+* Firewall WAF — bloqueia tráfego malicioso antes de chegar ao Render
+* Email Routing — recebe e-mails do domínio sem servidor próprio
+* HTTPS automático
 
 ---
 
-### Vantagens para o Projeto no Render
+## Migração realizada
 
-* **Logs Limpos:** O console do Render mostrará apenas tráfego real e útil.
-* **Memória Protegida:** O app Python não precisa instanciar nada para descartar a requisição.
-* **Proteção contra DoS:** O Cloudflare absorve ataques de força bruta, mantendo o serviço estável.
+### Passo 1 — Criar conta no Cloudflare
+
+Acesse [cloudflare.com](https://cloudflare.com) e crie uma conta gratuita.
+
+### Passo 2 — Adicionar o domínio
+
+Na dashboard, clique em **Add a Site** e informe `chizu.ia.br`.
+O Cloudflare importa automaticamente todos os registros DNS existentes.
+
+### Passo 3 — Revisar os registros importados
+
+Confirme que todos os registros foram importados corretamente — MX, TXT do Brevo, DKIM, DMARC.
+Verifique se o registro `A` ou `CNAME` principal aponta para o Render.
+
+### Passo 4 — Trocar os nameservers no Registro.br
+
+O Cloudflare fornece dois nameservers. No painel do Registro.br, substitua os nameservers atuais pelos fornecidos pelo Cloudflare.
+
+A propagação leva entre 1 e 48 horas.
 
 ---
 
-### Comparação Final: Middleware vs. Cloudflare
+## Zona DNS configurada
 
-| Recurso | Middleware (Python) | Cloudflare (DNS) |
-| :--- | :--- | :--- |
-| **Custo de Memória** | Pequeno (mas existe) | **Zero** |
-| **Custo de Banda** | Você paga pelo tráfego | **Zero (bloqueia antes)** |
-| **Dificuldade** | Alterar código/redeploy | Configuração de DNS |
-| **Eficácia** | Bloqueia no app | **Bloqueia na fronteira** |
+| Tipo | Nome | Dados | Proxy |
+|---|---|---|---|
+| CNAME | chizu.ia.br | `seu-app.onrender.com` | Ativo |
+| MX | chizu.ia.br | Cloudflare Email Routing | — |
+| TXT | chizu.ia.br | SPF Brevo | — |
+| TXT | chizu.ia.br | Código Brevo | — |
+| TXT | _dmarc | DMARC Brevo | — |
+| CNAME | brevo1._domainkey | DKIM Brevo | — |
+| CNAME | brevo2._domainkey | DKIM Brevo | — |
+
+O proxy ativo (nuvem laranja) significa que o tráfego passa pelo Cloudflare — o IP real do Render fica oculto.
+
+---
+
+## Firewall WAF
+
+O plano gratuito permite até 5 regras personalizadas. Regra configurada para bloquear scanners automáticos:
+
+* **Security → WAF → Custom Rules → Create rule**
+* Campo: `URI Path`
+* Operador: `contains`
+* Valores: `wp-`, `xmlrpc`, `.env`, `wlwmanifest`
+* Ação: `Block`
+
+### Bot Fight Mode
+
+* **Security → Bots → Bot Fight Mode → Ativo**
+
+Desafia bots conhecidos com JavaScript Challenge antes de acessarem qualquer página.
+
+---
+
+## Email Routing
+
+O Cloudflare Email Routing substitui o ForwardEmail para receber e-mails no domínio:
+
+* Ative em **Email → Email Routing**
+* Adicione a regra: `mestre@chizu.ia.br` → `chizuzenbot@gmail.com`
+* O Cloudflare configura os registros MX automaticamente
+
+O Brevo continua sendo usado para **enviar** e-mails como `mestre@chizu.ia.br` — o Email Routing cuida apenas do recebimento.
+
+---
+
+## Vantagens para o Render
+
+* Logs limpos — o Render só recebe tráfego real
+* Memória preservada — requisições maliciosas são bloqueadas antes de chegar ao Python
+* HTTPS automático — sem configuração adicional
+* IP do servidor protegido — ninguém acessa o Render diretamente
+
+---
+
+*Ver também: [Verificação de DNS](19-verificacao_dns.md) · [Firewall e Resiliência](21-firewall.md) · [Caixa Postal](29-caixa-postal.md)*
