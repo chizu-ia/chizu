@@ -1,7 +1,7 @@
 site_name: Chizu Mestre Zen
 site_description: Documentação do projeto Chizu — Mestre Zen
 site_author: Projeto Chizu
-site_url: https://chizu-ia.github.io/chizu/
+site_url: https://docs.chizu.ia.br/
 theme:
   name: mkdocs
   language: pt
