@@ -239,4 +239,4 @@ dig chizu.ia.br
 
 ---
 
-*Ver também: [Fluxo de trabalho](06-fluxo-de-trabalho.md) · [Protocolo de Testes](conceitos/18-documentacao_testes.md)*
+*Ver também: [Fluxo de trabalho](../06-fluxo-de-trabalho.md) · [Protocolo de Testes](18-documentacao_testes.md)*

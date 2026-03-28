@@ -16,12 +16,12 @@ A documentação do Chizu foi escrita para diferentes perfis. Escolha o caminho 
 
 Para quem quer conversar com o Mestre Chizu, entender como fazer perguntas e aproveitar ao máximo a experiência.
 
-* [Por que Chizu?](00-por-que-chizu.md) — a história do nome e o espírito do projeto
-* [Visão geral](02-visao-geral.md) — o que o Chizu é e como funciona
-* [Outros Mestres](conceitos/28-expansao-acervo-e-filtro-autor.md) — como usar o comando `@nome` para consultar um mestre específico
-* [Voz](conceitos/31-voz.md) — como falar e ouvir respostas no navegador
-* [Alexa](conceitos/26-alexa.md) — como usar a skill de voz
-* [WhatsApp](conceitos/27-whatsapp.md) — como conversar pelo WhatsApp
+* [Por que Chizu?](../00-por-que-chizu.md) — a história do nome e o espírito do projeto
+* [Visão geral](../02-visao-geral.md) — o que o Chizu é e como funciona
+* [Outros Mestres](28-expansao-acervo-e-filtro-autor.md) — como usar o comando `@nome` para consultar um mestre específico
+* [Voz](31-voz.md) — como falar e ouvir respostas no navegador
+* [Alexa](26-alexa.md) — como usar a skill de voz
+* [WhatsApp](27-whatsapp.md) — como conversar pelo WhatsApp
 
 Acesse agora: [chizu.ia.br](http://chizu.ia.br)
 
@@ -31,13 +31,13 @@ Acesse agora: [chizu.ia.br](http://chizu.ia.br)
 
 Para quem quer aprender o que está por baixo do Chizu — inteligência artificial, busca semântica, RAG — sem precisar entrar no código.
 
-* [Glossário](conceitos/30-glossario.md) — os principais termos explicados de forma simples
-* [Inteligência Artificial](conceitos/04-inteligencia-artificial.md) — o que é IA e como ela aprende
-* [Modelos e LLMs](conceitos/05-modelos-e-llms.md) — o que são modelos de linguagem e como geram texto
-* [Embeddings e Chunks](conceitos/06-embeddings-e-chunks.md) — como os textos são fragmentados e indexados
-* [Busca Semântica](conceitos/07-busca-semantica.md) — como o sistema encontra textos pelo significado
-* [RAG — A Mágica por Trás das Respostas](conceitos/14-rag-no-zenbot.md) — onde acontece a transformação de dados em sabedoria
-* [Metáfora Zen](conceitos/09-metafora-zen.md) — a visão poética de tudo isso
+* [Glossário](30-glossario.md) — os principais termos explicados de forma simples
+* [Inteligência Artificial](04-inteligencia-artificial.md) — o que é IA e como ela aprende
+* [Modelos e LLMs](05-modelos-e-llms.md) — o que são modelos de linguagem e como geram texto
+* [Embeddings e Chunks](06-embeddings-e-chunks.md) — como os textos são fragmentados e indexados
+* [Busca Semântica](07-busca-semantica.md) — como o sistema encontra textos pelo significado
+* [RAG — A Mágica por Trás das Respostas](14-rag-no-zenbot.md) — onde acontece a transformação de dados em sabedoria
+* [Metáfora Zen](09-metafora-zen.md) — a visão poética de tudo isso
 
 ---
 
@@ -45,16 +45,16 @@ Para quem quer aprender o que está por baixo do Chizu — inteligência artific
 
 Para quem quer entender a arquitetura, rodar localmente, contribuir ou construir algo parecido.
 
-* [Arquitetura](04-arquitetura.md) — estrutura de pastas e camadas do sistema
-* [Ferramentas](05-ferramentas.md) — o que foi usado para construir o Chizu
-* [Fluxo de trabalho](06-fluxo-de-trabalho.md) — como o desenvolvimento acontece no dia a dia
-* [Comandos úteis](07-comandos-uteis.md) — referência rápida de terminal, git, curl e MkDocs
-* [Organização dos textos](08-organizacao-dos-textos.md) — como os PDFs e TXTs viram o acervo do Chizu
-* [Pipeline](conceitos/08-pipeline.md) — o fluxo completo de ingestão e consulta
-* [Engenharia de Prompts](conceitos/17-engenharia-de-prompts.md) — como o system prompt é construído
-* [Ajustes do Sistema](conceitos/11-ajustes.md) — parâmetros das IAs e do RAG com seus significados
-* [Protocolo de Testes](conceitos/18-documentacao_testes.md) — como validar o sistema antes do deploy
-* [Infraestrutura e Deploy](conceitos/19-verificacao_dns.md) — DNS, Cloudflare, Render e e-mail
+* [Arquitetura](../04-arquitetura.md) — estrutura de pastas e camadas do sistema
+* [Ferramentas](../05-ferramentas.md) — o que foi usado para construir o Chizu
+* [Fluxo de trabalho](../06-fluxo-de-trabalho.md) — como o desenvolvimento acontece no dia a dia
+* [Comandos úteis](../07-comandos-uteis.md) — referência rápida de terminal, git, curl e MkDocs
+* [Organização dos textos](../08-organizacao-dos-textos.md) — como os PDFs e TXTs viram o acervo do Chizu
+* [Pipeline](08-pipeline.md) — o fluxo completo de ingestão e consulta
+* [Engenharia de Prompts](17-engenharia-de-prompts.md) — como o system prompt é construído
+* [Ajustes do Sistema](11-ajustes.md) — parâmetros das IAs e do RAG com seus significados
+* [Protocolo de Testes](18-documentacao_testes.md) — como validar o sistema antes do deploy
+* [Infraestrutura e Deploy](19-verificacao_dns.md) — DNS, Cloudflare, Render e e-mail
 
 ---
 
@@ -89,4 +89,4 @@ O Chizu não é um destino. É uma prática.
 
 ---
 
-*Ver também: [Por que Chizu?](00-por-que-chizu.md) · [Diário de construção](10-jornada-de-aprendizado.md)*
+*Ver também: [Por que Chizu?](../00-por-que-chizu.md) · [Diário de construção](../10-jornada-de-aprendizado.md)*

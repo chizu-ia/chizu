@@ -161,4 +161,4 @@ Resposta retorna ao usuário com identificação do mestre e da IA
 
 ---
 
-*Ver também: [Pipeline](conceitos/08-pipeline.md) — descrição detalhada de cada etapa do fluxo.*
+*Ver também: [Pipeline](08-pipeline.md) — descrição detalhada de cada etapa do fluxo.*
