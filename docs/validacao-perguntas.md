@@ -156,4 +156,4 @@ A resposta deve encerrar com ponto final claro, não no meio de uma frase.
 
 ---
 
-*Ver também: [Protocolo de Testes de Blindagem](18-documentacao_testes.md) · [Engenharia de Prompts](17-engenharia-de-prompts.md)*
+*Ver também: [Protocolo de Testes de Blindagem](protocolo-de-testes.md) · [Engenharia de Prompts](engenharia-de-prompts.md)*

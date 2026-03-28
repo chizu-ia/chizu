@@ -133,4 +133,4 @@ Mas a sabedoria ainda vem dos textos. O LLM não é o sábio — é o instrument
 
 ---
 
-*Ver também: [Embeddings e Chunks](06-embeddings-e-chunks.md) · [Pipeline](08-pipeline.md) · [Ajustes do Sistema](11-ajustes.md)*
+*Ver também: [Embeddings e Chunks](embeddings-e-chunks.md) · [Pipeline](pipeline.md) · [Ajustes do Sistema](ajustes.md)*

@@ -161,4 +161,4 @@ Se as respostas estiverem retornando `VAZIO` com frequência, reduzir o `thresho
 
 ---
 
-*Ver também: [Engenharia de Prompts](17-engenharia-de-prompts.md) · [Protocolo de Testes](18-documentacao_testes.md) · [Glossário](30-glossario.md)*
+*Ver também: [Engenharia de Prompts](engenharia-de-prompts.md) · [Protocolo de Testes](protocolo-de-testes.md) · [Glossário](glossario.md)*

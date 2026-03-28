@@ -104,4 +104,4 @@ Gassho 🙏
 
 ---
 
-*Ver também: [Motivação](01-motivacao.md) · [Metáfora Zen](conceitos/09-metafora-zen.md)*
+*Ver também: [Motivação](motivacao.md) · [Metáfora Zen](metafora-zen.md)*

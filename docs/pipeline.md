@@ -131,7 +131,7 @@ A função `montar_prompt` em `core/engine.py` monta o prompt final com três ca
 - **Regras Zen** — instruções de comportamento e bloqueio
 - **Contexto** — os trechos recuperados pelo RAG
 
-A estrutura detalhada do prompt está em [Engenharia de Prompts](17-engenharia-de-prompts.md).
+A estrutura detalhada do prompt está em [Engenharia de Prompts](engenharia-de-prompts.md).
 
 ### Geração da resposta
 

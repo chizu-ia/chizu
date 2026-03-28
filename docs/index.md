@@ -46,19 +46,19 @@ Para entrar em contato: [mestre@chizu.ia.br](mailto:mestre@chizu.ia.br)
 
 ### Projeto
 
-* [Motivação](01-motivacao.md)
-* [Visão geral](02-visao-geral.md)
-* [Evolução do projeto](03-evolucao-do-projeto.md)
-* [Arquitetura](04-arquitetura.md)
-* [Roadmap](09-roadmap.md)
-* [Diário de construção](10-jornada-de-aprendizado.md)
+* [Motivação](motivacao.md)
+* [Visão geral](visao-geral.md)
+* [Evolução do projeto](evolucao.md)
+* [Arquitetura](arquitetura.md)
+* [Roadmap](roadmap-detalhado.md)
+* [Diário de construção](jornada.md)
 
 ### Desenvolvimento
 
-* [Ferramentas](05-ferramentas.md)
-* [Fluxo de trabalho](06-fluxo-de-trabalho.md)
-* [Comandos úteis](07-comandos-uteis.md)
-* [Organização dos textos](08-organizacao-dos-textos.md)
+* [Ferramentas](ferramentas.md)
+* [Fluxo de trabalho](fluxo-de-trabalho.md)
+* [Comandos úteis](comandos-uteis.md)
+* [Organização dos textos](organizacao-dos-textos.md)
 
 ### Conceitos
 
@@ -70,7 +70,7 @@ Os conceitos técnicos usados no Chizu estão organizados em cinco grupos:
 * Infraestrutura e Deploy — DNS, e-mail, monitoramento e firewall
 * Canais e Integrações — Alexa, WhatsApp e filtro por mestre
 
-[Explorar os conceitos](conceitos/index.md)
+[Explorar os conceitos](conceitos-introducao.md)
 
 ---
 

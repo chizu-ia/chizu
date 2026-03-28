@@ -98,4 +98,4 @@ O Brevo continua sendo usado para **enviar** e-mails como `mestre@chizu.ia.br` �
 
 ---
 
-*Ver também: [Verificação de DNS](19-verificacao_dns.md) · [Firewall e Resiliência](21-firewall.md) · [Caixa Postal](29-caixa-postal.md)*
+*Ver também: [Verificação de DNS](verificacao-dns.md) · [Firewall e Resiliência](firewall.md) · [Caixa Postal](caixa-postal.md)*

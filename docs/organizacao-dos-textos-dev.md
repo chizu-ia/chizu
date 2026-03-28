@@ -185,4 +185,4 @@ Execute os dois scripts novamente e substitua o `acervo_zen.json` em produção.
 
 ---
 
-*Ver também: [Pipeline](08-pipeline.md) — como o `acervo_zen.json` é usado em runtime para responder perguntas.*
+*Ver também: [Pipeline](pipeline.md) — como o `acervo_zen.json` é usado em runtime para responder perguntas.*

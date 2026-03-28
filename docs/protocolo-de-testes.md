@@ -140,4 +140,4 @@ O código está pronto para o Render quando os três testes fundamentais passam 
 
 ---
 
-*Ver também: [Validação de Perguntas](10-validacao-perguntas.md) · [Engenharia de Prompts](17-engenharia-de-prompts.md)*
+*Ver também: [Validação de Perguntas](validacao-perguntas.md) · [Engenharia de Prompts](engenharia-de-prompts.md)*

@@ -18,7 +18,7 @@ A   chizu.ia.br   →   216.24.57.1
 Ao tentar acessar o IP diretamente, o navegador retornava o erro Cloudflare 1003 — *Direct IP access not allowed*. Isso revelou que o IP `216.24.57.1` já pertencia à rede Cloudflare, configurada pelo registrador de forma transparente.
 
 **Fase 2 — Cloudflare gerenciado**
-O domínio foi migrado para o Cloudflare com controle total sobre DNS, firewall, proxy e e-mail. Ver [Web Application Firewall](22-cloudflare.md).
+O domínio foi migrado para o Cloudflare com controle total sobre DNS, firewall, proxy e e-mail. Ver [Web Application Firewall](cloudflare.md).
 
 ---
 
@@ -74,4 +74,4 @@ Após a propagação completa, todo o tráfego passa pelo proxy Cloudflare antes
 
 ---
 
-*Ver também: [Web Application Firewall](22-cloudflare.md) · [Caixa Postal](29-caixa-postal.md)*
+*Ver também: [Web Application Firewall](cloudflare.md) · [Caixa Postal](caixa-postal.md)*

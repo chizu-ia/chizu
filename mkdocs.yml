@@ -8,54 +8,55 @@ theme:
 extra_css:
   - style.css
 nav:
+  - Início: index.md
   - Projeto:
-    - Por que Chizu?: 00-por-que-chizu.md
-    - Motivação: 01-motivacao.md
-    - Visão geral: 02-visao-geral.md
-    - Evolução: 03-evolucao-do-projeto.md
-    - Marco — Identidade Própria: conceitos/32-marco-identidade.md
-    - Arquitetura: 04-arquitetura.md
-    - Roadmap: 09-roadmap.md
-    - Diário de construção: 10-jornada-de-aprendizado.md
+    - Por que Chizu?: por-que-chizu.md
+    - Motivação: motivacao.md
+    - Visão geral: visao-geral.md
+    - Evolução: evolucao.md
+    - Marco — Identidade Própria: marco-identidade.md
+    - Arquitetura: arquitetura.md
+    - Roadmap: roadmap.md
+    - Diário de construção: jornada.md
   - Desenvolvimento:
-    - Ferramentas: 05-ferramentas.md
-    - Fluxo de trabalho: 06-fluxo-de-trabalho.md
-    - Comandos úteis: 07-comandos-uteis.md
-    - Organização dos textos: 08-organizacao-dos-textos.md
+    - Ferramentas: ferramentas.md
+    - Fluxo de trabalho: fluxo-de-trabalho.md
+    - Comandos úteis: comandos-uteis.md
+    - Comandos úteis (dev): comandos-uteis-dev.md
+    - Organização dos textos: organizacao-dos-textos.md
+    - Organização dos textos (dev): organizacao-dos-textos-dev.md
+    - Pipeline: pipeline.md
+    - Arquitetura e Importações: dependencias-importacoes.md
+    - Engenharia de Prompts: engenharia-de-prompts.md
+    - Ajustes do Sistema: ajustes.md
+    - Protocolo de Teste: protocolo-de-testes.md
   - Conceitos:
-      - Fundamentos:
-          - Introdução: conceitos/index.md
-          - Glossário: conceitos/30-glossario.md
-          - Sistemas operacionais: conceitos/01-sistemas-operacionais.md
-          - Ferramentas de desenvolvimento: conceitos/02-ferramentas-de-desenvolvimento.md
-          - Servidores e deploy: conceitos/03-servidores-e-deploy.md
-      - Inteligência Artificial:
-          - Inteligência artificial: conceitos/04-inteligencia-artificial.md
-          - Modelos e LLMs: conceitos/05-modelos-e-llms.md
-          - Embeddings e Chunks: conceitos/06-embeddings-e-chunks.md
-          - Busca semântica: conceitos/07-busca-semantica.md
-      - Arquitetura do Chizu:
-          - Pipeline: conceitos/08-pipeline.md
-          - RAG: conceitos/14-rag-no-zenbot.md
-          - Arquitetura e Importações: conceitos/16-dependencias-importacoes.md
-          - Engenharia de Prompts: conceitos/17-engenharia-de-prompts.md
-          - Metáfora Zen: conceitos/09-metafora-zen.md
-          - Validação de Perguntas: conceitos/10-validacao-perguntas.md
-          - Ajustes do Sistema: conceitos/11-ajustes.md
-          - Protocolo de Teste: conceitos/18-documentacao_testes.md
-          - Outros Mestres: conceitos/28-expansao-acervo-e-filtro-autor.md          
-      - Infraestrutura e Deploy:
-          - Verificação de DNS: conceitos/19-verificacao_dns.md
-          - Monitoramento do Sistema: conceitos/20-monitoramento.md
-          - Firewall e Resiliência: conceitos/21-firewall.md
-          - Web Application Firewall: conceitos/22-cloudflare.md
-          - Caixa Postal: conceitos/29-caixa-postal.md
-      - Canais e Integrações:
-          - Voz: conceitos/31-voz.md
-          - Alexa: conceitos/26-alexa.md
-          - Whatsapp: conceitos/27-whatsapp.md
-
+    - Introdução: conceitos-introducao.md
+    - Glossário: glossario.md
+    - Sistemas operacionais: sistemas-operacionais.md
+    - Ferramentas de desenvolvimento: ferramentas-de-desenvolvimento.md
+    - Servidores e deploy: servidores-e-deploy.md
+    - Inteligência artificial: inteligencia-artificial.md
+    - Modelos e LLMs: modelos-e-llms.md
+    - Embeddings e Chunks: embeddings-e-chunks.md
+    - Busca semântica: busca-semantica.md
+    - RAG: rag.md
+    - Metáfora Zen: metafora-zen.md
+    - Validação de Perguntas: validacao-perguntas.md
+    - Arquitetura interna: arquitetura-interna.md
+    - Roadmap detalhado: roadmap-detalhado.md
+    - Outros Mestres: outros-mestres.md
+  - Infraestrutura:
+    - Verificação de DNS: verificacao-dns.md
+    - Monitoramento do Sistema: monitoramento.md
+    - Firewall e Resiliência: firewall.md
+    - Web Application Firewall: cloudflare.md
+    - Caixa Postal: caixa-postal.md
+  - Canais:
+    - Voz: voz.md
+    - Alexa: alexa.md
+    - Whatsapp: whatsapp.md
   - Sobre:
-    - Copyright: conceitos/23-copyright.md
-    - Aviso Legal: conceitos/24-aviso-legal.md
-    - Apoie o Projeto: conceitos/25-apoio.md
+    - Copyright: copyright.md
+    - Aviso Legal: aviso-legal.md
+    - Apoie o Projeto: apoio.md

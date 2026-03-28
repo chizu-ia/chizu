@@ -185,4 +185,4 @@ Execute os dois scripts novamente e substitua o `embeddings_bge.json` em produç
 
 ---
 
-*Ver também: [Pipeline](conceitos/08-pipeline.md) — como o `embeddings_bge.json` é usado em runtime para responder perguntas.*
+*Ver também: [Pipeline](pipeline.md) — como o `embeddings_bge.json` é usado em runtime para responder perguntas.*

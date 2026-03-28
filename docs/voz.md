@@ -79,4 +79,4 @@ Isso garante que a voz leia apenas o conteúdo zen, sem ruído técnico.
 
 ---
 
-*Ver também: [Arquitetura do Chizu](../04-arquitetura.md)*
+*Ver também: [Arquitetura do Chizu](arquitetura.md)*

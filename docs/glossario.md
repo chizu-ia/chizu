@@ -122,4 +122,4 @@ Protocolo de segurança que criptografa a comunicação entre cliente e servidor
 
 ---
 
-*Ver também: [Pipeline](08-pipeline.md) · [RAG no Chizu](14-rag-no-zenbot.md) · [Engenharia de Prompts](17-engenharia-de-prompts.md)*
+*Ver também: [Pipeline](pipeline.md) · [RAG no Chizu](rag.md) · [Engenharia de Prompts](engenharia-de-prompts.md)*

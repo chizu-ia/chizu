@@ -141,4 +141,4 @@ O RAG é como um mestre que conhece todos os livros, entende o que você realmen
 
 ---
 
-*Ver também: [Pipeline](08-pipeline.md) · [Busca Semântica](07-busca-semantica.md) · [Engenharia de Prompts](17-engenharia-de-prompts.md)*
+*Ver também: [Pipeline](pipeline.md) · [Busca Semântica](busca-semantica.md) · [Engenharia de Prompts](engenharia-de-prompts.md)*
