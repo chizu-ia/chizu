@@ -57,7 +57,7 @@ Processo de dividir textos longos em chunks menores para facilitar a indexação
 Sobreposição entre chunks consecutivos. No Chizu, os chunks têm 200 caracteres de overlap, garantindo que ideias que cruzam a fronteira entre dois blocos não se percam.
 
 **Embedding**
-Representação matemática do significado de um texto, expressa como um vetor numérico. Permite comparar textos por significado e não apenas por palavras. O arquivo `embeddings_bge.json` do Chizu usa esse nome historicamente, embora atualmente armazene apenas os chunks de texto.
+Representação matemática do significado de um texto, expressa como um vetor numérico. Permite comparar textos por significado e não apenas por palavras. No Chizu, o arquivo `acervo_zen.json` armazena os chunks de texto com metadados — os vetores TF-IDF são calculados em memória quando o servidor sobe.
 
 **TF-IDF — Term Frequency–Inverse Document Frequency**
 Técnica de busca que pondera a importância de cada palavra num texto. Palavras comuns como "o" e "de" recebem peso baixo; palavras raras como "zazen" recebem peso alto. O Chizu usa TF-IDF em tempo real para encontrar os chunks mais relevantes para cada pergunta.

@@ -19,7 +19,7 @@ Responsável por garantir que o código entenda onde está instalado e como aces
 Gerencia aleatoriedade, sessões e o banco de ensinamentos.
 
 * `import random` — sorteia a ordem das IAs, o perfil do mestre por afinidade e as frases de bloqueio do `koans.txt`.
-* `import json` — lê e interpreta os chunks de ensinamentos armazenados em `embeddings_bge.json`.
+* `import json` — lê e interpreta os chunks de ensinamentos armazenados em `acervo_zen.json`.
 * `from uuid import uuid4` — gera um identificador único para cada sessão de usuário, permitindo que o Chizu mantenha conversas separadas simultaneamente.
 * `import base64` — converte o avatar em texto binário embutido no HTML, evitando uma requisição externa a cada carregamento.
 
@@ -54,7 +54,7 @@ Integram a inteligência artificial e a lógica de busca desenvolvida especifica
 
 * `from core.ai_provider import FreeAIProvider` — ativa o sistema de fallback entre múltiplos provedores de IA.
 * `from core.engine import carregar_biblioteca, buscar_contexto, montar_prompt`:
-    * `carregar_biblioteca` — carrega o `embeddings_bge.json` e indexa os chunks via TF-IDF na inicialização do servidor.
+    * `carregar_biblioteca` — carrega o `acervo_zen.json` e indexa os chunks via TF-IDF na inicialização do servidor.
     * `buscar_contexto` — executa a busca semântica e retorna os trechos mais relevantes para a pergunta.
     * `montar_prompt` — monta o prompt completo com identidade, perfil do mestre sorteado, regras zen e contexto.
 
