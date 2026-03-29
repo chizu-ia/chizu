@@ -66,9 +66,9 @@ function iniciarMicrofone() {
     if (reconhecendo) return;
 
     const recognition = new SpeechRecognition();
-    recognition.lang             = 'pt-BR';
-    recognition.interimResults   = false;
-    recognition.maxAlternatives  = 1;
+    recognition.lang            = 'pt-BR';
+    recognition.interimResults  = false;
+    recognition.maxAlternatives = 1;
 
     recognition.onstart = () => {
         reconhecendo = true;
@@ -80,7 +80,6 @@ function iniciarMicrofone() {
     recognition.onresult = (e) => {
         const texto = e.results[0][0].transcript;
         input.value = texto;
-        fazerPergunta();
     };
 
     recognition.onerror = () => {
@@ -92,6 +91,9 @@ function iniciarMicrofone() {
         btnMic.classList.remove('ouvindo');
         btnMic.title      = 'Falar com Chizu';
         input.placeholder = 'Fale com Chizu...';
+        if (input.value.trim()) {
+            fazerPergunta();
+        }
     };
 
     recognition.start();
