@@ -74,9 +74,12 @@ function iniciarMicrofone() {
 
     recognition.onstart = () => {
         reconhecendo = true;
+        // 1) Botão fica vermelho/laranja com animação
         btnMic.classList.add('ouvindo');
         btnMic.title      = 'Solte para enviar';
         input.placeholder = 'Ouvindo...';
+        // 2) Área de resposta indica que está ouvindo
+        respostaDiv.innerHTML = '<em>🎙️ Chizu ouvindo...</em>';
     };
 
     recognition.onresult = (e) => {
@@ -89,6 +92,7 @@ function iniciarMicrofone() {
         btnMic.classList.remove('ouvindo');
         btnMic.title      = 'Falar com Chizu';
         input.placeholder = 'Fale com Chizu...';
+        respostaDiv.innerHTML = '<em>Não consegui ouvir — tente novamente.</em>';
     };
 
     recognition.onend = () => {
@@ -135,7 +139,10 @@ async function fazerPergunta() {
     const { pergunta, autor } = parsearPergunta(textoRaw);
     input.disabled    = true;
     input.placeholder = autor ? `Consultando ${autor}...` : "Chizu medita...";
-    respostaDiv.innerHTML = `<em>${randomMsg(window.AGUARDANDO_JS)}</em>`;
+
+    // 3) Mensagem aleatória + "Chizu refletindo..."
+    const aguardando = randomMsg(window.AGUARDANDO_JS);
+    respostaDiv.innerHTML = `<em>${aguardando} Chizu refletindo...</em>`;
 
     try {
         const payload = { pergunta };
