@@ -116,13 +116,13 @@ body {
 
 /* Animação quando está ouvindo */
 #btn-mic.ouvindo {
-    color: #c0612a;
-    background: #fff0e6;
+    color: #ffffff;
+    background: #e02020;
     animation: pulsar 1.2s ease-in-out infinite;
 }
 @keyframes pulsar {
-    0%   { box-shadow: 0 0 0 0 rgba(192, 97, 42, 0.3); }
-    70%  { box-shadow: 0 0 0 8px rgba(192, 97, 42, 0); }
+    0%   { box-shadow: 0 0 0 0 rgba(224, 32, 32, 0.4); }
+    70%  { box-shadow: 0 0 0 10px rgba(224, 32, 32, 0); }
     100% { box-shadow: 0 0 0 0 rgba(192, 97, 42, 0); }
 }
 

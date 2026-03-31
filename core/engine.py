@@ -220,11 +220,10 @@ def buscar_contexto(pergunta: str, biblioteca, top_k: int = 3,
 # ============================================
 def montar_prompt(pergunta: str, contexto: str, autor_filtro: str = None) -> tuple[list, str]:
     contexto_final = (
-        "VAZIO: Nenhum ensinamento disponível nos pergaminhos. Vá praticar Zazen."
+        "VAZIO"
         if not contexto or "Nenhum ensinamento encontrado" in contexto
         else contexto
     )
-
     # Perfil do mestre: fixo se há @filtro, sorteado por afinidade se não
     if autor_filtro:
         perfil_nome  = autor_filtro

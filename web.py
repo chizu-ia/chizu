@@ -79,8 +79,11 @@ if os.path.exists(avatar_path):
 if os.path.exists("site"):
     app.mount("/docs", StaticFiles(directory="site", html=True), name="docs")
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
-app.mount("/legal", StaticFiles(directory="legal", html=True), name="legal")
+if os.path.exists("static"):
+    app.mount("/static", StaticFiles(directory="static"), name="static")
+
+if os.path.exists("legal"):
+    app.mount("/legal", StaticFiles(directory="legal", html=True), name="legal")
 
 
 # ============================================
@@ -181,28 +184,20 @@ async def whatsapp(request: Request):
     try:
         form = await request.form()
         pergunta = form.get("Body", "").strip()
-        telefone = form.get("From", "")
 
         if not pergunta:
             resposta_limpa = "O silêncio é a resposta."
         elif pergunta.lower() in ["sair", "tchau", "parar", "encerrar", "até logo", "gassho", "obrigado"]:
             resposta_limpa = "Vá em paz. Gasshô! Que todos os seres possam se beneficiar."
         else:
-            historico = conversation_memory.setdefault(telefone, [])
             contexto = buscar_contexto(pergunta, biblioteca_chizu)
-            mensagens_base, perfil_nome = montar_prompt(pergunta, contexto, autor_filtro=autor_filtro)
-            prompt_completo = [mensagens_base[0]] + historico[-8:] + [mensagens_base[-1]]
-
+            mensagens_base, perfil_nome = montar_prompt(pergunta, contexto, autor_filtro=None)
+            prompt_completo = [mensagens_base[0], mensagens_base[-1]]
             resposta_raw, ia_nome = ai_provider.chat(prompt_completo)
             resposta_limpa = limpar_resposta(resposta_raw)
-
             if is_bloqueado(resposta_limpa):
                 resposta_limpa = resposta_bloqueio()
-
             resposta_limpa = resposta_limpa[:1500] + f"\n\n— via {ia_nome}"
-            historico.append({"role": "user", "content": pergunta})
-            historico.append({"role": "assistant", "content": resposta_limpa})
-            conversation_memory[telefone] = historico[-8:]
 
         twiml = f"""<?xml version="1.0" encoding="UTF-8"?>
 <Response>
@@ -232,14 +227,10 @@ async def ask(request: Request):
         if pergunta.lower() in ["sair", "exit", "gassho", "obrigado", "ok", "quit"]:
             return JSONResponse({"resposta": random.choice(DESPEDIDA_JS)})
 
-        session_id = request.cookies.get("chizu_session") or str(uuid4())
-        historico = conversation_memory.setdefault(session_id, [])
-
         autor_filtro = data.get("autor", None)
         contexto = buscar_contexto(pergunta, biblioteca_chizu, autor_filtro=autor_filtro)
         mensagens_base, perfil_nome = montar_prompt(pergunta, contexto, autor_filtro=autor_filtro)
-        prompt_completo = [mensagens_base[0]] + historico[-8:] + [mensagens_base[-1]]
-
+        prompt_completo = [mensagens_base[0], mensagens_base[-1]]
         resposta_raw, ia_nome = ai_provider.chat(prompt_completo)
         resposta_limpa = limpar_resposta(resposta_raw)
 
@@ -247,14 +238,7 @@ async def ask(request: Request):
             resposta_limpa = resposta_bloqueio()
 
         resposta_exibida = f"{resposta_limpa}\n\n— via  {perfil_nome} · {ia_nome}"
-
-        historico.append({"role": "user", "content": pergunta})
-        historico.append({"role": "assistant", "content": resposta_limpa})
-        conversation_memory[session_id] = historico[-8:]
-
-        response = JSONResponse({"resposta": resposta_exibida})
-        response.set_cookie("chizu_session", session_id, max_age=60*60*24*7)
-        return response
+        return JSONResponse({"resposta": resposta_exibida})
 
     except Exception as e:
         print(f"❌ Erro: {e}")

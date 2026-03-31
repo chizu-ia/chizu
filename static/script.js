@@ -82,7 +82,7 @@ function pararVoz() {
 
 function atualizarBotaoVoz() {
     const btnFalar = document.getElementById('btn-falar');
-    if (btnFalar) btnFalar.textContent = falando ? '⏸' : '▶';
+    if (btnFalar) btnFalar.textContent = falando ? 'Pausar' : 'Ouvir';
 }
 
 // --- MICROFONE ---
@@ -197,15 +197,17 @@ async function fazerPergunta() {
             <p>${respostaHTML}</p>
             <div class="share-buttons">
                 <button id="btn-falar"   title="Ouvir">Ouvir</button>
-                <button id="btn-pausar"  title="Pausar">Pausar</button>
                 <button id="btn-parar"   title="Parar">Parar</button>
                 <button id="btn-whatsapp">WhatsApp</button>
                 <button id="btn-email">Email</button>
             </div>
         `;        
 
-        document.getElementById('btn-falar').addEventListener('click',    () => falar(resposta));
-        document.getElementById('btn-pausar').addEventListener('click',   () => pausarVoz());
+        document.getElementById('btn-falar').addEventListener('click', () => {
+            if (falando) { pausarVoz(); }
+            else if (window.speechSynthesis.paused) { pausarVoz(); }
+            else { falar(resposta); }
+        });        
         document.getElementById('btn-parar').addEventListener('click',    () => pararVoz());
         document.getElementById('btn-whatsapp').addEventListener('click', () => compartilharWhatsApp(resposta));
         document.getElementById('btn-email').addEventListener('click',    () => compartilharEmail(resposta));
