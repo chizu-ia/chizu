@@ -19,10 +19,10 @@ No Chizu, o pipeline opera em dois momentos distintos:
 
 ```text
 INGESTÃO
-Textos brutos → Limpeza → Chunks → Embeddings → embeddings_bge.json
+Textos brutos → Limpeza → Chunks → Embeddings → acervo_zen.json
 
 CONSULTA
-Pergunta → Embedding → Busca semântica → Contexto → LLM → Resposta
+Pergunta → Sortear provider → top_k → Busca semântica → Contexto → LLM → Resposta
 ```
 
 ---
@@ -63,7 +63,7 @@ Tamanho típico: entre 300 e 800 caracteres.
 
 ### Geração de embeddings e armazenamento
 
-Cada chunk é representado como um vetor numérico e armazenado em `data/embeddings_bge.json`.
+Cada chunk é representado como um vetor numérico e armazenado em `data/acervo_zen.json`.
 
 Cada registro contém:
 
@@ -71,8 +71,7 @@ Cada registro contém:
 {
   "texto": "Respire e volte ao momento presente.",
   "autor": "Thich Nhat Hanh",
-  "fonte": "Silêncio",
-  "embedding": [0.18, -0.33, 0.71, 0.04, -0.55]
+  "fonte": "Silêncio"
 }
 ```
 
@@ -97,13 +96,32 @@ Exemplo de payload:
 }
 ```
 
+### Sorteio do provider e leitura do top_k
+
+Antes de qualquer busca, o sistema chama `sortear_provider()` no `ai_provider.py`. Essa função sorteia qual IA vai responder e retorna sua configuração completa — incluindo o `top_k` de RAG definido no `CONFIGS`.
+
+```python
+provider_nome, provider_cfg = ai_provider.sortear_provider()
+top_k = provider_cfg.get("top_k", 3)
+```
+
+Isso garante que o número de chunks buscados seja sempre compatível com a janela de contexto da IA sorteada.
+
+| Provider | top_k | Motivo |
+|---|---|---|
+| Gemini | 5 | Janela grande (2048 tokens) |
+| Groq | 5 | Janela confortável (512 tokens) |
+| Anthropic | 5 | Janela confortável (512 tokens) |
+| Cerebras | 4 | Janela menor (384 tokens) |
+| SambaNova | 4 | Janela menor (512 tokens, penalty alto) |
+
 ### Busca semântica
 
 A função `buscar_contexto` em `core/engine.py` converte a pergunta em vetor e compara com os embeddings armazenados usando **TF-IDF** com similaridade de cosseno.
 
 Parâmetros:
 
-- `top_k = 3` — retorna os 3 trechos mais próximos
+- `top_k` — número de chunks retornados, vindo do provider sorteado
 - `threshold = 0.05` — descarta resultados abaixo desse score
 
 Se nenhum trecho superar o threshold, o contexto retorna `VAZIO`.
@@ -124,7 +142,7 @@ Na mente do principiante há muitas possibilidades...
 
 ### Construção do prompt
 
-A função `montar_prompt` em `core/engine.py` monta o prompt final com três camadas:
+A função `montar_prompt` em `core/engine.py` monta o prompt final com quatro camadas:
 
 - **Identidade** — quem é o Chizu
 - **Perfil do mestre** — a voz sorteada para aquela resposta
@@ -135,12 +153,11 @@ A estrutura detalhada do prompt está em [Engenharia de Prompts](engenharia-de-p
 
 ### Geração da resposta
 
-O prompt é enviado ao Conselho de IAs via `core/ai_provider.py`.
+O prompt é enviado ao provider já sorteado via `core/ai_provider.py`.
 
 A IA recebe:
 
 - O system prompt completo
-- O histórico recente da conversa (até 8 mensagens)
 - A pergunta do usuário
 
 E gera uma resposta em no máximo 5 frases, na voz do mestre sorteado.
@@ -173,9 +190,9 @@ O quanto a palavra é rara no conjunto de todos os textos.
 A multiplicação TF × IDF dá um score para cada palavra.
 Com isso o sistema transforma pergunta e textos em vetores numéricos e calcula qual texto é mais próximo da pergunta.
 
-**No Chizu:** quando o usuário pergunta *"como lidar com a ansiedade?"*, o TF-IDF percorre os ensinamentos e retorna os 3 mais relevantes como contexto para a resposta.
+**No Chizu:** quando o usuário pergunta *"como lidar com a ansiedade?"*, o TF-IDF percorre os ensinamentos e retorna os chunks mais relevantes como contexto para a resposta.
 
-**Limitação:** o TF-IDF vê **palavras exatas** — não entende que "angústia" e "ansiedade" são semanticamente próximas. O sistema anterior com `sentence-transformers` fazia essa comparação semântica real. Se o contexto retornado estiver vazio com frequência, vale ajustar o `top_k` ou revisar a granularidade dos chunks.
+**Limitação:** o TF-IDF vê **palavras exatas** — não entende que "angústia" e "ansiedade" são semanticamente próximas. O sistema anterior com `sentence-transformers` fazia essa comparação semântica real. Se o contexto retornado estiver vazio com frequência, vale ajustar o `top_k` no `CONFIGS` ou revisar a granularidade dos chunks.
 
 ---
 
@@ -185,5 +202,7 @@ O pipeline do Chizu funciona como uma biblioteca com um bibliotecário muito pac
 
 - Os livros chegam e são organizados em pequenos trechos
 - Cada trecho é catalogado por significado
-- Quando alguém faz uma pergunta, o bibliotecário encontra os trechos relevantes
-- Um mestre zen lê esses trechos e elabora a resposta
+- Quando alguém faz uma pergunta, o bibliotecário escolhe qual mestre vai responder e busca os trechos mais adequados para ele
+- O mestre lê esses trechos e elabora a resposta
+
+*Ver também: [RAG](rag.md) · [Engenharia de Prompts](engenharia-de-prompts.md) · [Modelos e LLMs](modelos-e-llms.md)*

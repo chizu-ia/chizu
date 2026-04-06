@@ -88,11 +88,15 @@ Respire e volte ao momento presente.
 Na mente do principiante há muitas possibilidades...
 ```
 
+A quantidade de trechos depende do `top_k` do provider sorteado — entre 4 e 5 chunks. Ver [Modelos e LLMs](modelos-e-llms.md) para detalhes.
+
 Se o contexto estiver vazio, o sistema substitui pelo marcador:
 
 ```text
-VAZIO: Nenhum ensinamento disponível nos pergaminhos. Vá praticar Zazen.
+VAZIO
 ```
+
+E a resposta é automaticamente substituída por uma frase do `koans.txt`.
 
 ---
 
@@ -115,37 +119,26 @@ Esse bloco é anexado ao final do system prompt antes do envio.
 
 ## O Conselho de IAs
 
-O Chizu não depende de um único provedor. O `FreeAIProvider` mantém um conselho de quatro IAs com fallback automático.
+O Chizu não depende de um único provedor. O `FreeAIProvider` mantém um conselho de IAs com fallback automático.
 
-A cada requisição, a ordem é embaralhada aleatoriamente. O sistema tenta cada IA na sequência — se uma falhar ou estiver com rate limit (429), passa para a próxima.
+O fluxo começa com `sortear_provider()` — que escolhe a IA antes da busca RAG, permitindo que o `top_k` correto seja usado na recuperação de contexto. O `chat()` recebe o provider já sorteado e o prioriza na ordem de tentativa.
 
-Provedores ativos e seus modelos:
+Provedores ativos e suas configurações:
 
-| Provedor | Modelo | Temperature |
-|---|---|---|
-| Google | Gemini 2.5 Flash | 0.75 |
-| Groq | Llama 3.3 70B | 0.30 |
-| Cerebras | Llama 3.1 8B | 0.50 |
-| SambaNova | Llama 3.1 8B | 0.60 |
+| Provedor | Modelo | temperature | top_p | top_k RAG | max_tokens |
+|---|---|---|---|---|---|
+| Google | Gemini 2.5 Flash | 0.35 | 0.40 | 5 | 2048 |
+| Groq | Llama 3.3 70B | 0.55 | 0.85 | 5 | 512 |
+| Cerebras | Llama 3.1 8B | 0.35 | 0.85 | 4 | 384 |
+| SambaNova | Llama 3.1 8B | 0.75 | 0.90 | 4 | 512 |
 
-A Anthropic (Claude Haiku) está presente no código mas comentada — usada para calibração local.
+A Anthropic (Claude Haiku) está presente no código mas comentada — usada para calibração local quando necessário (`top_k = 5`, `max_tokens = 512`).
 
 Se todos os provedores falharem, o sistema retorna:
 
 ```text
 Caminhante, o silêncio envolve essa questão.
 ```
-
----
-
-## Memória de conversa
-
-O histórico de cada sessão é mantido em RAM — `conversation_memory` no `web.py`.
-
-A janela de contexto enviada ao modelo é de **8 mensagens** (4 trocas). Mensagens mais antigas são descartadas.
-
-Na web, a sessão é identificada por cookie (`chizu_session`) com validade de 7 dias.
-No WhatsApp, a sessão é identificada pelo número de telefone.
 
 ---
 
@@ -177,5 +170,5 @@ Vá praticar Zazen.
 | Voz de um mestre específico | `PERFIS_MESTRES` em `core/engine.py` |
 | Regras de bloqueio e comportamento | `REGRAS_ZEN` em `core/engine.py` |
 | Estilo por IA | `ESTILOS_IA` em `core/engine.py` |
-| Parâmetros de geração por provedor | `CONFIGS` em `core/ai_provider.py` |
+| Parâmetros de geração e top_k por provedor | `CONFIGS` em `core/ai_provider.py` |
 | Frases de bloqueio | `data/koans.txt` |

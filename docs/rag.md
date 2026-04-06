@@ -52,7 +52,9 @@ Quando o usuário faz uma pergunta, o sistema não procura a palavra exata nos t
 
 Isso significa que "como sentar em silêncio" encontra trechos sobre zazen, postura e presença — mesmo sem a palavra exata aparecer.
 
-O sistema retorna os 3 chunks mais relevantes (`top_k = 3`).
+O sistema retorna os chunks mais relevantes conforme o `top_k` do provider sorteado — entre 4 e 5 chunks dependendo da IA ativa. Resultados abaixo do threshold mínimo de `0.05` são descartados.
+
+> **Por que o `top_k` varia?** Cada provedor de IA tem um limite diferente de `max_tokens`. Providers com janela menor recebem `top_k = 4`; os demais recebem `top_k = 5`. O valor é definido no `CONFIGS` do `ai_provider.py` e lido antes da busca — garantindo que o contexto caiba sempre na resposta.
 
 ### Momento 2 — A montagem do contexto
 
@@ -105,9 +107,11 @@ Com contexto, a IA tem matéria-prima real para trabalhar. As palavras dos mestr
 ```
 Usuário pergunta: "como lidar com a ansiedade?"
               ↓
+Provider é sorteado → top_k é lido do CONFIGS (4 ou 5)
+              ↓
 TF-IDF compara a pergunta com todos os chunks do acervo
               ↓
-Retorna os 3 chunks mais relevantes (threshold mínimo: 0.05)
+Retorna os top_k chunks mais relevantes (threshold mínimo: 0.05)
               ↓
 Chunks são inseridos no prompt com autor e fonte identificados
               ↓

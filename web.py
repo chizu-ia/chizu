@@ -294,10 +294,14 @@ async def ask(request: Request):
         autor_raw = data.get("autor", None)
         autor_filtro = autor_raw if autor_raw in AUTORES_DISPONIVEIS else None
 
-        contexto = buscar_contexto(pergunta, biblioteca_chizu, autor_filtro=autor_filtro)
+
+        provider_nome, provider_cfg = ai_provider.sortear_provider()
+        top_k = provider_cfg.get("top_k", 3)
+
+        contexto = buscar_contexto(pergunta, biblioteca_chizu, top_k=top_k, autor_filtro=autor_filtro)
         mensagens_base, perfil_nome = montar_prompt(pergunta, contexto, autor_filtro=autor_filtro)
         prompt_completo = [mensagens_base[0], mensagens_base[-1]]
-        resposta_raw, ia_nome = ai_provider.chat(prompt_completo)
+        resposta_raw, ia_nome = ai_provider.chat(prompt_completo, provider_nome=provider_nome)        
         resposta_limpa = limpar_resposta(resposta_raw)
 
         print("-" * 50)        

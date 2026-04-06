@@ -9,28 +9,50 @@ from core.engine import ESTILOS_IA
 # Configurações por IA
 # ============================================
 CONFIGS = {
-    "Ollama":    {"temperature": 0.45, "max_tokens": 512,  "top_p": 0.85, "frequency_penalty": 0.0,  "presence_penalty": 0.0},
-    "Anthropic": {"temperature": 0.45, "max_tokens": 512,  "top_p": 0.9,  "frequency_penalty": 0.45, "presence_penalty": 0.25},
-    "Gemini":    {"temperature": 0.35, "max_tokens": 2048, "top_p": 0.40, "frequency_penalty": 0.10, "presence_penalty": 0.05},
-    "Groq":      {"temperature": 0.55, "max_tokens": 512,  "top_p": 0.85, "frequency_penalty": 0.80, "presence_penalty": 1.50},
-    "Cerebras":  {"temperature": 0.35, "max_tokens": 256,  "top_p": 0.85, "frequency_penalty": 1.50, "presence_penalty": 1.00},
-    "SambaNova": {"temperature": 0.75, "max_tokens": 384,  "top_p": 0.90, "frequency_penalty": 1.20, "presence_penalty": 1.00},
+    #"Ollama":    {"temperature": 0.45, "max_tokens": 512,  "top_p": 0.85, "frequency_penalty": 0.0,  "presence_penalty": 0.0,  "top_k": 5},
+    #"Anthropic": {"temperature": 0.45, "max_tokens": 512,  "top_p": 0.90, "frequency_penalty": 0.45, "presence_penalty": 0.25, "top_k": 5},
+    "Gemini":    {"temperature": 0.35, "max_tokens": 2048, "top_p": 0.40, "frequency_penalty": 0.10, "presence_penalty": 0.05, "top_k": 5},
+    "Groq":      {"temperature": 0.55, "max_tokens": 512,  "top_p": 0.85, "frequency_penalty": 0.80, "presence_penalty": 1.50, "top_k": 5},
+    "Cerebras":  {"temperature": 0.35, "max_tokens": 384,  "top_p": 0.85, "frequency_penalty": 1.50, "presence_penalty": 1.00, "top_k": 4},
+    "SambaNova": {"temperature": 0.75, "max_tokens": 512,  "top_p": 0.90, "frequency_penalty": 1.20, "presence_penalty": 1.00, "top_k": 4},
 }
-
-
 
 
 class FreeAIProvider:
     def __init__(self):
         self.keys = {
-            # "anthropic": os.getenv("ANTHROPIC_API_KEY"),
+            #"ollama":    "local", 
+            #"anthropic": os.getenv("ANTHROPIC_API_KEY"),
             "gemini":    os.getenv("GEMINI_API_KEY"),
             "groq":      os.getenv("GROQ_API_KEY"),
             "cerebras":  os.getenv("CEREBRAS_API_KEY"),
             "sambanova": os.getenv("SAMBANOVA_API_KEY"),
         }
+        self._providers = [
+            #("ollama", "Ollama", "Phi4 Mini · Ollama Local", self._ollama_chat),
+            #("anthropic", "Anthropic", "Claude Haiku · Anthropic", self._anthropic_chat),
+            ("gemini",    "Gemini",    "Gemini 2.5 Flash · Google", self._gemini_chat),
+            ("groq",      "Groq",      "Llama 3.3 70B · Groq",      self._groq_chat),
+            ("cerebras",  "Cerebras",  "Llama 3.1 8B · Cerebras",   self._cerebras_chat),
+            ("sambanova", "SambaNova", "Llama 3.1 8B · SambaNova",  self._sambanova_chat),
+        ]
 
+    def sortear_provider(self) -> tuple[str, dict]:
+        """
+        Sorteia e retorna (nome_do_provider, config)
+        para uso ANTES de chamar a IA — permite pegar top_k antecipado.
+        """
+        disponiveis = [
+            (key, nome, label, method)
+            for key, nome, label, method in self._providers
+            if self.keys.get(key)
+        ]
+        if not disponiveis:
+            return "Fallback", {"top_k": 3}
 
+        key, nome, label, method = random.choice(disponiveis)
+        cfg = CONFIGS.get(nome, {"top_k": 3})
+        return nome, cfg
 
     def _ajustar_system(self, messages: list, ia_nome: str) -> list:
         estilo = ESTILOS_IA.get(ia_nome, "")
@@ -71,33 +93,20 @@ class FreeAIProvider:
                 resultado.append(m)
         return resultado
 
-
-
-    def chat(self, messages, temperature=0.45, max_tokens=512, top_p=0.9,
-             frequency_penalty=0.45, presence_penalty=0.25):
-
-        providers = [
-            # ("anthropic", "Anthropic", "Claude Haiku · Anthropic", self._anthropic_chat),
-            ("gemini",    "Gemini",    "Gemini 2.5 Flash · Google", self._gemini_chat),
-            ("groq",      "Groq",      "Llama 3.3 70B · Groq",      self._groq_chat),
-            ("cerebras",  "Cerebras",  "Llama 3.1 8B · Cerebras",   self._cerebras_chat),
-            ("sambanova", "SambaNova", "Llama 3.1 8B · SambaNova",  self._sambanova_chat),
-        ]
-
+    def chat(self, messages, provider_nome: str = None):
+        # Reordena colocando o provider sorteado na frente
+        providers = list(self._providers)
         random.shuffle(providers)
+
+        if provider_nome:
+            providers.sort(key=lambda p: 0 if p[1] == provider_nome else 1)
 
         for key, nome, label, method in providers:
             if not self.keys.get(key):
                 continue
             try:
                 messages_ajustadas = self._ajustar_system(messages, nome)
-                cfg = CONFIGS.get(nome, {
-                    "temperature": temperature,
-                    "max_tokens": max_tokens,
-                    "top_p": top_p,
-                    "frequency_penalty": frequency_penalty,
-                    "presence_penalty": presence_penalty,
-                })
+                cfg = CONFIGS.get(nome, {})
                 resposta = method(
                     messages_ajustadas,
                     cfg["temperature"],
@@ -120,6 +129,22 @@ class FreeAIProvider:
                 continue
 
         return "Caminhante, o silêncio envolve essa questão.", "Fallback"
+
+    def _ollama_chat(self, messages, temperature, max_tokens, top_p, freq_pen, pres_pen):
+        payload = {
+            "model": "phi4-mini",
+            "messages": messages,
+            "stream": False,
+            "options": {"temperature": temperature, "num_predict": max_tokens},
+        }
+        r = requests.post(
+            "http://localhost:11434/v1/chat/completions",
+            json=payload,
+            timeout=120,  # timeout maior por rodar local
+        )
+        r.raise_for_status()
+        return r.json()["choices"][0]["message"]["content"]
+
 
     def _gemini_chat(self, messages, temperature, max_tokens, top_p, freq_pen, pres_pen):
         model_name = "gemini-2.5-flash"
