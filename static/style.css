@@ -219,3 +219,45 @@ body {
         font-size: 0.8rem !important;
     }    
 }
+
+/* --- SELECT DE MESTRE --- */
+.livro-select-container {
+    margin-top: 1.4rem;      /* ← era 0.8rem — aumenta espaço acima */
+    margin-bottom: 0.8rem;   /* ← espaço abaixo, antes do input */
+}
+
+#mestre-select {
+    width: 100%;
+    padding: 0.45rem 1.2rem;  /* ← era 0.7rem — deixa mais fino */
+    border: 1px solid #e0d6cc;
+    border-radius: 25px;
+    background: white;
+    color: #6b5e4a;
+    font-family: 'Georgia', serif;
+    font-size: 0.95rem;
+    font-style: italic;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238c6d46' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.2rem center;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#mestre-select:hover {
+    border-color: #c4b6a9;
+}
+
+#mestre-select:focus {
+    border-color: #8c6d46;
+    box-shadow: 0 0 8px rgba(140, 109, 70, 0.2);
+}
+
+@media (max-width: 768px) {
+    #mestre-select {
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
+    }
+}

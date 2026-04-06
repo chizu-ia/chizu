@@ -166,13 +166,21 @@ async function fazerPergunta() {
     }
 
     const { pergunta, autor } = parsearPergunta(textoRaw);
+
+    const mestreSelect    = document.getElementById('mestre-select');
+    const mestreEscolhido = mestreSelect ? mestreSelect.value : "";
+
     input.disabled    = true;
-    input.placeholder = autor ? `Consultando ${autor}...` : 'Chizu medita...';
+    input.placeholder = mestreEscolhido ? `Consultando ${mestreEscolhido}...` : autor ? `Consultando ${autor}...` : 'Chizu medita...';
     respostaDiv.innerHTML = `<em>${randomMsg(window.AGUARDANDO_JS)}<br><br>     Chizu refletindo...</em>`;
 
     try {
         const payload = { pergunta };
-        if (autor) payload.autor = autor;
+        if (mestreEscolhido) {
+            payload.autor = mestreEscolhido;
+        } else if (autor) {
+            payload.autor = autor;
+        }
 
         const response = await fetch('/ask', {
             method:  'POST',
@@ -192,7 +200,6 @@ async function fazerPergunta() {
             .replace(/\n/g, '<br>')
             .replace(/\. ([A-ZÁÉÍÓÚÂÊÎÔÛÃÕÀÇ])/g, '.</p><p>$1');
 
-
         respostaDiv.innerHTML = `
             <p>${respostaHTML}</p>
             <div class="share-buttons">
@@ -201,13 +208,13 @@ async function fazerPergunta() {
                 <button id="btn-whatsapp">WhatsApp</button>
                 <button id="btn-email">Email</button>
             </div>
-        `;        
+        `;
 
         document.getElementById('btn-falar').addEventListener('click', () => {
             if (falando) { pausarVoz(); }
             else if (window.speechSynthesis.paused) { pausarVoz(); }
             else { falar(resposta); }
-        });        
+        });
         document.getElementById('btn-parar').addEventListener('click',    () => pararVoz());
         document.getElementById('btn-whatsapp').addEventListener('click', () => compartilharWhatsApp(resposta));
         document.getElementById('btn-email').addEventListener('click',    () => compartilharEmail(resposta));

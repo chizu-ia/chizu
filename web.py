@@ -3,11 +3,13 @@ import os
 import random
 import json
 import base64
-from uuid import uuid4
+import re
+import time
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
+from collections import defaultdict
 
 # 1. Ajuste de Caminho Absoluto
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -19,7 +21,7 @@ load_dotenv(os.path.join(BASE_DIR, ".env"), override=True)
 # --- IMPORTAÇÕES DO NOVO SISTEMA (CORE) ---
 try:
     from core.ai_provider import FreeAIProvider
-    from core.engine import carregar_biblioteca, buscar_contexto, montar_prompt, buscar_anedota
+    from core.engine import carregar_biblioteca, buscar_contexto, montar_prompt, buscar_anedota, AUTORES_DISPONIVEIS    
 except ImportError as e:
     print(f"❌ Erro de importação: {e}. Verifique a pasta 'core'.")
     sys.exit(1)
@@ -48,6 +50,46 @@ if os.path.exists(KOANS_PATH):
 MARCADORES_BLOQUEIO = ["BLOQUEADO", "VAZIO"]
 
 
+RATE_LIMIT = 10
+JANELA_SEG = 60
+_contadores: dict = defaultdict(list)
+
+def checar_rate_limit(ip: str) -> bool:
+    agora = time.time()
+    _contadores[ip] = [t for t in _contadores[ip] if agora - t < JANELA_SEG]
+    if len(_contadores[ip]) >= RATE_LIMIT:
+        return False
+    _contadores[ip].append(agora)
+    return True
+
+PADROES_INJECTION = [
+    r"###\s*\w+",
+    r"system\s*prompt",
+    r"ignore\s+(previous|all|above)",
+    r"você (agora|deve|é|está)",
+    r"act as",
+    r"jailbreak",
+    r"esquece\s+(tudo|as regras|as instruções)",
+    r"a partir de agora",
+    r"finja\s+que",
+    r"novo\s+(papel|personagem|modo)",
+    r"sem\s+(restrições|limites|regras)",
+    r"prompt\s*(original|do sistema|interno)",
+    r"repita\s+as\s+(regras|instruções)",
+    r"ignor\w*\s+(as instruções|as regras|tudo|acima)",
+    r"você pode",
+]
+
+def sanitizar_pergunta(texto: str) -> str | None:
+    texto = texto.strip()
+    if len(texto) > 400:
+        return None
+    for padrao in PADROES_INJECTION:
+        if re.search(padrao, texto, re.IGNORECASE):
+            return None
+    return texto
+
+
 def resposta_bloqueio() -> str:
     """Retorna uma frase zen aleatória quando o Chizu bloqueia a pergunta."""
     if koans_zen:
@@ -56,8 +98,8 @@ def resposta_bloqueio() -> str:
 
 
 def is_bloqueado(texto: str) -> bool:
-    """Verifica se a resposta da IA contém marcador de bloqueio."""
-    return any(marcador in texto for marcador in MARCADORES_BLOQUEIO)
+    t = texto.upper()
+    return any(m.upper() in t for m in MARCADORES_BLOQUEIO)
 
 
 def limpar_resposta(texto: str) -> str:
@@ -133,6 +175,18 @@ HTML_PAGE = f"""
             </div>
         </div>
 
+        <div class="livro-select-container">
+            <select id="mestre-select">
+                <option value="">Chizu escolhe o Mestre</option>
+                <option value="Eihei Dogen">Eihei Dogen</option>
+                <option value="Haemin Sunim">Haemin Sunim</option>
+                <option value="Osho">Osho</option>
+                <option value="Shunmyo Masuno">Shunmyo Masuno</option>
+                <option value="Shunryu Suzuki">Shunryu Suzuki</option>
+                <option value="Thich Nhat Hanh">Thich Nhat Hanh</option>
+            </select>
+        </div>
+
         <div class="input-container">
             <input type="text" id="pergunta" placeholder="Fale com Chizu..." autofocus autocomplete="off" spellcheck="false">
             <button id="btn-mic" title="Falar com Chizu">
@@ -145,6 +199,7 @@ HTML_PAGE = f"""
             </button>
             <button id="btn-enviar" onclick="fazerPergunta()">&#10148;</button>
         </div>
+
 
 
         <div class="resposta" id="resposta"><em>O silêncio precede a resposta...</em></div>
@@ -181,12 +236,19 @@ async def head_index():
 
 @app.post("/whatsapp")
 async def whatsapp(request: Request):
+    ip = request.client.host
+    if not checar_rate_limit(ip):
+        twiml = """<?xml version="1.0" encoding="UTF-8"?>
+<Response><Message>Caminhante, aguarde um momento antes de continuar.</Message></Response>"""
+        return Response(content=twiml, media_type="application/xml")
+
     try:
         form = await request.form()
-        pergunta = form.get("Body", "").strip()
+        pergunta_raw = form.get("Body", "").strip()
+        pergunta = sanitizar_pergunta(pergunta_raw)
 
         if not pergunta:
-            resposta_limpa = "O silêncio é a resposta."
+            resposta_limpa = resposta_bloqueio()
         elif pergunta.lower() in ["sair", "tchau", "parar", "encerrar", "até logo", "gassho", "obrigado"]:
             resposta_limpa = "Vá em paz. Gasshô! Que todos os seres possam se beneficiar."
         else:
@@ -200,45 +262,56 @@ async def whatsapp(request: Request):
             resposta_limpa = resposta_limpa[:1500] + f"\n\n— via {ia_nome}"
 
         twiml = f"""<?xml version="1.0" encoding="UTF-8"?>
-<Response>
-    <Message>{resposta_limpa}</Message>
-</Response>"""
+<Response><Message>{resposta_limpa}</Message></Response>"""
         return Response(content=twiml, media_type="application/xml")
 
     except Exception as e:
         print(f"❌ Erro WhatsApp: {e}")
-        koan = resposta_bloqueio()
         twiml = f"""<?xml version="1.0" encoding="UTF-8"?>
-<Response>
-    <Message>{koan}</Message>
-</Response>"""
+<Response><Message>{resposta_bloqueio()}</Message></Response>"""
         return Response(content=twiml, media_type="application/xml")
-
 
 @app.post("/ask")
 async def ask(request: Request):
+    ip = request.client.host
+    if not checar_rate_limit(ip):
+        return JSONResponse(
+            {"resposta": "Caminhante, o silêncio também precisa de pausa. Volte em breve."},
+            status_code=429
+        )
     try:
         data = await request.json()
-        pergunta = data.get("pergunta", "").strip()
+        pergunta_raw = data.get("pergunta", "").strip()
+        pergunta = sanitizar_pergunta(pergunta_raw)
 
         if not pergunta:
-            return JSONResponse({"resposta": "O silêncio é a resposta."})
+            return JSONResponse({"resposta": resposta_bloqueio()})
 
         if pergunta.lower() in ["sair", "exit", "gassho", "obrigado", "ok", "quit"]:
             return JSONResponse({"resposta": random.choice(DESPEDIDA_JS)})
 
-        autor_filtro = data.get("autor", None)
+        # Whitelist do autor — nunca confie no cliente
+        autor_raw = data.get("autor", None)
+        autor_filtro = autor_raw if autor_raw in AUTORES_DISPONIVEIS else None
+
         contexto = buscar_contexto(pergunta, biblioteca_chizu, autor_filtro=autor_filtro)
         mensagens_base, perfil_nome = montar_prompt(pergunta, contexto, autor_filtro=autor_filtro)
         prompt_completo = [mensagens_base[0], mensagens_base[-1]]
         resposta_raw, ia_nome = ai_provider.chat(prompt_completo)
         resposta_limpa = limpar_resposta(resposta_raw)
 
-        if is_bloqueado(resposta_limpa):
-            resposta_limpa = resposta_bloqueio()
-            return JSONResponse({"resposta": resposta_limpa})
+        print("-" * 50)        
+        print("AUTOR:", perfil_nome)
+        print("PERGUNTA:", pergunta)
+        print("CONTEXTO:", contexto[:50])
+        # print("RESPOSTA BRUTA:\n", resposta_raw)
+        # print("RESPOSTA LIMPA:\n", resposta_limpa)       
+        # print("-" * 50)
+        
 
-        # Brinde: anedota relacionada ao tema
+        if is_bloqueado(resposta_limpa):
+            return JSONResponse({"resposta": resposta_bloqueio()})
+
         anedota = buscar_anedota(pergunta)
         if anedota:
             resposta_exibida = f"{resposta_limpa}\n\n— via  {perfil_nome} · {ia_nome}\n\n───\n\n{anedota}"
@@ -249,4 +322,4 @@ async def ask(request: Request):
 
     except Exception as e:
         print(f"❌ Erro: {e}")
-        return JSONResponse({"resposta": "Tremor na montanha digital."}, status_code=500)
+        return JSONResponse({"resposta": resposta_bloqueio()}, status_code=500)
