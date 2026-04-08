@@ -325,10 +325,12 @@ async def ask(request: Request):
         resposta_limpa = limpar_resposta(resposta_raw)
 
         if DEBUG:
-            print("-" * 50)        
-            print("AUTOR:", perfil_nome)
+            print("-" * 50) 
+            print("      IA:", ia_nome)       
+            print("   AUTOR:", perfil_nome)
             print("PERGUNTA:", pergunta)
             print("CONTEXTO:", contexto[:50])
+            
             # print("TOP_K:", top_k)
             # print("RESPOSTA BRUTA:\n", resposta_raw)
             # print("RESPOSTA LIMPA:\n", resposta_limpa)       

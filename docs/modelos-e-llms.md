@@ -181,6 +181,66 @@ Assim o LLM não precisa inventar — ele tem textos reais dos mestres zen para 
 
 ---
 
+## Do token à resposta — o caminho completo
+
+Esta seção detalha o que acontece por dentro em cada passo — da pergunta até a frase poética que chega ao usuário.
+
+### Passo 1 — A pergunta vira números
+
+Você digita: *"como lidar com a ansiedade?"*
+
+O sistema converte cada palavra em números — os **tokens**. "ansiedade" vira um ponto num espaço matemático, "lidar" vira outro ponto, "como" vira outro. Não é magia — é como um GPS transforma endereços em coordenadas.
+
+### Passo 2 — O RAG busca as fichas certas
+
+O sistema compara os números da sua pergunta com os números de todos os trechos da biblioteca. Os trechos matematicamente mais próximos são selecionados — mesmo que não usem as mesmas palavras. É por isso que "ansiedade" pode encontrar um trecho sobre "inquietação da mente". O Chizu seleciona os 4 ou 5 trechos mais relevantes conforme o `top_k` do provider sorteado.
+
+### Passo 3 — Monta o caderno do mestre
+
+Os trechos recuperados são organizados num "caderno" e entregues à IA junto com as instruções completas:
+
+```
+Você é o Mestre Chizu.
+Voz do mestre: Haemin Sunim.
+Regras: máximo 5 frases, comece com "Caminhante,"...
+
+CONTEXTO (os trechos do acervo):
+[Haemin Sunim — Desacelerar]
+"Quando a mente não para, o corpo também não descansa..."
+
+[Thich Nhat Hanh — Silêncio]
+"A respiração é a ponte entre o corpo e a mente..."
+
+PERGUNTA: como lidar com a ansiedade?
+```
+
+### Passo 4 — A IA gera palavra por palavra
+
+Aqui está o ponto central. A IA não copia os trechos — ela foi treinada com bilhões de textos e aprendeu como as palavras se encadeiam naturalmente em português. Ao receber o caderno, ela calcula a cada instante:
+
+> *"Dado tudo que li — o contexto, a voz de Haemin, as regras — qual token tem mais probabilidade de vir agora?"*
+
+- Depois de `"Caminhante,"` → provavelmente `"a"` ou `"Haemin"` ou `"nas"`
+- Depois de `"Caminhante, Haemin"` → provavelmente `"Sunim"`
+- E assim por diante, palavra por palavra, até completar a resposta
+
+É aqui que `temperature` e `top_p` entram em cena — controlando se a IA escolhe sempre o token mais provável (previsível) ou se arrisca tokens menos óbvios (criativo e poético).
+
+### O resultado
+
+```
+Caminhante, Haemin Sunim, em Desacelerar, sussurra que
+a ansiedade nasce quando a mente corre mais rápido que
+o momento presente consegue acompanhar. Respira. O que
+existe agora, neste instante, ainda é suficiente.
+```
+
+A IA não inventou do nada — ela teceu os trechos do RAG com a voz de Haemin e as regras do prompt, token por token, como um calígrafo que conhece profundamente o estilo do mestre.
+
+A fluidez não vem de inteligência — vem de ter visto bilhões de exemplos de como humanos constroem frases bonitas em português.
+
+---
+
 ## Metáfora Zen
 
 O LLM é como um calígrafo extremamente habilidoso — escreve com beleza e fluidez qualquer pensamento que você colocar em sua mente.

@@ -218,49 +218,64 @@ def buscar_anedota(pergunta: str) -> str:
 
 
 # ============================================
-# Buscar Contexto
+# Buscar Contexto — Busca Híbrida Light
+# TF-IDF semântico + bônus por termo exato (BM25 simplificado)
+# Zero RAM adicional — usa apenas dados já em memória
 # ============================================
+
+# Stopwords PT — ignoradas no bônus de termo exato
+_STOPWORDS_PT = {
+    "como", "para", "uma", "que", "não", "com", "por", "isso",
+    "mais", "sobre", "dos", "das", "nos", "nas", "num", "numa",
+    "seu", "sua", "seus", "suas", "este", "esta", "esse", "essa",
+    "são", "ser", "foi", "era", "tem", "ter", "bem", "mas", "também",
+}
+
 def buscar_contexto(pergunta: str, biblioteca, top_k: int = 3,
                     threshold: float = 0.05, autor_filtro: str = None) -> str:
     if not _vectorizer or _corpus_matrix is None:
         return "Nenhum ensinamento encontrado."
 
+    # 1. Filtra índices por autor (ou usa todos)
     if autor_filtro:
-        indices_autor = [
+        indices_alvo = [
             i for i, item in enumerate(biblioteca)
             if item.get("autor", "").lower() == autor_filtro.lower()
         ]
-        if not indices_autor:
+        if not indices_alvo:
             return "VAZIO"
-
-        sub_matrix         = _corpus_matrix[indices_autor]
-        vetor              = _vectorizer.transform([pergunta])
-        scores             = cosine_similarity(vetor, sub_matrix).flatten()
-        top_indices_locais = np.argsort(scores)[-top_k:][::-1]
-
-        trechos = []
-        for idx_local in top_indices_locais:
-            idx_global = indices_autor[idx_local]
-            if scores[idx_local] < threshold:
-                continue
-            item  = biblioteca[idx_global]
-            autor = item.get("autor", "Mestre Zen")
-            livro = item.get("fonte", "Ensinamentos")
-            trechos.append(f"[FONTE: {autor} no livro '{livro}']\n{item['texto']}")
-
+        matrix_alvo = _corpus_matrix[indices_alvo]
     else:
-        vetor       = _vectorizer.transform([pergunta])
-        scores      = cosine_similarity(vetor, _corpus_matrix).flatten()
-        indices_top = np.argsort(scores)[-top_k:][::-1]
+        indices_alvo = list(range(len(biblioteca)))
+        matrix_alvo  = _corpus_matrix
 
-        trechos = []
-        for i in indices_top:
-            if scores[i] < threshold:
-                continue
-            item  = biblioteca[i]
-            autor = item.get("autor", "Mestre Zen")
-            livro = item.get("fonte", "Ensinamentos")
-            trechos.append(f"[FONTE: {autor} no livro '{livro}']\n{item['texto']}")
+    # 2. Busca semântica via TF-IDF
+    vetor  = _vectorizer.transform([pergunta])
+    scores = cosine_similarity(vetor, matrix_alvo).flatten()
+
+    # 3. Bônus híbrido — amplifica chunks com termos exatos da pergunta
+    termos_pergunta = {
+        p.lower() for p in pergunta.split()
+        if len(p) > 2 and p.lower() not in _STOPWORDS_PT
+    }
+    if termos_pergunta:
+        for i, idx_global in enumerate(indices_alvo):
+            texto_chunk = biblioteca[idx_global]["texto"].lower()
+            bonus = sum(0.2 for termo in termos_pergunta if termo in texto_chunk)
+            scores[i] += scores[i] * bonus  # amplifica só quem já tem relevância
+
+    # 4. Seleciona top_k e monta trechos
+    indices_top = np.argsort(scores)[-top_k:][::-1]
+
+    trechos = []
+    for idx_local in indices_top:
+        if scores[idx_local] < threshold:
+            continue
+        idx_global = indices_alvo[idx_local]
+        item  = biblioteca[idx_global]
+        autor = item.get("autor", "Mestre Zen")
+        livro = item.get("fonte", "Ensinamentos")
+        trechos.append(f"[FONTE: {autor} no livro '{livro}']\n{item['texto']}")
 
     if not trechos:
         return "VAZIO"

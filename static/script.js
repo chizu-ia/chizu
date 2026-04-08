@@ -1,5 +1,8 @@
 const PALAVRAS_SAIDA = ['sair', 'exit', 'quit', 'gassho', 'obrigado', 'ok'];
 
+// ID único por sessão — gerado ao abrir a aba, some ao fechar
+const SESSION_ID = crypto.randomUUID();
+
 // Mapa de @ para nome exato do autor no JSON
 const AUTORES_MAP = {
     'dogen':   'Eihei Dogen',
@@ -175,7 +178,7 @@ async function fazerPergunta() {
     respostaDiv.innerHTML = `<em>${randomMsg(window.AGUARDANDO_JS)}<br><br>     Chizu refletindo...</em>`;
 
     try {
-        const payload = { pergunta };
+        const payload = { pergunta, session_id: SESSION_ID };
         if (mestreEscolhido) {
             payload.autor = mestreEscolhido;
         } else if (autor) {
