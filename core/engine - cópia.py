@@ -372,26 +372,23 @@ def montar_prompt(pergunta: str, contexto: str, autor_filtro: str = None) -> tup
     else:
         perfil_nome, perfil_texto = sortear_perfil(contexto_final)
 
-    # Extrai autores e livros reais do contexto — âncora obrigatória
-    import re
-    secao_ancoragem = ""
+    # Extrai livros reais do contexto para ancoragem obrigatória
+    ancoragem_livros = ""
     if contexto_final != "VAZIO":
-        fontes = re.findall(r"\[FONTE: (.+?) no livro '(.+?)'\]", contexto_final)
-        fontes_unicas = list(dict.fromkeys(fontes))
-        if fontes_unicas:
-            linhas = "\n".join(f"  - {autor} · {livro}" for autor, livro in fontes_unicas)
-            secao_ancoragem = (
-                "### FONTES AUTORIZADAS NESTA RESPOSTA ###\n"
-                "Cite APENAS os autores e livros listados abaixo — são os únicos presentes no contexto:\n"
-                f"{linhas}\n"
-                "PROIBIDO citar qualquer outro livro ou autor, mesmo que você os conheça do treinamento.\n\n"
-            )
+        ancoragem_livros = _extrair_livros_do_contexto(contexto_final)
+
+    regras_com_ancoragem = REGRAS_ZEN
+    if ancoragem_livros:
+        regras_com_ancoragem = REGRAS_ZEN.replace(
+            "PROIBIDO inventar citações, páginas ou referências.\n",
+            "PROIBIDO inventar citações, páginas ou referências.\n"
+            f"   {ancoragem_livros}"
+        )
 
     system_prompt = (
         "Você é o Mestre Chizu, um sábio zen compassivo e poético.\n\n"
         f"### VOZ DO MESTRE ###\n{perfil_texto}\n"
-        + REGRAS_ZEN
-        + secao_ancoragem
+        + regras_com_ancoragem
         + f"### CONTEXTO ###\n{contexto_final}"
     )
 

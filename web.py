@@ -193,7 +193,7 @@ HTML_PAGE = f"""
         </div>
 
         <div class="input-container">
-            <input type="text" id="pergunta" placeholder="Fale com Chizu..." autofocus autocomplete="off" spellcheck="false">
+            <input type="text" id="pergunta" placeholder="Fale com Chizu..." autofocus autocomplete="off" spellcheck="false" maxlength="400">
             <button id="btn-mic" title="Falar com Chizu">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
@@ -344,8 +344,8 @@ async def ask(request: Request):
         if session_id not in conversation_memory:
             conversation_memory[session_id] = []
         conversation_memory[session_id].append({
-            "pergunta": pergunta,
-            "resposta": resposta_limpa
+            "pergunta": pergunta[:150],      # ← limita pergunta também
+            "resposta": resposta_limpa[:200] # ← limita resposta
         })
         # Mantém só as últimas 10 trocas por sessão
         if len(conversation_memory[session_id]) > 10:
