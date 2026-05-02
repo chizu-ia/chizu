@@ -183,6 +183,7 @@ HTML_PAGE = f"""
         <div class="livro-select-container">
             <select id="mestre-select">
                 <option value="">Chizu escolhe o Mestre</option>
+                <option value="Bernard Glassman & Rick Fields">Bernard Glassman & Rick Fields</option>                
                 <option value="Eihei Dogen">Eihei Dogen</option>
                 <option value="Haemin Sunim">Haemin Sunim</option>
                 <option value="Osho">Osho</option>

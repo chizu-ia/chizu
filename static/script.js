@@ -13,6 +13,8 @@ const AUTORES_MAP = {
     'suzuki':  'Shunryu Suzuki',
     'thich':   'Thich Nhat Hanh',
     'hanh':    'Thich Nhat Hanh',
+    'glassman': 'Bernard Glassman & Rick Fields',
+    'bernard':  'Bernard Glassman & Rick Fields',    
 };
 
 const input       = document.getElementById('pergunta');
